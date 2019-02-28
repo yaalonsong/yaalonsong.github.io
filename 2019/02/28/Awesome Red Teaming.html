@@ -1,0 +1,1727 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Tools," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="信息安全初学者" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="Awesome Red TeamingList of Awesome Red Team / Red Teaming Resources This list is for anyone wishing to learn about Red Teaming but do not have a starting point. Anyway, this is a living resources and">
+<meta name="keywords" content="Tools">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Red Teaming Tools">
+<meta property="og:url" content="https://yaalonsong.github.io/2019/02/28/Awesome Red Teaming.html">
+<meta property="og:site_name" content="信息安全初学者">
+<meta property="og:description" content="Awesome Red TeamingList of Awesome Red Team / Red Teaming Resources This list is for anyone wishing to learn about Red Teaming but do not have a starting point. Anyway, this is a living resources and">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-02-28T14:19:42.441Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Red Teaming Tools">
+<meta name="twitter:description" content="Awesome Red TeamingList of Awesome Red Team / Red Teaming Resources This list is for anyone wishing to learn about Red Teaming but do not have a starting point. Anyway, this is a living resources and">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://yaalonsong.github.io/2019/02/28/Awesome Red Teaming.html"/>
+
+
+
+
+
+  <title>Red Teaming Tools | 信息安全初学者</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', '111023405-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">信息安全初学者</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">No pains No gains！</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-smile-o"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-angellist"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-diamond"></i> <br />
+            
+            标签云
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-others">
+          <a href="/others/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-hashtag"></i> <br />
+            
+            其他
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-music">
+          <a href="/music/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-music"></i> <br />
+            
+            小曲怡情
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-mortar-board"></i> <br />
+            
+            关于作者
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="想找什么东西不妨搜索一下" spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://yaalonsong.github.io/2019/02/28/Awesome Red Teaming.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yaron">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="信息安全初学者">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Red Teaming Tools</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-28T17:49:30+08:00">
+                2019-02-28
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-02-28T22:19:42+08:00">
+                2019-02-28
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-wechat"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tools/" itemprop="url" rel="index">
+                    <span itemprop="name">Tools</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+          
+            
+          
+
+          
+          
+          
+          
+            <span class="post-meta-divider"></span>
+            <span class="page-pv"><i>| </i> <i class="fa fa-free-code-camp"> 热度</i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+            <span>℃</span>
+          
+                  <span class="post-meta-divider">|</span>                  
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider"></span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文共</span>
+                
+                <span title="本文共">
+                  1,948
+                </span>
+                <span>字</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">用时</span>
+
+                
+                <span title="用时">
+                  12
+                </span>
+                <span>min</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Awesome-Red-Teaming"><a href="#Awesome-Red-Teaming" class="headerlink" title="Awesome Red Teaming"></a>Awesome Red Teaming</h1><p>List of Awesome Red Team / Red Teaming Resources</p>
+<p>This list is for anyone wishing to learn about Red Teaming but do not have a starting point.</p>
+<p>Anyway, this is a living resources and will update regularly with latest Adversarial Tactics and Techniques based on <a href="https://attack.mitre.org/wiki/Main_Page" target="_blank" rel="noopener">Mitre ATT&amp;CK</a></p>
+<p>You can help by sending Pull Requests to add more information.</p>
+<h1 id="Table-of-Contents"><a href="#Table-of-Contents" class="headerlink" title="Table of Contents"></a>Table of Contents</h1><ul>
+<li><a href="#-initial-access">Initial Access</a></li>
+<li><a href="#-execution">Execution</a></li>
+<li><a href="#-persistence">Persistence</a></li>
+<li><a href="#-privilege-escalation">Privilege Escalation</a></li>
+<li><a href="#-defense-evasion">Defense Evasion</a></li>
+<li><a href="#-credential-access">Credential Access</a></li>
+<li><a href="#-discovery">Discovery</a></li>
+<li><a href="#-lateral-movement">Lateral Movement</a></li>
+<li><a href="#-collection">Collection</a></li>
+<li><a href="#-exfiltration">Exfiltration</a></li>
+<li><a href="#-command-and-control">Command and Control</a></li>
+<li><a href="#-embedded-and-peripheral-devices-hacking">Embedded and Peripheral Devices Hacking</a></li>
+<li><a href="#-misc">Misc</a></li>
+<li><a href="#-redteam-gadgets">RedTeam Gadgets</a></li>
+<li><a href="#-ebooks">Ebooks</a></li>
+<li><a href="#-training--free-">Training</a></li>
+<li><a href="#-certification">Certification</a></li>
+</ul>
+<h2 id="↑-Initial-Access"><a href="#↑-Initial-Access" class="headerlink" title="↑ Initial Access"></a><a href="#table-of-contents">↑</a> Initial Access</h2><ul>
+<li><a href="https://www.blackhillsinfosec.com/empires-cross-platform-office-macro/" target="_blank" rel="noopener">How To: Empire’s Cross Platform Office Macro</a></li>
+<li><a href="https://www.blackhillsinfosec.com/phishing-with-powerpoint/" target="_blank" rel="noopener">Phishing with PowerPoint</a></li>
+<li><a href="https://enigma0x3.net/2016/03/15/phishing-with-empire/" target="_blank" rel="noopener">PHISHING WITH EMPIRE</a></li>
+<li><a href="https://hakshop.com/products/bash-bunny" target="_blank" rel="noopener">Bash Bunny</a></li>
+<li><a href="https://www.owasp.org/images/5/54/Presentation_Social_Engineering.pdf" target="_blank" rel="noopener">OWASP Presentation of Social Engineering - OWASP</a></li>
+<li><a href="https://www.redteamsecure.com/usb-drop-attacks-the-danger-of-lost-and-found-thumb-drives/" target="_blank" rel="noopener">USB Drop Attacks: The Danger of “Lost And Found” Thumb Drives</a></li>
+<li><a href="https://media.defcon.org/DEF%20CON%2024/DEF%20CON%2024%20presentations/DEFCON-24-Seymour-Tully-Weaponizing-Data-Science-For-Social-Engineering-WP.pdf" target="_blank" rel="noopener">Weaponizing data science for social engineering: Automated E2E spear phishing on Twitter - Defcon 23</a></li>
+<li><a href="https://www.cobaltstrike.com/help-spear-phish" target="_blank" rel="noopener">Cobalt Strike - Spear Phishing documentation</a></li>
+<li><a href="https://blog.cobaltstrike.com/2014/12/17/whats-the-go-to-phishing-technique-or-exploit/" target="_blank" rel="noopener">Cobalt Strike Blog - What’s the go-to phishing technique or exploit?</a></li>
+<li><a href="https://www.youtube.com/watch?v=V7UJjVcq2Ao" target="_blank" rel="noopener">Spear phishing with Cobalt Strike - Raphael Mudge</a></li>
+<li><a href="https://cybersyndicates.com/2016/05/email-reconnaissance-phishing-template-generation-made-simple/" target="_blank" rel="noopener">EMAIL RECONNAISSANCE AND PHISHING TEMPLATE GENERATION MADE SIMPLE</a></li>
+<li><a href="http://www.rvrsh3ll.net/blog/phishing/phishing-for-access/" target="_blank" rel="noopener">Phishing for access</a></li>
+<li><a href="https://4sysops.com/archives/excel-macros-with-powershell/" target="_blank" rel="noopener">Excel macros with PowerShell</a></li>
+<li><a href="https://phishme.com/powerpoint-and-custom-actions/" target="_blank" rel="noopener">PowerPoint and Custom Actions</a></li>
+<li><a href="https://sensepost.com/blog/2017/macro-less-code-exec-in-msword/" target="_blank" rel="noopener">Macro-less Code Exec in MSWord</a></li>
+<li><a href="https://medium.com/@malcomvetter/multi-platform-macro-phishing-payloads-3b688e8eff68" target="_blank" rel="noopener">Multi-Platform Macro Phishing Payloads</a></li>
+<li><a href="https://rhinosecuritylabs.com/research/abusing-microsoft-word-features-phishing-subdoc/" target="_blank" rel="noopener">Abusing Microsoft Word Features for Phishing: “subDoc”</a></li>
+<li><a href="https://enigma0x3.net/2017/07/13/phishing-against-protected-view/" target="_blank" rel="noopener">Phishing Against Protected View</a></li>
+<li><a href="https://fzuckerman.wordpress.com/2016/10/06/powershell-empire-stagers-1-phishing-with-an-office-macro-and-evading-avs/" target="_blank" rel="noopener">POWERSHELL EMPIRE STAGERS 1: PHISHING WITH AN OFFICE MACRO AND EVADING AVS</a></li>
+<li><a href="https://www.redteamsecure.com/the-plugbot-hardware-botnet-research-project/" target="_blank" rel="noopener">The PlugBot: Hardware Botnet Research Project</a></li>
+<li><a href="https://www.shellntel.com/blog/2016/9/13/luckystrike-a-database-backed-evil-macro-generator" target="_blank" rel="noopener">Luckystrike: An Evil Office Document Generator</a></li>
+<li><a href="http://georgemauer.net/2017/10/07/csv-injection.html" target="_blank" rel="noopener">The Absurdly Underestimated Dangers of CSV Injection</a></li>
+<li><a href="https://furoner.wordpress.com/2017/10/17/macroless-malware-that-avoids-detection-with-yara-rule/amp/" target="_blank" rel="noopener">Macroless DOC malware that avoids detection with Yara rule</a></li>
+<li><a href="https://medium.com/@vivami/phishing-between-the-app-whitelists-1b7dcdab4279" target="_blank" rel="noopener">Phishing between the app whitelists</a></li>
+<li><a href="https://stealingthe.network/executing-metasploit-empire-payloads-from-ms-office-document-properties-part-1-of-2/" target="_blank" rel="noopener">Executing Metasploit &amp; Empire Payloads from MS Office Document Properties (part 1 of 2)</a></li>
+<li><a href="https://stealingthe.network/executing-metasploit-empire-payloads-from-ms-office-document-properties-part-2-of-2/" target="_blank" rel="noopener">Executing Metasploit &amp; Empire Payloads from MS Office Document Properties (part 2 of 2)</a></li>
+<li><a href="https://www.social-engineer.org/" target="_blank" rel="noopener">Social Engineer Portal</a></li>
+<li><a href="http://www.darkreading.com/the-7-best-social-engineering-attacks-ever/d/d-id/1319411" target="_blank" rel="noopener">7 Best social Engineering attack</a></li>
+<li><a href="https://www.rsaconference.com/writable/presentations/file_upload/das-301_williams_rader.pdf" target="_blank" rel="noopener">Using Social Engineering Tactics For Big Data Espionage - RSA Conference Europe 2012</a></li>
+<li><a href="https://1337red.wordpress.com/using-the-dde-attack-with-powershell-empire/" target="_blank" rel="noopener">USING THE DDE ATTACK WITH POWERSHELL EMPIRE</a></li>
+<li><a href="https://www.kitploit.com/2018/02/pot-phishing-on-twitter.html" target="_blank" rel="noopener">Phishing on Twitter - POT</a></li>
+<li><a href="https://pentestlab.blog/2017/12/18/microsoft-office-ntlm-hashes-via-frameset/" target="_blank" rel="noopener">Microsoft Office – NTLM Hashes via Frameset</a></li>
+<li><a href="https://oddvar.moe/2017/09/13/defense-in-depth-writeup/" target="_blank" rel="noopener">Defense-In-Depth write-up</a></li>
+<li><a href="https://blog.inspired-sec.com/archive/2017/05/07/Phishing.html" target="_blank" rel="noopener">Spear Phishing 101</a></li>
+</ul>
+<h2 id="↑-Execution"><a href="#↑-Execution" class="headerlink" title="↑ Execution"></a><a href="#table-of-contents">↑</a> Execution</h2><ul>
+<li><a href="https://msitpros.com/?p=3960" target="_blank" rel="noopener">Research on CMSTP.exe,</a></li>
+<li><a href="https://arno0x0x.wordpress.com/2017/11/20/windows-oneliners-to-download-remote-payload-and-execute-arbitrary-code/" target="_blank" rel="noopener">Windows oneliners to download remote payload and execute arbitrary code</a></li>
+<li><a href="https://bohops.com/2017/12/02/clickonce-twice-or-thrice-a-technique-for-social-engineering-and-untrusted-command-execution/" target="_blank" rel="noopener">Executing Commands and Bypassing AppLocker with PowerShell Diagnostic Scripts</a></li>
+<li><a href="https://posts.specterops.io/wsh-injection-a-case-study-fd35f79d29dd" target="_blank" rel="noopener">WSH Injection: A Case Study</a></li>
+<li><a href="http://lockboxx.blogspot.com/2018/02/intro-to-using-gscript-for-red-teams.html" target="_blank" rel="noopener">Gscript Dropper</a></li>
+</ul>
+<h2 id="↑-Persistence"><a href="#↑-Persistence" class="headerlink" title="↑ Persistence"></a><a href="#table-of-contents">↑</a> Persistence</h2><ul>
+<li><a href="https://rastamouse.me/2018/03/a-view-of-persistence/" target="_blank" rel="noopener">A View of Persistence</a></li>
+<li><a href="https://posts.specterops.io/hiding-registry-keys-with-psreflect-b18ec5ac8353" target="_blank" rel="noopener">hiding registry keys with psreflect</a></li>
+<li><a href="https://oddvar.moe/2018/03/21/persistence-using-runonceex-hidden-from-autoruns-exe/" target="_blank" rel="noopener">Persistence using RunOnceEx – Hidden from Autoruns.exe</a></li>
+<li><a href="https://oddvar.moe/2018/04/10/persistence-using-globalflags-in-image-file-execution-options-hidden-from-autoruns-exe/" target="_blank" rel="noopener">Persistence using GlobalFlags in Image File Execution Options – Hidden from Autoruns.exe</a></li>
+<li><a href="https://oddvar.moe/2018/04/11/putting-data-in-alternate-data-streams-and-how-to-execute-it-part-2/" target="_blank" rel="noopener">Putting data in Alternate data streams and how to execute it – part 2</a></li>
+<li><a href="https://blog.inspired-sec.com/archive/2017/01/20/WMI-Persistence.html" target="_blank" rel="noopener">WMI Persistence with Cobalt Strike</a></li>
+<li><a href="https://bohops.com/2018/02/26/leveraging-inf-sct-fetch-execute-techniques-for-bypass-evasion-persistence/" target="_blank" rel="noopener">Leveraging INF-SCT Fetch &amp; Execute Techniques For Bypass, Evasion, &amp; Persistence</a></li>
+<li><a href="https://bohops.com/2018/03/10/leveraging-inf-sct-fetch-execute-techniques-for-bypass-evasion-persistence-part-2/" target="_blank" rel="noopener">Leveraging INF-SCT Fetch &amp; Execute Techniques For Bypass, Evasion, &amp; Persistence (Part 2)</a></li>
+<li><a href="https://bohops.com/2018/02/10/vshadow-abusing-the-volume-shadow-service-for-evasion-persistence-and-active-directory-database-extraction/" target="_blank" rel="noopener">Vshadow: Abusing the Volume Shadow Service for Evasion, Persistence, and Active Directory Database Extraction</a></li>
+</ul>
+<h2 id="↑-Privilege-Escalation"><a href="#↑-Privilege-Escalation" class="headerlink" title="↑ Privilege Escalation"></a><a href="#table-of-contents">↑</a> Privilege Escalation</h2><h3 id="User-Account-Control-Bypass"><a href="#User-Account-Control-Bypass" class="headerlink" title="User Account Control Bypass"></a>User Account Control Bypass</h3><ul>
+<li><a href="https://winscripting.blog/2017/05/12/first-entry-welcome-and-uac-bypass/" target="_blank" rel="noopener">First entry: Welcome and fileless UAC bypass,</a></li>
+<li><a href="https://tyranidslair.blogspot.ru/2017/05/exploiting-environment-variables-in.html" target="_blank" rel="noopener">Exploiting Environment Variables in Scheduled Tasks for UAC Bypass,</a></li>
+<li>Reading Your Way Around UAC in 3 parts:<br> <a href="https://tyranidslair.blogspot.ru/2017/05/reading-your-way-around-uac-part-1.html" target="_blank" rel="noopener">Part 1.</a><br> <a href="https://tyranidslair.blogspot.ru/2017/05/reading-your-way-around-uac-part-2.html" target="_blank" rel="noopener">Part 2.</a><br> <a href="https://tyranidslair.blogspot.ru/2017/05/reading-your-way-around-uac-part-3.html" target="_blank" rel="noopener">Part 3.</a></li>
+<li><a href="https://enigma0x3.net/2017/03/14/bypassing-uac-using-app-paths/" target="_blank" rel="noopener">Bypassing UAC using App Paths,</a></li>
+<li><a href="https://enigma0x3.net/2017/03/17/fileless-uac-bypass-using-sdclt-exe/" target="_blank" rel="noopener">“Fileless” UAC Bypass using sdclt.exe,</a></li>
+<li><a href="https://habrahabr.ru/company/pm/blog/328008/" target="_blank" rel="noopener">UAC Bypass or story about three escalations,</a></li>
+<li><a href="https://enigma0x3.net/2016/08/15/fileless-uac-bypass-using-eventvwr-exe-and-registry-hijacking/" target="_blank" rel="noopener">“Fileless” UAC Bypass Using eventvwr.exe and Registry Hijacking,</a></li>
+<li><a href="https://enigma0x3.net/2016/07/22/bypassing-uac-on-windows-10-using-disk-cleanup/" target="_blank" rel="noopener">Bypassing UAC on Windows 10 using Disk Cleanup,</a></li>
+<li><a href="http://www.freebuf.com/articles/system/116611.html" target="_blank" rel="noopener">Using IARPUninstallStringLauncher COM interface to bypass UAC,</a></li>
+<li><a href="https://posts.specterops.io/fileless-uac-bypass-using-sdclt-exe-3e9f9ad4e2b3" target="_blank" rel="noopener">Fileless UAC Bypass using sdclt</a></li>
+<li><a href="https://www.mdsec.co.uk/2016/12/cna-eventvwr-uac-bypass/" target="_blank" rel="noopener">Eventvwr File-less UAC Bypass CNA</a></li>
+<li><a href="http://www.pretentiousname.com/misc/win7_uac_whitelist2.html" target="_blank" rel="noopener">Windows 7 UAC whitelist</a></li>
+</ul>
+<h3 id="Escalation"><a href="#Escalation" class="headerlink" title="Escalation"></a>Escalation</h3><ul>
+<li><a href="https://github.com/netbiosX/Checklists/blob/master/Windows-Privilege-Escalation.md" target="_blank" rel="noopener">Windows Privilege Escalation Checklist</a></li>
+<li><a href="https://blog.inspired-sec.com/archive/2017/03/17/COM-Moniker-Privesc.html" target="_blank" rel="noopener">From Patch Tuesday to DA</a></li>
+<li><a href="https://blog.cobaltstrike.com/2016/12/08/cobalt-strike-3-6-a-path-for-privilege-escalation/" target="_blank" rel="noopener">A Path for Privilege Escalation</a></li>
+</ul>
+<h2 id="↑-Defense-Evasion"><a href="#↑-Defense-Evasion" class="headerlink" title="↑ Defense Evasion"></a><a href="#table-of-contents">↑</a> Defense Evasion</h2><ul>
+<li><a href="https://github.com/tyranid/DeviceGuardBypasses" target="_blank" rel="noopener">Window 10 Device Guard Bypass</a></li>
+<li><a href="https://github.com/api0cradle/UltimateAppLockerByPassList" target="_blank" rel="noopener">App Locker ByPass List</a></li>
+<li><a href="https://github.com/vysec/Windows-SignedBinary" target="_blank" rel="noopener">Window Signed Binary</a></li>
+<li><a href="http://subt0x10.blogspot.sg/2017/04/bypass-application-whitelisting-script.html" target="_blank" rel="noopener">Bypass Application Whitelisting Script Protections - Regsvr32.exe &amp; COM Scriptlets (.sct files)</a></li>
+<li><a href="http://subt0x10.blogspot.sg/2017/04/bypassing-application-whitelisting.html" target="_blank" rel="noopener">Bypassing Application Whitelisting using MSBuild.exe - Device Guard Example and Mitigations</a></li>
+<li><a href="https://bneg.io/2017/07/26/empire-without-powershell-exe/" target="_blank" rel="noopener">Empire without powershell</a></li>
+<li><a href="https://www.blackhillsinfosec.com/powershell-without-powershell-how-to-bypass-application-whitelisting-environment-restrictions-av/" target="_blank" rel="noopener">Powershell without Powershell to bypass app whitelist</a></li>
+<li><a href="https://github.com/secretsquirrel/SigThief" target="_blank" rel="noopener">MS Signed mimikatz in just 3 steps</a></li>
+<li><a href="https://riscybusiness.wordpress.com/2017/10/07/hiding-your-process-from-sysinternals/" target="_blank" rel="noopener">Hiding your process from sysinternals</a></li>
+<li><a href="https://posts.specterops.io/code-signing-certificate-cloning-attacks-and-defenses-6f98657fc6ec" target="_blank" rel="noopener">code signing certificate cloning attacks and defenses</a></li>
+<li><a href="https://0x00sec.org/t/userland-api-monitoring-and-code-injection-detection/5565" target="_blank" rel="noopener">userland api monitoring and code injection detection</a></li>
+<li><a href="https://blog.cobaltstrike.com/2018/02/08/in-memory-evasion/" target="_blank" rel="noopener">In memory evasion</a></li>
+<li><a href="https://posts.specterops.io/bypassing-amsi-via-com-server-hijacking-b8a3354d1aff" target="_blank" rel="noopener">Bypassing AMSI via COM Server Hijacking</a></li>
+<li><a href="https://hshrzd.wordpress.com/2017/12/18/process-doppelganging-a-new-way-to-impersonate-a-process/" target="_blank" rel="noopener">process doppelganging</a></li>
+<li><a href="http://www.labofapenetrationtester.com/2017/08/week-of-evading-microsoft-ata-day1.html" target="_blank" rel="noopener">Week of Evading Microsoft ATA - Announcement and Day 1 to Day 5</a></li>
+<li><a href="https://cybersyndicates.com/2015/06/veil-evasion-aes-encrypted-httpkey-request-module/" target="_blank" rel="noopener">VEIL-EVASION AES ENCRYPTED HTTPKEY REQUEST: SAND-BOX EVASION</a></li>
+<li><a href="https://oddvar.moe/2018/01/14/putting-data-in-alternate-data-streams-and-how-to-execute-it/" target="_blank" rel="noopener">Putting data in Alternate data streams and how to execute it</a></li>
+<li><a href="https://oddvar.moe/2017/12/13/applocker-case-study-how-insecure-is-it-really-part-1/" target="_blank" rel="noopener">AppLocker – Case study – How insecure is it really? – Part 1</a></li>
+<li><a href="https://oddvar.moe/2017/12/21/applocker-case-study-how-insecure-is-it-really-part-2/" target="_blank" rel="noopener">AppLocker – Case study – How insecure is it really? – Part 2</a></li>
+<li><a href="https://oddvar.moe/2017/12/13/harden-windows-with-applocker-based-on-case-study-part-1/" target="_blank" rel="noopener">Harden Windows with AppLocker – based on Case study part 2</a></li>
+<li><a href="https://oddvar.moe/2017/12/21/harden-windows-with-applocker-based-on-case-study-part-2/" target="_blank" rel="noopener">Harden Windows with AppLocker – based on Case study part 2</a></li>
+<li><a href="https://oddvar.moe/2018/01/03/office-365-safe-links-bypass/" target="_blank" rel="noopener">Office 365 Safe links bypass</a></li>
+<li><a href="https://oddvar.moe/2018/03/15/windows-defender-attack-surface-reduction-rules-bypass/" target="_blank" rel="noopener">Windows Defender Attack Surface Reduction Rules bypass</a></li>
+<li><a href="https://oddvar.moe/2017/08/13/bypassing-device-guard-umci-using-chm-cve-2017-8625/" target="_blank" rel="noopener">Bypassing Device guard UMCI using CHM – CVE-2017-8625</a></li>
+<li><a href="https://oddvar.moe/2017/05/18/bypassing-application-whitelisting-with-bginfo/" target="_blank" rel="noopener">Bypassing Application Whitelisting with BGInfo</a></li>
+<li><a href="https://blog.inspired-sec.com/archive/2017/01/10/cloning-captive-portals.html" target="_blank" rel="noopener">Cloning and Hosting Evil Captive Portals using a Wifi PineApple</a></li>
+<li><a href="https://bohops.com/2018/01/23/loading-alternate-data-stream-ads-dll-cpl-binaries-to-bypass-applocker/" target="_blank" rel="noopener">https://bohops.com/2018/01/23/loading-alternate-data-stream-ads-dll-cpl-binaries-to-bypass-applocker/</a></li>
+<li><a href="https://bohops.com/2018/01/07/executing-commands-and-bypassing-applocker-with-powershell-diagnostic-scripts/" target="_blank" rel="noopener">Executing Commands and Bypassing AppLocker with PowerShell Diagnostic Scripts</a></li>
+<li><a href="https://posts.specterops.io/mavinject-exe-functionality-deconstructed-c29ab2cf5c0e" target="_blank" rel="noopener">mavinject.exe Functionality Deconstructed</a></li>
+</ul>
+<h2 id="↑-Credential-Access"><a href="#↑-Credential-Access" class="headerlink" title="↑ Credential Access"></a><a href="#table-of-contents">↑</a> Credential Access</h2><ul>
+<li><a href="https://blog.cobaltstrike.com/2015/12/16/windows-access-tokens-and-alternate-credentials/" target="_blank" rel="noopener">Windows Access Tokens and Alternate credentials</a></li>
+<li><a href="https://sensepost.com/blog/2016/bringing-the-hashes-home-with-regeorg-empire/" target="_blank" rel="noopener">Bringing the hashes home with reGeorg &amp; Empire</a></li>
+<li><a href="https://sensepost.com/blog/2016/intercepting-passwords-with-empire-and-winning/" target="_blank" rel="noopener">Intercepting passwords with Empire and winning</a></li>
+<li><a href="https://rastamouse.me/2018/03/laps---part-1/" target="_blank" rel="noopener">Local Administrator Password Solution (LAPS) Part 1</a></li>
+<li><a href="https://rastamouse.me/2018/03/laps---part-2/" target="_blank" rel="noopener">Local Administrator Password Solution (LAPS) Part 2</a></li>
+<li><a href="https://1337red.wordpress.com/using-a-scf-file-to-gather-hashes/" target="_blank" rel="noopener">USING A SCF FILE TO GATHER HASHES</a></li>
+<li><a href="https://www.harmj0y.net/blog/" target="_blank" rel="noopener">Remote Hash Extraction On Demand Via Host Security Descriptor Modification</a></li>
+<li><a href="https://www.harmj0y.net/blog/redteaming/offensive-encrypted-data-storage/" target="_blank" rel="noopener">Offensive Encrypted Data Storage</a></li>
+<li><a href="https://byt3bl33d3r.github.io/practical-guide-to-ntlm-relaying-in-2017-aka-getting-a-foothold-in-under-5-minutes.html" target="_blank" rel="noopener">Practical guide to NTLM Relaying</a></li>
+<li><a href="https://adsecurity.org/?p=2053" target="_blank" rel="noopener">Dump Clear-Text Passwords for All Admins in the Domain Using Mimikatz DCSync</a></li>
+<li><a href="https://pentestlab.blog/2018/07/04/dumping-domain-password-hashes/" target="_blank" rel="noopener">Dumping Domain Password Hashes</a></li>
+</ul>
+<h2 id="↑-Discovery"><a href="#↑-Discovery" class="headerlink" title="↑ Discovery"></a><a href="#table-of-contents">↑</a> Discovery</h2><ul>
+<li><a href="https://www.owasp.org/images/4/4b/Red_Team_Operating_in_a_Modern_Environment.pdf" target="_blank" rel="noopener">Red Team Operating in a Modern Environment</a></li>
+<li><a href="https://blog.cobaltstrike.com/2016/12/14/my-first-go-with-bloodhound/" target="_blank" rel="noopener">My First Go with BloodHound</a></li>
+<li><a href="https://wald0.com/?p=68" target="_blank" rel="noopener">Introducing BloodHound</a></li>
+<li><a href="https://wald0.com/?p=179" target="_blank" rel="noopener">A Red Teamer’s Guide to GPOs and OUs</a></li>
+<li><a href="https://wald0.com/?p=14" target="_blank" rel="noopener">Automated Derivative Administrator Search</a></li>
+<li><a href="https://www.harmj0y.net/blog/activedirectory/a-pentesters-guide-to-group-scoping/" target="_blank" rel="noopener">A Pentester’s Guide to Group Scoping</a></li>
+<li><a href="https://www.harmj0y.net/blog/redteaming/local-group-enumeration/" target="_blank" rel="noopener">Local Group Enumeration</a></li>
+<li><a href="http://www.harmj0y.net/blog/powershell/the-powerview-powerusage-series-1/" target="_blank" rel="noopener">The PowerView PowerUsage Series #1 - Mass User Profile Enumeration</a></li>
+<li><a href="http://www.harmj0y.net/blog/powershell/the-powerview-powerusage-series-2/" target="_blank" rel="noopener">The PowerView PowerUsage Series #2 – Mapping Computer Shortnames With the Global Catalog</a></li>
+<li><a href="http://www.harmj0y.net/blog/powershell/the-powerview-powerusage-series-3/" target="_blank" rel="noopener">The PowerView PowerUsage Series #3 – Enumerating GPO edit rights in a foreign domain</a></li>
+<li><a href="http://www.harmj0y.net/blog/powershell/the-powerview-powerusage-series-3/" target="_blank" rel="noopener">The PowerView PowerUsage Series #4 – Finding cross-trust ACEs</a></li>
+<li><a href="http://threat.tevora.com/aggressor-powerview/" target="_blank" rel="noopener">Aggressor PowerView</a></li>
+<li><a href="http://threat.tevora.com/lay-of-the-land-with-bloodhound/" target="_blank" rel="noopener">Lay of the Land with BloodHound</a></li>
+<li><a href="https://adsecurity.org/?p=3658" target="_blank" rel="noopener">Scanning for Active Directory Privileges &amp; Privileged Accounts</a></li>
+<li><a href="https://adsecurity.org/?p=3164" target="_blank" rel="noopener">Microsoft LAPS Security &amp; Active Directory LAPS Configuration Recon</a></li>
+<li><a href="https://bohops.com/2017/12/02/trust-direction-an-enabler-for-active-directory-enumeration-and-trust-exploitation/" target="_blank" rel="noopener">Trust Direction: An Enabler for Active Directory Enumeration and Trust Exploitation</a></li>
+<li><a href="https://pentestlab.blog/2018/06/04/spn-discovery/" target="_blank" rel="noopener">SPN Discovery</a></li>
+</ul>
+<h2 id="↑-Lateral-Movement"><a href="#↑-Lateral-Movement" class="headerlink" title="↑ Lateral Movement"></a><a href="#table-of-contents">↑</a> Lateral Movement</h2><ul>
+<li><a href="https://rastamouse.me/2017/05/a-citrix-story/" target="_blank" rel="noopener">A Citrx Story</a></li>
+<li><a href="https://rastamouse.me/2017/08/jumping-network-segregation-with-rdp/" target="_blank" rel="noopener">Jumping Network Segregation with RDP</a></li>
+<li><a href="http://resources.infosecinstitute.com/pass-hash-pass-ticket-no-pain/" target="_blank" rel="noopener">Pass hash pass ticket no pain</a></li>
+<li><a href="http://www.labofapenetrationtester.com/2017/05/abusing-dnsadmins-privilege-for-escalation-in-active-directory.html" target="_blank" rel="noopener">Abusing DNSAdmins privilege for escalation in Active Directory</a></li>
+<li><a href="http://www.labofapenetrationtester.com/2017/03/using-sql-server-for-attacking-forest-trust.html" target="_blank" rel="noopener">Using SQL Server for attacking a Forest Trust</a></li>
+<li><a href="https://www.youtube.com/watch?v=Pn7GWRXfgeI" target="_blank" rel="noopener">Extending BloodHound for Red Teamers</a></li>
+<li><a href="https://blog.cobaltstrike.com/2017/06/23/opsec-considerations-for-beacon-commands/" target="_blank" rel="noopener">OPSEC Considerations for beacon commands</a></li>
+<li><a href="https://blog.cobaltstrike.com/2016/12/14/my-first-go-with-bloodhound/" target="_blank" rel="noopener">My First Go with BloodHound</a></li>
+<li><a href="http://www.exumbraops.com/blog/2016/6/1/kerberos-party-tricks-weaponizing-kerberos-protocol-flaws" target="_blank" rel="noopener">Kerberos Party Tricks: Weaponizing Kerberos Protocol Flaws</a></li>
+<li><a href="https://enigma0x3.net/2017/09/11/lateral-movement-using-excel-application-and-dcom/" target="_blank" rel="noopener">Lateral movement using excel application and dcom</a></li>
+<li><a href="http://threat.tevora.com/lay-of-the-land-with-bloodhound/" target="_blank" rel="noopener">Lay of the Land with BloodHound</a></li>
+<li><a href="https://www.harmj0y.net/blog/activedirectory/the-most-dangerous-user-right-you-probably-have-never-heard-of/" target="_blank" rel="noopener">The Most Dangerous User Right You (Probably) Have Never Heard Of</a></li>
+<li><a href="https://blog.cobaltstrike.com/2016/11/03/agentless-post-exploitation/" target="_blank" rel="noopener">Agentless Post Exploitation</a></li>
+<li><a href="https://www.harmj0y.net/blog/redteaming/a-guide-to-attacking-domain-trusts/" target="_blank" rel="noopener">A Guide to Attacking Domain Trusts</a>   </li>
+<li><a href="https://www.harmj0y.net/blog/redteaming/pass-the-hash-is-dead-long-live-localaccounttokenfilterpolicy/" target="_blank" rel="noopener">Pass-the-Hash Is Dead: Long Live LocalAccountTokenFilterPolicy</a></li>
+<li><a href="https://www.harmj0y.net/blog/activedirectory/targeted-kerberoasting/" target="_blank" rel="noopener">Targeted Kerberoasting</a></li>
+<li><a href="https://www.harmj0y.net/blog/powershell/kerberoasting-without-mimikatz/" target="_blank" rel="noopener">Kerberoasting Without Mimikatz</a></li>
+<li><a href="https://www.harmj0y.net/blog/redteaming/abusing-gpo-permissions/" target="_blank" rel="noopener">Abusing GPO Permissions</a></li>
+<li><a href="https://www.harmj0y.net/blog/redteaming/abusing-active-directory-permissions-with-powerview/" target="_blank" rel="noopener">Abusing Active Directory Permissions with PowerView</a></li>
+<li><a href="https://www.harmj0y.net/blog/activedirectory/roasting-as-reps/" target="_blank" rel="noopener">Roasting AS-REPs</a></li>
+<li><a href="https://byt3bl33d3r.github.io/getting-the-goods-with-crackmapexec-part-1.html" target="_blank" rel="noopener">Getting the goods with CrackMapExec: Part 1</a></li>
+<li><a href="https://byt3bl33d3r.github.io/getting-the-goods-with-crackmapexec-part-2.html" target="_blank" rel="noopener">Getting the goods with CrackMapExec: Part 2</a></li>
+<li><a href="https://bohops.com/2018/03/26/diskshadow-the-return-of-vss-evasion-persistence-and-active-directory-database-extraction/" target="_blank" rel="noopener">DiskShadow: The Return of VSS Evasion, Persistence, and Active Directory Database Extraction</a></li>
+<li><a href="https://bohops.com/2018/03/17/abusing-exported-functions-and-exposed-dcom-interfaces-for-pass-thru-command-execution-and-lateral-movement/" target="_blank" rel="noopener">Abusing Exported Functions and Exposed DCOM Interfaces for Pass-Thru Command Execution and Lateral Movement</a></li>
+<li><a href="https://posts.specterops.io/a-guide-to-attacking-domain-trusts-971e52cb2944" target="_blank" rel="noopener">a guide to attacking domain trusts</a></li>
+<li><a href="https://sensepost.com/blog/2017/outlook-home-page-another-ruler-vector/" target="_blank" rel="noopener">Outlook Home Page – Another Ruler Vector</a></li>
+<li><a href="https://sensepost.com/blog/2017/outlook-forms-and-shells/" target="_blank" rel="noopener">Outlook Forms and Shells</a></li>
+<li><a href="https://bohops.com/2018/06/28/abusing-com-registry-structure-clsid-localserver32-inprocserver32/" target="_blank" rel="noopener">Abusing the COM Registry Structure: CLSID, LocalServer32, &amp; InprocServer32</a></li>
+<li><a href="https://codewhitesec.blogspot.com/2018/07/lethalhta.html" target="_blank" rel="noopener">LethalHTA - A new lateral movement technique using DCOM and HTA</a></li>
+<li><a href="https://bohops.com/2018/04/28/abusing-dcom-for-yet-another-lateral-movement-technique/" target="_blank" rel="noopener">Abusing DCOM For Yet Another Lateral Movement Technique</a></li>
+</ul>
+<h2 id="↑-Collection"><a href="#↑-Collection" class="headerlink" title="↑ Collection"></a><a href="#table-of-contents">↑</a> Collection</h2><ul>
+<li><a href="https://oddvar.moe/2017/01/24/accessing-clipboard-from-the-lock-screen-in-windows-10/" target="_blank" rel="noopener">Accessing clipboard from the lock screen in Windows 10 Part 1</a></li>
+<li><a href="https://oddvar.moe/2017/01/27/access-clipboard-from-lock-screen-in-windows-10-2/" target="_blank" rel="noopener">Accessing clipboard from the lock screen in Windows 10 Part 2</a></li>
+</ul>
+<h2 id="↑-Exfiltration"><a href="#↑-Exfiltration" class="headerlink" title="↑ Exfiltration"></a><a href="#table-of-contents">↑</a> Exfiltration</h2><ul>
+<li><a href="https://blog.fosec.vn/dns-data-exfiltration-what-is-this-and-how-to-use-2f6c69998822" target="_blank" rel="noopener">DNS Data exfiltration — What is this and How to use?</a></li>
+<li><a href="http://resources.infosecinstitute.com/dns-tunnelling/" target="_blank" rel="noopener">DNS Tunnelling</a></li>
+<li><a href="https://securityonline.info/sg1-swiss-army-knife-for-data-encryption-exfiltration-covert-communication/?utm_source=ReviveOldPost&amp;utm_medium=social&amp;utm_campaign=ReviveOldPost" target="_blank" rel="noopener">sg1: swiss army knife for data encryption, exfiltration &amp; covert communication</a></li>
+<li><a href="https://n0where.net/data-exfiltration-over-dns-request-covert-channel-dnsexfiltrator" target="_blank" rel="noopener">Data Exfiltration over DNS Request Covert Channel: DNSExfiltrator</a></li>
+<li><a href="https://github.com/PaulSec/DET" target="_blank" rel="noopener">DET (extensible) Data Exfiltration Toolkit</a></li>
+<li><a href="https://www.notsosecure.com/data-exfiltration-formula-injection/" target="_blank" rel="noopener">Data Exfiltration via Formula Injection Part1</a></li>
+</ul>
+<h2 id="↑-Command-and-Control"><a href="#↑-Command-and-Control" class="headerlink" title="↑ Command and Control"></a><a href="#table-of-contents">↑</a> Command and Control</h2><h3 id="Domain-Fronting"><a href="#Domain-Fronting" class="headerlink" title="Domain Fronting"></a>Domain Fronting</h3><ul>
+<li><a href="https://www.xorrior.com/Empire-Domain-Fronting/" target="_blank" rel="noopener">Empre Domain Fronting</a></li>
+<li><a href="https://www.optiv.com/blog/escape-and-evasion-egressing-restricted-networks" target="_blank" rel="noopener">Escape and Evasion Egressing Restricted Networks - Tom Steele and Chris Patten</a></li>
+<li><a href="https://github.com/rvrsh3ll/FindFrontableDomains" target="_blank" rel="noopener">Finding Frontable Domain</a></li>
+<li><a href="https://www.mdsec.co.uk/2017/02/tor-fronting-utilising-hidden-services-for-privacy/" target="_blank" rel="noopener">TOR Fronting – Utilising Hidden Services for Privacy</a></li>
+<li><a href="https://www.securityartwork.es/2017/01/31/simple-domain-fronting-poc-with-gae-c2-server/" target="_blank" rel="noopener">Simple domain fronting PoC with GAE C2 server</a></li>
+<li><a href="https://www.mdsec.co.uk/2017/02/domain-fronting-via-cloudfront-alternate-domains/" target="_blank" rel="noopener">Domain Fronting Via Cloudfront Alternate Domains</a></li>
+<li><a href="https://theobsidiantower.com/2017/07/24/d0a7cfceedc42bdf3a36f2926bd52863ef28befc.html" target="_blank" rel="noopener">Finding Domain frontable Azure domains - thoth / Fionnbharr (@a_profligate)</a></li>
+<li><a href="https://groups.google.com/forum/#!topic/traffic-obf/7ygIXCPebwQ" target="_blank" rel="noopener">Google Groups: Blog post on finding 2000+ Azure domains using Censys</a></li>
+<li><a href="https://www.cyberark.com/threat-research-blog/red-team-insights-https-domain-fronting-google-hosts-using-cobalt-strike/" target="_blank" rel="noopener">Red Team Insights on HTTPS Domain Fronting Google Hosts Using Cobalt Strike</a></li>
+<li><a href="http://www.rvrsh3ll.net/blog/offensive/ssl-domain-fronting-101/" target="_blank" rel="noopener">SSL Domain Fronting 101</a></li>
+<li><a href="https://www.peew.pw/blog/2018/2/22/how-i-identified-93k-domain-frontable-cloudfront-domains" target="_blank" rel="noopener">How I Identified 93k Domain-Frontable CloudFront Domains</a></li>
+<li><a href="https://medium.com/@vysec.private/validated-cloudfront-ssl-domains-27895822cea3" target="_blank" rel="noopener">Validated CloudFront SSL Domains</a></li>
+<li><a href="https://www.mindpointgroup.com/blog/pen-test/cloudfront-hijacking/" target="_blank" rel="noopener">CloudFront Hijacking</a></li>
+<li><a href="https://github.com/MindPointGroup/cloudfrunt" target="_blank" rel="noopener">CloudFrunt GitHub Repo</a></li>
+</ul>
+<h3 id="Connection-Proxy"><a href="#Connection-Proxy" class="headerlink" title="Connection Proxy"></a>Connection Proxy</h3><ul>
+<li><a href="http://www.rvrsh3ll.net/blog/offensive/redirecting-cobalt-strike-dns-beacons/" target="_blank" rel="noopener">Redirecting Cobalt Strike DNS Beacons</a></li>
+<li><a href="https://github.com/n0pe-sled/Apache2-Mod-Rewrite-Setup" target="_blank" rel="noopener">Apache2Mod Rewrite Setup</a></li>
+<li><a href="https://bluescreenofjeff.com/2016-06-28-cobalt-strike-http-c2-redirectors-with-apache-mod_rewrite/" target="_blank" rel="noopener">Cobalt Strike HTTP C2 Redirectors with Apache mod_rewrite</a></li>
+<li><a href="https://blog.cobaltstrike.com/2017/02/06/high-reputation-redirectors-and-domain-fronting/" target="_blank" rel="noopener">High-reputation Redirectors and Domain Fronting</a></li>
+<li><a href="https://blog.cobaltstrike.com/2014/01/14/cloud-based-redirectors-for-distributed-hacking/" target="_blank" rel="noopener">Cloud-based Redirectors for Distributed Hacking</a></li>
+<li><a href="https://bluescreenofjeff.com/2016-04-12-combatting-incident-responders-with-apache-mod_rewrite/" target="_blank" rel="noopener">Combatting Incident Responders with Apache mod_rewrite</a></li>
+<li><a href="https://bluescreenofjeff.com/2016-04-05-operating-system-based-redirection-with-apache-mod_rewrite/" target="_blank" rel="noopener">Operating System Based Redirection with Apache mod_rewrite</a></li>
+<li><a href="https://bluescreenofjeff.com/2016-03-29-invalid-uri-redirection-with-apache-mod_rewrite/" target="_blank" rel="noopener">Invalid URI Redirection with Apache mod_rewrite</a></li>
+<li><a href="https://bluescreenofjeff.com/2016-03-22-strengthen-your-phishing-with-apache-mod_rewrite-and-mobile-user-redirection/" target="_blank" rel="noopener">Strengthen Your Phishing with Apache mod_rewrite and Mobile User Redirection</a></li>
+<li><a href="https://gist.github.com/curi0usJack/971385e8334e189d93a6cb4671238b10" target="_blank" rel="noopener">mod_rewrite rule to evade vendor sandboxes</a></li>
+<li><a href="https://bluescreenofjeff.com/2016-04-19-expire-phishing-links-with-apache-rewritemap/" target="_blank" rel="noopener">Expire Phishing Links with Apache RewriteMap</a></li>
+<li><a href="https://gist.github.com/jivoi/a33ace2e25515a31aa2ffbae246d98c9" target="_blank" rel="noopener">Serving random payloads with NGINX</a></li>
+<li><a href="https://blog.inspired-sec.com/archive/2017/04/17/Mod-Rewrite-Automatic-Setup.html" target="_blank" rel="noopener">Mod_Rewrite Automatic Setup</a></li>
+<li><a href="https://zachgrace.com/2018/02/20/cobalt_strike_redirectors.html" target="_blank" rel="noopener">Hybrid Cobalt Strike Redirectors</a></li>
+<li><a href="https://cybersyndicates.com/2017/04/expand-your-horizon-red-team/" target="_blank" rel="noopener">Expand Your Horizon Red Team – Modern SAAS C2</a></li>
+<li><a href="http://threat.tevora.com/automating-redirector-deployment-with-ansible/" target="_blank" rel="noopener">RTOps: Automating Redirector Deployment With Ansible</a></li>
+</ul>
+<h3 id="Web-Services"><a href="#Web-Services" class="headerlink" title="Web Services"></a>Web Services</h3><ul>
+<li><a href="https://pentestlab.blog/2017/08/29/command-and-control-dropbox/" target="_blank" rel="noopener">C2 with Dropbox</a></li>
+<li><a href="https://pentestlab.blog/2017/08/03/command-and-control-gmail/" target="_blank" rel="noopener">C2 with gmail</a></li>
+<li><a href="https://pentestlab.blog/2017/09/26/command-and-control-twitter/" target="_blank" rel="noopener">C2 with twitter</a></li>
+<li><a href="https://labs.mwrinfosecurity.com/blog/tasking-office-365-for-cobalt-strike-c2/" target="_blank" rel="noopener">Office 365 for Cobalt Strike C2</a></li>
+<li><a href="https://www.cyberark.com/threat-research-blog/red-team-insights-https-domain-fronting-google-hosts-using-cobalt-strike/" target="_blank" rel="noopener">Red Team Insights on HTTPS Domain Fronting Google Hosts Using Cobalt Strike</a></li>
+<li><a href="http://securityblog.gr/4434/a-stealthy-python-based-windows-backdoor-that-uses-github-as-a-cc-server/" target="_blank" rel="noopener">A stealthy Python based Windows backdoor that uses Github as a C&amp;C server</a></li>
+<li><a href="https://www.cobaltstrike.com/help-externalc2" target="_blank" rel="noopener">External C2 (Third-Party Command and Control)</a></li>
+<li><a href="https://outflank.nl/blog/2017/09/17/blogpost-cobalt-strike-over-external-c2-beacon-home-in-the-most-obscure-ways/" target="_blank" rel="noopener">Cobalt Strike over external C2 – beacon home in the most obscure ways</a></li>
+<li><a href="https://github.com/ryhanson/ExternalC2/" target="_blank" rel="noopener">External C2 for Cobalt Strike</a></li>
+<li><a href="http://www.insomniacsecurity.com/2018/01/11/externalc2.html" target="_blank" rel="noopener">External C2 framework for Cobalt Strike</a></li>
+<li><a href="https://github.com/Und3rf10w/external_c2_framework" target="_blank" rel="noopener">External C2 framework - GitHub Repo</a></li>
+<li><a href="https://github.com/Und3rf10w/external_c2_framework" target="_blank" rel="noopener">Hiding in the Cloud: Cobalt Strike Beacon C2 using Amazon APIs</a></li>
+<li><a href="https://blog.xpnsec.com/exploring-cobalt-strikes-externalc2-framework/" target="_blank" rel="noopener">Exploring Cobalt Strike’s ExternalC2 framework</a></li>
+</ul>
+<h3 id="Application-Layer-Protocol"><a href="#Application-Layer-Protocol" class="headerlink" title="Application Layer Protocol"></a>Application Layer Protocol</h3><ul>
+<li><a href="https://pentestlab.blog/2017/12/06/command-and-control-websocket/" target="_blank" rel="noopener">C2 WebSocket</a></li>
+<li><a href="https://pentestlab.blog/2017/11/20/command-and-control-wmi/" target="_blank" rel="noopener">C2 WMI</a></li>
+<li><a href="https://pentestlab.blog/2017/11/14/command-and-control-website/" target="_blank" rel="noopener">C2 Website</a></li>
+<li><a href="https://pentestlab.blog/2018/01/02/command-and-control-images/" target="_blank" rel="noopener">C2 Image</a></li>
+<li><a href="https://pentestlab.blog/2018/01/08/command-and-control-javascript/" target="_blank" rel="noopener">C2 Javascript</a></li>
+<li><a href="https://pentestlab.blog/2018/01/03/command-and-control-web-interface/" target="_blank" rel="noopener">C2 WebInterface</a></li>
+<li><a href="https://pentestlab.blog/2017/09/06/command-and-control-dns/" target="_blank" rel="noopener">C2 with DNS</a></li>
+<li><a href="https://pentestlab.blog/2017/10/04/command-and-control-https/" target="_blank" rel="noopener">C2 with https</a></li>
+<li><a href="https://pentestlab.blog/2017/09/12/command-and-control-webdav/" target="_blank" rel="noopener">C2 with webdav</a></li>
+<li><a href="https://medium.com/@Ne0nd0g/introducing-merlin-645da3c635a" target="_blank" rel="noopener">Introducing Merlin — A cross-platform post-exploitation HTTP/2 Command &amp; Control Tool</a></li>
+<li><a href="https://adapt-and-attack.com/2017/12/19/internetexplorer-application-for-c2/" target="_blank" rel="noopener">InternetExplorer.Application for C2</a></li>
+</ul>
+<h3 id="Infrastructure"><a href="#Infrastructure" class="headerlink" title="Infrastructure"></a>Infrastructure</h3><ul>
+<li><a href="https://rastamouse.me/2017/08/automated-red-team-infrastructure-deployment-with-terraform---part-1/" target="_blank" rel="noopener">Automated Red Team Infrastructure Deployment with Terraform - Part 1</a></li>
+<li><a href="https://rastamouse.me/2017/09/automated-red-team-infrastructure-deployment-with-terraform---part-2/" target="_blank" rel="noopener">Automated Red Team Infrastructure Deployment with Terraform - Part 2</a></li>
+<li><a href="https://rastamouse.me/2018/02/red-team-infrastructure---aws-encrypted-ebs/" target="_blank" rel="noopener">Red Team Infrastructure - AWS Encrypted EBS</a></li>
+<li><a href="https://cybersyndicates.com/2016/11/top-red-team-tips/" target="_blank" rel="noopener">6 RED TEAM INFRASTRUCTURE TIPS</a></li>
+<li><a href="https://www.blackhillsinfosec.com/build-c2-infrastructure-digital-ocean-part-1/" target="_blank" rel="noopener">How to Build a C2 Infrastructure with Digital Ocean – Part 1</a></li>
+<li><a href="https://blog.cobaltstrike.com/2014/09/09/infrastructure-for-ongoing-red-team-operations/" target="_blank" rel="noopener">Infrastructure for Ongoing Red Team Operations</a></li>
+<li><a href="https://posts.specterops.io/attack-infrastructure-log-aggregation-and-monitoring-345e4173044e" target="_blank" rel="noopener">Attack Infrastructure Log Aggregation and Monitoring</a></li>
+<li><a href="https://bluescreenofjeff.com/2017-08-30-randomized-malleable-c2-profiles-made-easy/" target="_blank" rel="noopener">Randomized Malleable C2 Profiles Made Easy</a></li>
+<li><a href="https://blog.cobaltstrike.com/2015/10/21/migrating-your-infrastructure/" target="_blank" rel="noopener">Migrating Your infrastructure</a></li>
+<li><a href="https://pentestlab.blog/2017/07/28/command-and-control-icmp/" target="_blank" rel="noopener">ICMP C2</a></li>
+<li><a href="https://arno0x0x.wordpress.com/2017/09/07/using-webdav-features-as-a-covert-channel/" target="_blank" rel="noopener">Using WebDAV features as a covert channel</a></li>
+<li><a href="https://medium.com/@malcomvetter/safe-red-team-infrastructure-c5d6a0f13fac" target="_blank" rel="noopener">Safe Red Team Infrastructure</a></li>
+<li><a href="https://cybersyndicates.com/2016/12/egressing-bluecoat-with-cobaltstike-letsencrypt/" target="_blank" rel="noopener">EGRESSING BLUECOAT WITH COBALTSTIKE &amp; LET’S ENCRYPT</a></li>
+<li><a href="http://www.harmj0y.net/blog/powershell/command-and-control-using-active-directory/" target="_blank" rel="noopener">Command and Control Using Active Directory</a></li>
+<li><a href="https://blog.cobaltstrike.com/2013/02/12/a-vision-for-distributed-red-team-operations/" target="_blank" rel="noopener">A Vision for Distributed Red Team Operations</a></li>
+<li><a href="https://bluescreenofjeff.com/2017-12-05-designing-effective-covert-red-team-attack-infrastructure/" target="_blank" rel="noopener">Designing Effective Covert Red Team Attack Infrastructure</a></li>
+<li><a href="https://bluescreenofjeff.com/2017-06-13-serving-random-payloads-with-apache-mod_rewrite/" target="_blank" rel="noopener">Serving Random Payloads with Apache mod_rewrite</a></li>
+<li><a href="https://blog.inspired-sec.com/archive/2017/02/14/Mail-Server-Setup.html" target="_blank" rel="noopener">Mail Servers Made Easy</a></li>
+<li><a href="https://thevivi.net/2017/11/03/securing-your-empire-c2-with-apache-mod_rewrite/" target="_blank" rel="noopener">Securing your Empire C2 with Apache mod_rewrite</a></li>
+<li><a href="https://jordan-wright.com/blog/post/2018-02-04-automating-gophish-releases/" target="_blank" rel="noopener">Automating Gophish Releases With Ansible and Docker</a></li>
+<li><a href="https://bluescreenofjeff.com/2017-01-24-how-to-write-malleable-c2-profiles-for-cobalt-strike/" target="_blank" rel="noopener">How to Write Malleable C2 Profiles for Cobalt Strike</a></li>
+<li><a href="https://bluescreenofjeff.com/2017-03-01-how-to-make-communication-profiles-for-empire/" target="_blank" rel="noopener">How to Make Communication Profiles for Empire</a></li>
+<li><a href="http://www.harmj0y.net/blog/redteaming/a-brave-new-world-malleable-c2/" target="_blank" rel="noopener">A Brave New World: Malleable C2</a></li>
+<li><a href="https://www.cobaltstrike.com/help-malleable-c2" target="_blank" rel="noopener">Malleable Command and Control</a></li>
+</ul>
+<h2 id="↑-Embedded-and-Peripheral-Devices-Hacking"><a href="#↑-Embedded-and-Peripheral-Devices-Hacking" class="headerlink" title="↑ Embedded and Peripheral Devices Hacking"></a><a href="#table-of-contents">↑</a> Embedded and Peripheral Devices Hacking</h2><ul>
+<li><a href="https://www.trustwave.com/Resources/SpiderLabs-Blog/Getting-in-with-the-Proxmark-3-and-ProxBrute/" target="_blank" rel="noopener">Gettting in with the Proxmark3 &amp; ProxBrute</a></li>
+<li><a href="https://blog.nviso.be/2017/01/11/a-practical-guide-to-rfid-badge-copying/" target="_blank" rel="noopener">Practical Guide to RFID Badge copying</a></li>
+<li><a href="https://www.tunnelsup.com/contents-of-a-physical-pen-testers-backpack/" target="_blank" rel="noopener">Contents of a Physical Pentester Backpack</a></li>
+<li><a href="https://github.com/samyk/magspoof" target="_blank" rel="noopener">MagSpoof - credit card/magstripe spoofer</a></li>
+<li><a href="https://samy.pl/keysweeper/" target="_blank" rel="noopener">Wireless Keyboard Sniffer</a></li>
+<li><a href="https://blog.kchung.co/rfid-hacking-with-the-proxmark-3/" target="_blank" rel="noopener">RFID Hacking with The Proxmark 3</a></li>
+<li><a href="https://www.cs.bham.ac.uk/~garciaf/publications/Tutorial_Proxmark_the_Swiss_Army_Knife_for_RFID_Security_Research-RFIDSec12.pdf" target="_blank" rel="noopener">Swiss Army Knife for RFID</a></li>
+<li><a href="https://media.blackhat.com/bh-us-12/Briefings/C_Miller/BH_US_12_Miller_NFC_attack_surface_WP.pdf" target="_blank" rel="noopener">Exploring NFC Attack Surface</a></li>
+<li><a href="http://gerhard.dekoninggans.nl/documents/publications/dekoninggans.phd.thesis.pdf" target="_blank" rel="noopener">Outsmarting smartcards</a></li>
+<li><a href="https://blog.kchung.co/reverse-engineering-hid-iclass-master-keys/" target="_blank" rel="noopener">Reverse engineering HID iClass Master keys</a></li>
+<li><a href="https://www.pwnieexpress.com/aopp" target="_blank" rel="noopener">Android Open Pwn Project (AOPP)</a></li>
+</ul>
+<h2 id="↑-Misc"><a href="#↑-Misc" class="headerlink" title="↑ Misc"></a><a href="#table-of-contents">↑</a> Misc</h2><ul>
+<li><a href="https://github.com/vysec/RedTips" target="_blank" rel="noopener">Red Tips of Vysec</a></li>
+<li><a href="https://blog.cobaltstrike.com/2016/02/23/cobalt-strike-tips-for-2016-ccdc-red-teams/" target="_blank" rel="noopener">Cobalt Strike Tips for 2016 ccde red teams</a></li>
+<li><a href="https://blog.cobaltstrike.com/2015/07/09/models-for-red-team-operations/" target="_blank" rel="noopener">Models for Red Team Operations</a></li>
+<li><a href="https://github.com/magoo/redteam-plan" target="_blank" rel="noopener">Planning a Red Team exercise</a></li>
+<li><a href="https://www.youtube.com/watch?v=oclbbqvawQg" target="_blank" rel="noopener">Raphael Mudge - Dirty Red Team tricks</a></li>
+<li><a href="https://posts.specterops.io/introducing-the-adversary-resilience-methodology-part-one-e38e06ffd604" target="_blank" rel="noopener">introducing the adversary resilience methodology part 1</a></li>
+<li><a href="https://posts.specterops.io/introducing-the-adversary-resilience-methodology-part-two-279a1ed7863d" target="_blank" rel="noopener">introducing the adversary resilience methodology part 2</a></li>
+<li><a href="https://medium.com/@malcomvetter/responsible-red-teams-1c6209fd43cc" target="_blank" rel="noopener">Responsible red team</a></li>
+<li><a href="https://bluescreenofjeff.com/2017-05-02-red-teaming-for-pacific-rim-ccdc-2017/" target="_blank" rel="noopener">Red Teaming for Pacific Rim CCDC 2017</a></li>
+<li><a href="https://bluescreenofjeff.com/2015-04-15-how-i-prepared-to-red-team-at-prccdc-2015/" target="_blank" rel="noopener">How I Prepared to Red Team at PRCCDC 2015</a></li>
+<li><a href="https://bluescreenofjeff.com/2016-05-24-pacific-rim-ccdc_2016/" target="_blank" rel="noopener">Red Teaming for Pacific Rim CCDC 2016</a></li>
+<li><a href="https://medium.com/@malcomvetter/responsible-red-teams-1c6209fd43cc" target="_blank" rel="noopener">Responsible Red Teams</a></li>
+</ul>
+<h2 id="↑-RedTeam-Gadgets"><a href="#↑-RedTeam-Gadgets" class="headerlink" title="↑ RedTeam Gadgets"></a><a href="#table-of-contents">↑</a> RedTeam Gadgets</h2><h4 id="Network-Implants"><a href="#Network-Implants" class="headerlink" title="Network Implants"></a>Network Implants</h4><ul>
+<li><a href="https://hackerwarehouse.com/product/lan-tap-pro/" target="_blank" rel="noopener">LAN Tap Pro</a></li>
+<li><a href="https://hakshop.com/collections/network-implants/products/lan-turtle" target="_blank" rel="noopener">LAN Turtle</a></li>
+<li><a href="https://hakshop.com/collections/physical-access/products/bash-bunny" target="_blank" rel="noopener">Bash Bunny</a></li>
+<li><a href="https://hakshop.com/products/packet-squirrel" target="_blank" rel="noopener">Packet Squirrel</a><h4 id="Wifi-Auditing"><a href="#Wifi-Auditing" class="headerlink" title="Wifi Auditing"></a>Wifi Auditing</h4></li>
+<li><a href="https://hakshop.com/products/wifi-pineapple" target="_blank" rel="noopener">WiFi Pineapple</a></li>
+<li><a href="https://hackerwarehouse.com/product/alfa-802-11bgn-long-range-usb-wireless-adapter/" target="_blank" rel="noopener">Alpha Long range Wireless USB</a></li>
+<li><a href="https://www.tindie.com/products/lspoplove/dstike-wifi-deauther-monster/" target="_blank" rel="noopener">Wifi-Deauth Monster</a></li>
+<li><a href="https://www.amazon.com/gp/product/B00VYA3A2U/ref=as_li_tl" target="_blank" rel="noopener">Crazy PA</a><h4 id="IoT"><a href="#IoT" class="headerlink" title="IoT"></a>IoT</h4></li>
+<li><a href="https://hackerwarehouse.com/product/blekey/" target="_blank" rel="noopener">BLE Key</a></li>
+<li><a href="https://hackerwarehouse.com/product/proxmark3-kit/" target="_blank" rel="noopener">Proxmark3</a></li>
+<li><a href="https://www.attify-store.com/products/zigbee-sniffing-tool-atmel-rzraven" target="_blank" rel="noopener">Zigbee Sniffer</a></li>
+<li><a href="https://www.attify-store.com/collections/frontpage/products/jtag-exploitation-kit-with-lab-manual" target="_blank" rel="noopener">Attify IoT Exploit kit</a><h4 id="Software-Defined-Radio-SDR"><a href="#Software-Defined-Radio-SDR" class="headerlink" title="Software Defined Radio - SDR"></a>Software Defined Radio - SDR</h4></li>
+<li><a href="https://hackerwarehouse.com/product/hackrf-one-kit/" target="_blank" rel="noopener">HackRF One Bundle</a></li>
+<li><a href="https://hackerwarehouse.com/product/rtlsdr/" target="_blank" rel="noopener">RTL-SDR</a></li>
+<li><a href="https://hackerwarehouse.com/product/yard-stick-one-kit/" target="_blank" rel="noopener">YARD stick one Bundle</a></li>
+<li><a href="https://hackerwarehouse.com/product/ubertooth-one/" target="_blank" rel="noopener">Ubertooth</a><h4 id="Misc"><a href="#Misc" class="headerlink" title="Misc"></a>Misc</h4></li>
+<li><a href="https://hackerwarehouse.com/product/keygrabber/" target="_blank" rel="noopener">Key Grabber</a></li>
+<li><a href="https://store.ryscc.com/products/magspoof%20" target="_blank" rel="noopener">Magspoof</a></li>
+<li><a href="https://samy.pl/poisontap/" target="_blank" rel="noopener">Poison tap</a></li>
+<li><a href="https://samy.pl/keysweeper/" target="_blank" rel="noopener">keysweeper</a></li>
+<li><a href="https://hakshop.com/collections/physical-access/products/usb-rubber-ducky-deluxe" target="_blank" rel="noopener">USB Rubber Ducky</a></li>
+</ul>
+<h2 id="↑-Ebooks"><a href="#↑-Ebooks" class="headerlink" title="↑ Ebooks"></a><a href="#table-of-contents">↑</a> Ebooks</h2><ul>
+<li><a href="https://www.amazon.com/Next-Generation-Teaming-Henry-Dalziel/dp/0128041714" target="_blank" rel="noopener">Next Generation Red Teaming</a></li>
+<li><a href="https://www.amazon.com/Targeted-Cyber-Attacks-Multi-staged-Exploits/dp/0128006048" target="_blank" rel="noopener">Targeted Cyber Attack</a></li>
+<li><a href="https://www.amazon.com/Advanced-Penetration-Testing-Hacking-Networks/dp/1119367689" target="_blank" rel="noopener">Advanced Penetration Testing: Hacking the World’s Most Secure Networks</a></li>
+<li><a href="https://www.amazon.com/Social-Engineers-Playbook-Practical-Pretexting/dp/0692306617/" target="_blank" rel="noopener">Social Engieers’ Playbook Pretical Pretexting</a></li>
+</ul>
+<h2 id="↑-Training-Free"><a href="#↑-Training-Free" class="headerlink" title="↑ Training ( Free )"></a><a href="#table-of-contents">↑</a> Training ( Free )</h2><ul>
+<li><a href="https://www.youtube.com/watch?v=IRpS7oZ3z0o&amp;list=PL9HO6M_MU2nesxSmhJjEvwLhUoHPHmXvz" target="_blank" rel="noopener">Tradecraft - a course on red team operations</a></li>
+<li><a href="https://blog.cobaltstrike.com/2015/09/30/advanced-threat-tactics-course-and-notes/" target="_blank" rel="noopener">Advanced Threat Tactics Course &amp; Notes</a></li>
+</ul>
+<h2 id="↑-Certification"><a href="#↑-Certification" class="headerlink" title="↑ Certification"></a><a href="#table-of-contents">↑</a> Certification</h2><ul>
+<li><a href="http://www.crest-approved.org/examination/certified-simulated-attack-specialist/" target="_blank" rel="noopener">CREST Certified Simulated Attack Specialist</a></li>
+<li><a href="http://www.crest-approved.org/examination/certified-simulated-attack-manager/" target="_blank" rel="noopener">CREST Certified Simulated Attack Manager</a></li>
+<li><a href="https://www.sans.org/course/red-team-operations-and-threat-emulation" target="_blank" rel="noopener">SEC564: Red Team Operations and Threat Emulation</a></li>
+<li><a href="https://www.elearnsecurity.com/course/penetration_testing_extreme/" target="_blank" rel="noopener">ELearn Security Penetration Testing eXtreme</a></li>
+</ul>
+
+      
+    </div>
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">士不可以不弘毅，任重而道远。<i class="fa fa-paw"></i>仁以为己任，不亦重乎？死而后已，不亦远乎？</div>
+    
+</div>
+
+      
+    </div>
+	<div>
+      
+        
+<div class="my_post_copyright">
+  <script src="js/src/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script type="text/javascript" src="js/src/jquery-1.7.1.min.js"></script>
+  <script src="js/src/sweetalert.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="js/src/sweetalert.mini.css">
+
+  <p><span>本文标题:</span>Red Teaming Tools</a></p>
+  <p><span>文章作者:</span>yaron</a></p>
+  <p><span>发布时间:</span>2019年02月28日 - 17:49:30</p>
+  <p><span>最后更新:</span>2019年02月28日 - 22:19:42</p>
+  <p><span>原文链接:</span><a href="/2019/02/28/Awesome Red Teaming.html" title="Red Teaming Tools">https://yaalonsong.github.io/2019/02/28/Awesome Red Teaming.html</a>
+     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://yaalonsong.github.io/2019/02/28/Awesome Red Teaming.html"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    clipboard.on('success', $(function(){
+      $(".fa-clipboard").click(function(){
+        swal({   
+          title: "",   
+          text: '复制成功',   
+          html: false,
+          timer: 500,   
+          showConfirmButton: false
+        });
+      });
+    }));  
+</script>
+
+
+      
+	</div>
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div></div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/uploads/wechat.jpg" alt="yaron WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Tools/" rel="tag"><i class="fa fa-tags"></i> Tools</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/02/28/CVE-2017-12615.html" rel="next" title="CVE-2017-12615漏洞复现">
+                <i class="fa fa-chevron-left"></i> CVE-2017-12615漏洞复现
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/02/28/wininet_downloader_cpp.html" rel="prev" title="wininet_downloader_cpp">
+                wininet_downloader_cpp <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMjI3MC84ODM0"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="yaron" />
+          <p class="site-author-name" itemprop="name">yaron</p>
+           
+              <p class="site-description motion-element" itemprop="description">网络安全|渗透测试|机器学习|Python|漏洞挖掘|漏洞复现</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">26</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://weibo.com/341306234" target="_blank" title="新浪微博">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  新浪微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/yaalonsong" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="mailto:yaron@yl0.org" target="_blank" title="mail">
+                  
+                    <i class="fa fa-fw fa-envelope"></i>
+                  
+                  mail
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://music.163.com/#/user/home?id=271097430" target="_blank" title="网易云音乐">
+                  
+                    <i class="fa fa-fw fa-music"></i>
+                  
+                  网易云音乐
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-block">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.shentoushi.top/" title="渗透师导航" target="_blank">渗透师导航</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://wyb0.com" title="Reber’s Blog" target="_blank">Reber’s Blog</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.marksec.org/" title="Mark’s Blog" target="_blank">Mark’s Blog</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://piesec.blogspot.com/" title="Sòng•Blog" target="_blank">Sòng•Blog</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Awesome-Red-Teaming"><span class="nav-number">1.</span> <span class="nav-text"><a href="#Awesome-Red-Teaming" class="headerlink" title="Awesome Red Teaming"></a>Awesome Red Teaming</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Table-of-Contents"><span class="nav-number">2.</span> <span class="nav-text"><a href="#Table-of-Contents" class="headerlink" title="Table of Contents"></a>Table of Contents</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#↑-Initial-Access"><span class="nav-number">2.1.</span> <span class="nav-text"><a href="#&#x2191;-Initial-Access" class="headerlink" title="&#x2191; Initial Access"></a><a href="#table-of-contents">&#x2191;</a> Initial Access</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#↑-Execution"><span class="nav-number">2.2.</span> <span class="nav-text"><a href="#&#x2191;-Execution" class="headerlink" title="&#x2191; Execution"></a><a href="#table-of-contents">&#x2191;</a> Execution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#↑-Persistence"><span class="nav-number">2.3.</span> <span class="nav-text"><a href="#&#x2191;-Persistence" class="headerlink" title="&#x2191; Persistence"></a><a href="#table-of-contents">&#x2191;</a> Persistence</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#↑-Privilege-Escalation"><span class="nav-number">2.4.</span> <span class="nav-text"><a href="#&#x2191;-Privilege-Escalation" class="headerlink" title="&#x2191; Privilege Escalation"></a><a href="#table-of-contents">&#x2191;</a> Privilege Escalation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#User-Account-Control-Bypass"><span class="nav-number">2.4.1.</span> <span class="nav-text"><a href="#User-Account-Control-Bypass" class="headerlink" title="User Account Control Bypass"></a>User Account Control Bypass</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Escalation"><span class="nav-number">2.4.2.</span> <span class="nav-text"><a href="#Escalation" class="headerlink" title="Escalation"></a>Escalation</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#↑-Defense-Evasion"><span class="nav-number">2.5.</span> <span class="nav-text"><a href="#&#x2191;-Defense-Evasion" class="headerlink" title="&#x2191; Defense Evasion"></a><a href="#table-of-contents">&#x2191;</a> Defense Evasion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#↑-Credential-Access"><span class="nav-number">2.6.</span> <span class="nav-text"><a href="#&#x2191;-Credential-Access" class="headerlink" title="&#x2191; Credential Access"></a><a href="#table-of-contents">&#x2191;</a> Credential Access</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#↑-Discovery"><span class="nav-number">2.7.</span> <span class="nav-text"><a href="#&#x2191;-Discovery" class="headerlink" title="&#x2191; Discovery"></a><a href="#table-of-contents">&#x2191;</a> Discovery</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#↑-Lateral-Movement"><span class="nav-number">2.8.</span> <span class="nav-text"><a href="#&#x2191;-Lateral-Movement" class="headerlink" title="&#x2191; Lateral Movement"></a><a href="#table-of-contents">&#x2191;</a> Lateral Movement</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#↑-Collection"><span class="nav-number">2.9.</span> <span class="nav-text"><a href="#&#x2191;-Collection" class="headerlink" title="&#x2191; Collection"></a><a href="#table-of-contents">&#x2191;</a> Collection</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#↑-Exfiltration"><span class="nav-number">2.10.</span> <span class="nav-text"><a href="#&#x2191;-Exfiltration" class="headerlink" title="&#x2191; Exfiltration"></a><a href="#table-of-contents">&#x2191;</a> Exfiltration</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#↑-Command-and-Control"><span class="nav-number">2.11.</span> <span class="nav-text"><a href="#&#x2191;-Command-and-Control" class="headerlink" title="&#x2191; Command and Control"></a><a href="#table-of-contents">&#x2191;</a> Command and Control</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Domain-Fronting"><span class="nav-number">2.11.1.</span> <span class="nav-text"><a href="#Domain-Fronting" class="headerlink" title="Domain Fronting"></a>Domain Fronting</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Connection-Proxy"><span class="nav-number">2.11.2.</span> <span class="nav-text"><a href="#Connection-Proxy" class="headerlink" title="Connection Proxy"></a>Connection Proxy</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Web-Services"><span class="nav-number">2.11.3.</span> <span class="nav-text"><a href="#Web-Services" class="headerlink" title="Web Services"></a>Web Services</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Application-Layer-Protocol"><span class="nav-number">2.11.4.</span> <span class="nav-text"><a href="#Application-Layer-Protocol" class="headerlink" title="Application Layer Protocol"></a>Application Layer Protocol</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Infrastructure"><span class="nav-number">2.11.5.</span> <span class="nav-text"><a href="#Infrastructure" class="headerlink" title="Infrastructure"></a>Infrastructure</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#↑-Embedded-and-Peripheral-Devices-Hacking"><span class="nav-number">2.12.</span> <span class="nav-text"><a href="#&#x2191;-Embedded-and-Peripheral-Devices-Hacking" class="headerlink" title="&#x2191; Embedded and Peripheral Devices Hacking"></a><a href="#table-of-contents">&#x2191;</a> Embedded and Peripheral Devices Hacking</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#↑-Misc"><span class="nav-number">2.13.</span> <span class="nav-text"><a href="#&#x2191;-Misc" class="headerlink" title="&#x2191; Misc"></a><a href="#table-of-contents">&#x2191;</a> Misc</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#↑-RedTeam-Gadgets"><span class="nav-number">2.14.</span> <span class="nav-text"><a href="#&#x2191;-RedTeam-Gadgets" class="headerlink" title="&#x2191; RedTeam Gadgets"></a><a href="#table-of-contents">&#x2191;</a> RedTeam Gadgets</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Network-Implants"><span class="nav-number">2.14.0.1.</span> <span class="nav-text"><a href="#Network-Implants" class="headerlink" title="Network Implants"></a>Network Implants</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Wifi-Auditing"><span class="nav-number">2.14.0.2.</span> <span class="nav-text"><a href="#Wifi-Auditing" class="headerlink" title="Wifi Auditing"></a>Wifi Auditing</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#IoT"><span class="nav-number">2.14.0.3.</span> <span class="nav-text"><a href="#IoT" class="headerlink" title="IoT"></a>IoT</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Software-Defined-Radio-SDR"><span class="nav-number">2.14.0.4.</span> <span class="nav-text"><a href="#Software-Defined-Radio-SDR" class="headerlink" title="Software Defined Radio - SDR"></a>Software Defined Radio - SDR</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Misc"><span class="nav-number">2.14.0.5.</span> <span class="nav-text"><a href="#Misc" class="headerlink" title="Misc"></a>Misc</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#↑-Ebooks"><span class="nav-number">2.15.</span> <span class="nav-text"><a href="#&#x2191;-Ebooks" class="headerlink" title="&#x2191; Ebooks"></a><a href="#table-of-contents">&#x2191;</a> Ebooks</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#↑-Training-Free"><span class="nav-number">2.16.</span> <span class="nav-text"><a href="#&#x2191;-Training-Free" class="headerlink" title="&#x2191; Training ( Free )"></a><a href="#table-of-contents">&#x2191;</a> Training ( Free )</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#↑-Certification"><span class="nav-number">2.17.</span> <span class="nav-text"><a href="#&#x2191;-Certification" class="headerlink" title="&#x2191; Certification"></a><a href="#table-of-contents">&#x2191;</a> Certification</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="powered-by">
+<i class="fa fa-user-md"></i>
+<span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+</div>
+<div class="theme-info">
+ 
+  <span class="post-count">博客全站共12.1k字</span>
+</div>
+<div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">yaron. All Right Reserved. 版权所有。</span>
+</div>
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user">本站总访问量</i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (search_path.endsWith("json")) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+  <!-- 背景动画 -->
+  <script type="text/javascript" src="/js/src/particle.js"></script>
+  
+<div id="hexo-helper-live2d">
+  <canvas id="live2dcanvas" width="150" height="300"></canvas>
+</div>
+<style>
+  #live2dcanvas{
+    position: fixed;
+    width: 150px;
+    height: 300px;
+    opacity:0.7;
+    right: 0px;
+    z-index: 999;
+    pointer-events: none;
+    bottom: -20px;
+  }
+</style>
+<script type="text/javascript" src="/live2d/device.min.js"></script>
+<script type="text/javascript">
+const loadScript = function loadScript(c,b){var a=document.createElement("script");a.type="text/javascript";"undefined"!=typeof b&&(a.readyState?a.onreadystatechange=function(){if("loaded"==a.readyState||"complete"==a.readyState)a.onreadystatechange=null,b()}:a.onload=function(){b()});a.src=c;document.body.appendChild(a)};
+(function(){
+  if((typeof(device) != 'undefined') && (device.mobile())){
+    document.getElementById("live2dcanvas").style.width = '75px';
+    document.getElementById("live2dcanvas").style.height = '150px';
+  }else
+    if (typeof(device) === 'undefined') console.error('Cannot find current-device script.');
+  loadScript("/live2d/script.js", function(){loadlive2d("live2dcanvas", "/live2d/assets/miku.model.json", 0.5);});
+})();
+</script>
+
+</body>
+</html>
