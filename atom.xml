@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://yaalonsong.github.io/"/>
-  <updated>2019-04-07T15:30:15.966Z</updated>
+  <updated>2019-04-07T22:56:40.980Z</updated>
   <id>https://yaalonsong.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>linux 常用命令</title>
+    <link href="https://yaalonsong.github.io/2019/04/08/Linux%20command.html"/>
+    <id>https://yaalonsong.github.io/2019/04/08/Linux command.html</id>
+    <published>2019-04-07T22:52:45.218Z</published>
+    <updated>2019-04-07T22:56:40.980Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Linux-常用命令操作"><a href="#Linux-常用命令操作" class="headerlink" title="Linux 常用命令操作"></a>Linux 常用命令操作</h1><blockquote><p>温故而知新</p></blockquote><a id="more"></a><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">kill -9 `ps -ef|grep apache2|grep -v grep|awk &apos;&#123;print $2&#125;&apos; `</span><br><span class="line">指定进程名执行 kill命令</span><br></pre></td></tr></table></figure><p><img src="/uploads/linux1.png" alt="1"></p><p><img src="/uploads/linux2.png" alt="2"></p><p><img src="/uploads/linux3.png" alt="3"></p><p><img src="/uploads/linux4.png" alt="4"></p><p><img src="/uploads/linux5.png" alt="5"></p><p><img src="/uploads/linux6.png" alt="6"></p><p><img src="/uploads/linux7.png" alt="7"></p><p><img src="/uploads/linux8.png" alt="8"></p><p><img src="/uploads/linux9.png" alt="9"></p><p><img src="/uploads/linux10.png" alt="10"></p><p><img src="/uploads/linux11.png" alt="11"></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Linux-常用命令操作&quot;&gt;&lt;a href=&quot;#Linux-常用命令操作&quot; class=&quot;headerlink&quot; title=&quot;Linux 常用命令操作&quot;&gt;&lt;/a&gt;Linux 常用命令操作&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;温故而知新&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="linux" scheme="https://yaalonsong.github.io/categories/linux/"/>
+    
+    
+      <category term="linux" scheme="https://yaalonsong.github.io/tags/linux/"/>
+    
+  </entry>
   
   <entry>
     <title>Redteam Toolkit</title>
@@ -485,34 +509,6 @@
     
     
       <category term="Tools" scheme="https://yaalonsong.github.io/tags/Tools/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hexo + Next 搭建GitHub page</title>
-    <link href="https://yaalonsong.github.io/2017/12/13/Hexo+next.html"/>
-    <id>https://yaalonsong.github.io/2017/12/13/Hexo+next.html</id>
-    <published>2017-12-13T10:37:02.000Z</published>
-    <updated>2018-08-22T17:31:40.935Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="0x00-准备工作"><a href="#0x00-准备工作" class="headerlink" title="0x00 准备工作"></a>0x00 准备工作</h2><ul><li>下载node.js并安装 <a href="https://nodejs.org" title="点击下载安装" target="_blank" rel="noopener">官网下载安装</a>默认会安装npm；</li><li>下载安装git <a href="https://git-scm.com/downloads" title="点击下载安装" target="_blank" rel="noopener">官网下载安装</a>；</li><li>安装hexo，方法：管理员打开cmd：<br><code>$ npm install -g hexo-cli</code>。</li></ul><a id="more"></a><h2 id="0x01-本地生成hexo文件"><a href="#0x01-本地生成hexo文件" class="headerlink" title="0x01 本地生成hexo文件"></a>0x01 本地生成hexo文件</h2><ul><li>在本地新建一个文件夹 e.g. D:/Hexo ；</li><li>在D:/Hexo目录下鼠标右键”Git Bash Here”，输入：<code>hexo init</code>;</li><li>输入：<code>hexo g</code> 生成静态网页，<code>hexo s</code> 启动本地服务预览；</li><li><p>完成后Hexo文件夹会生成以下内容：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── _config.yml</span><br><span class="line">├── package.json</span><br><span class="line">├── scaffolds</span><br><span class="line">├── source</span><br><span class="line">|   ├── _drafts</span><br><span class="line">|   └── _posts</span><br><span class="line">└── themes</span><br></pre></td></tr></table></figure></li><li><p>打开本地浏览器 输入：<code>http://localhost:4000</code> 进行访问。</p></li></ul><h2 id="0x02-将本地hexo推送到GitHub"><a href="#0x02-将本地hexo推送到GitHub" class="headerlink" title="0x02 将本地hexo推送到GitHub"></a>0x02 将本地hexo推送到GitHub</h2><ul><li>在GitHub上创建名字为 zhangsan.github.io 的项目zhangsan是自己的github用户名；</li><li><p>打开 <code>D:/Hexo/_config.yml</code> 配置文件，修改以下内容为 <code>http://zhangsan.github.io</code> ：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># URL</span><br><span class="line">## If your site is put in a subdirectory, set url as &apos;http://yoursite.com/child&apos; and root as &apos;/child/&apos;</span><br><span class="line">url: http://zhangsan.github.io</span><br></pre></td></tr></table></figure></li><li><p>打开 <code>D:/Hexo/_config</code>配置文件，在文末的deploy做以下设置：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: https://github.com/zhangsan/zhangsan.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure></li><li><p>执行：<code>npm install hexo-deployer-git –save</code>  （此命令最好在管理员权限的cmd下执行）；</p></li><li>执行：hexo clear (一般情况下不用执行这个命令，当网站错误打不开的时候再执行它！)；</li><li>执行：hexo g （本地生成静态文件）；</li><li>执行：hexo d （将本地静态文件推送至Github)；</li><li>期间会弹出github登录框按提示登录即可，登录成功一次往后不用重复登录；</li><li>通过<code>http://zhangsan.github.io</code>即可访问。</li></ul><h2 id="0x03-绑定自己的域名"><a href="#0x03-绑定自己的域名" class="headerlink" title="0x03 绑定自己的域名"></a>0x03 绑定自己的域名</h2><ul><li>域名服务商-控制面板-DNS解析—添加CNAME记录：<br><code>@ &gt;&gt;&gt; zhangsan.github.io</code><br><center>OR</center><br><code>www &gt;&gt;&gt; zhangsan.github.io</code></li><li>在<code>Hexo/sorce</code>新建CNAME文件写入域名，CNAME文件，注意没有文件后缀；</li><li>执行：hexo g</li><li>执行：hexo s（本地预览，可以跳过）</li><li>执行：hexo d</li></ul><h2 id="0x04-使用next主题并给网站添加浏览器logo"><a href="#0x04-使用next主题并给网站添加浏览器logo" class="headerlink" title="0x04 使用next主题并给网站添加浏览器logo"></a>0x04 使用next主题并给网站添加浏览器logo</h2><ul><li>主题下载，<a href="https://github.com/iissnan/hexo-theme-next" target="_blank" rel="noopener">next在github下载</a>，并把next文件夹放到temes文件夹；</li><li>使用next主题，编辑<code>Hexo/_config.yml</code>以下内容：<br><code>##Themes: https://hexo.io/themes/</code><br><code>theme: next</code></li><li><p>将尺寸为32x32 favicon.ico 文件放在<code>hexo/source/</code>文件夹内，然后修改<code>Hexo\themes\next\_config.yml</code>为：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># Put your favicon.ico into `hexo-site/source/` directory.</span><br><span class="line">favicon: /favicon.ico</span><br></pre></td></tr></table></figure></li><li><p>编辑<code>Hexo/_config.yml</code>以下内容：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># Place your favicon.ico to /source directory.</span><br><span class="line">favicon: /favicon.ico</span><br></pre></td></tr></table></figure></li></ul><h2 id="0x05-将网站显示为中文"><a href="#0x05-将网站显示为中文" class="headerlink" title="0x05 将网站显示为中文"></a>0x05 将网站显示为中文</h2><ul><li><p>编辑<code>D:/Hexo/_config.yml</code>配置文件：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">language: zh-Hans  #将默认改成zh-Hans</span><br><span class="line">timezone:</span><br></pre></td></tr></table></figure></li><li><p>在<code>Hexo/next/lanhuages</code>目录下的zh-Hans.yml文件可以自行修改，增加和删除。</p></li></ul><h2 id="0x06-添加菜单和自定义菜单前的图标"><a href="#0x06-添加菜单和自定义菜单前的图标" class="headerlink" title="0x06 添加菜单和自定义菜单前的图标"></a>0x06 添加菜单和自定义菜单前的图标</h2><ul><li><p>编辑<code>themes\next\_config.yml</code>，到menu:字段，在该字段下添加一个字段；</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">menu:</span><br><span class="line">  home: /</span><br><span class="line">  about: /about</span><br><span class="line">  ......</span><br></pre></td></tr></table></figure></li><li><p>自定义小图标，关于next使用的小图标你可以通过这个网站<a href="http://fontawesome.io/icons/" target="_blank" rel="noopener">Font Awesome</a>来查看自己喜欢的图标，然后copy图标名，编辑<code>Hexo\themes\next\_config.yml</code>，将对应的图标名换成自己喜欢的小图标；</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">menu_icons:</span><br><span class="line">  enable: true</span><br><span class="line">  #KeyMapsToMenuItemKey: NameOfTheIconFromFontAwesome</span><br><span class="line">  home: home</span><br><span class="line">  about: mortar-board</span><br><span class="line">  categories: smile-o</span><br><span class="line">  schedule: calendar</span><br><span class="line">  tags: diamond</span><br><span class="line">  archives: angellist</span><br><span class="line">  sitemap: sitemap</span><br><span class="line">  commonweal: heartbeat</span><br></pre></td></tr></table></figure></li></ul><h2 id="0x07-隐藏网页底部powered-By-Hexo-强力驱动"><a href="#0x07-隐藏网页底部powered-By-Hexo-强力驱动" class="headerlink" title="0x07 隐藏网页底部powered By Hexo / 强力驱动"></a>0x07 隐藏网页底部powered By Hexo / 强力驱动</h2><p> 打开themes/next/layout/_partials/footer.swig,使用””隐藏之间的代码即可，或者直接删除。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--</span><br><span class="line">&lt;div class=&quot;powered-by&quot;&gt;</span><br><span class="line">  &#123;&#123; __(&apos;footer.powered&apos;, &apos;&lt;a class=&quot;theme-link&quot; rel=&quot;external nofollow&quot; href=&quot;https://hexo.io&quot;&gt;Hexo&lt;/a&gt;&apos;) &#125;&#125;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;div class=&quot;theme-info&quot;&gt;</span><br><span class="line">  &#123;&#123; __(&apos;footer.theme&apos;) &#125;&#125; -</span><br><span class="line">  &lt;a class=&quot;theme-link&quot; rel=&quot;external nofollow&quot; href=&quot;https://github.com/iissnan/hexo-theme-next&quot;&gt;</span><br><span class="line">    NexT.&#123;&#123; theme.scheme &#125;&#125;</span><br><span class="line">  &lt;/a&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure></p><h2 id="0x08-增加本地搜索功能"><a href="#0x08-增加本地搜索功能" class="headerlink" title="0x08 增加本地搜索功能"></a>0x08 增加本地搜索功能</h2><p>安装 hexo-generator-searchdb，在站点的根目录下执行以下命令：<br><code>$ npm install hexo-generator-searchdb --save</code><br>如果报错多执行几次，有的时候是网络原因，最好在管理员权限下的cmd里执行npm安装命令。<br>编辑<code>Hexo/_config.yml</code>，新增以下内容：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">search:</span><br><span class="line">  path: search.xml</span><br><span class="line">  field: post</span><br><span class="line">  format: html</span><br><span class="line">  limit: 10000</span><br></pre></td></tr></table></figure></p><h2 id="0x09-使用来必力评论功能"><a href="#0x09-使用来必力评论功能" class="headerlink" title="0x09 使用来必力评论功能"></a>0x09 使用来必力评论功能</h2><ul><li>到<a href="https://livere.com/" target="_blank" rel="noopener">livere</a>注册账号，安装来必力，记录以下内容：<center><img src="/uploads/livere2.png" alt="记录uid"></center></li><li>在<code>next/_config.yml</code>的此处加上自己的livere的uid：<br><code>livere_uid: your uid</code></li><li>然后去博客查看吧文章下面会看到以下景象：<center><img src="/uploads/livere1.png" alt="livere设置完成"></center></li></ul><h2 id="0x10-参考文章"><a href="#0x10-参考文章" class="headerlink" title="0x10 参考文章"></a>0x10 参考文章</h2><p>(<a href="https://thief.one/2017/03/03/Hexo搭建博客教程/" target="_blank" rel="noopener">https://thief.one/2017/03/03/Hexo搭建博客教程/</a>)</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;0x00-准备工作&quot;&gt;&lt;a href=&quot;#0x00-准备工作&quot; class=&quot;headerlink&quot; title=&quot;0x00 准备工作&quot;&gt;&lt;/a&gt;0x00 准备工作&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;下载node.js并安装 &lt;a href=&quot;https://nodejs.org&quot; title=&quot;点击下载安装&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;官网下载安装&lt;/a&gt;默认会安装npm；&lt;/li&gt;
-&lt;li&gt;下载安装git &lt;a href=&quot;https://git-scm.com/downloads&quot; title=&quot;点击下载安装&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;官网下载安装&lt;/a&gt;；&lt;/li&gt;
-&lt;li&gt;安装hexo，方法：管理员打开cmd：&lt;br&gt;&lt;code&gt;$ npm install -g hexo-cli&lt;/code&gt;。&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-      <category term="Hexo" scheme="https://yaalonsong.github.io/categories/Hexo/"/>
-    
-    
-      <category term="Hexo" scheme="https://yaalonsong.github.io/tags/Hexo/"/>
-    
-      <category term="github" scheme="https://yaalonsong.github.io/tags/github/"/>
     
   </entry>
   
