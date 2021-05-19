@@ -4,7 +4,7 @@
     
     <entry>
       <title><![CDATA[Windows和Active Directory备忘单和命令参考]]></title>
-      <url>/2021/05/19/Windows%E5%92%8CActive%20Directory%E5%BC%80%E5%8F%91%E5%A4%87%E5%BF%98%E5%8D%95%E5%92%8C%E5%91%BD%E4%BB%A4%E5%8F%82%E8%80%83.html</url>
+      <url>/2021/05/19/Windows%E5%92%8CActive%20Directory%E5%A4%87%E5%BF%98%E5%8D%95%E5%92%8C%E5%91%BD%E4%BB%A4%E5%8F%82%E8%80%83.html</url>
       <content type="html"><![CDATA[<h1 id="Windows和Active-Directory备忘单和命令参考"><a href="#Windows和Active-Directory备忘单和命令参考" class="headerlink" title="Windows和Active Directory备忘单和命令参考"></a>Windows和Active Directory备忘单和命令参考</h1><h2 id="General"><a href="#General" class="headerlink" title="General"></a>General</h2><h3 id="PowerShell-AMSI-Bypass"><a href="#PowerShell-AMSI-Bypass" class="headerlink" title="PowerShell AMSI Bypass"></a>PowerShell AMSI Bypass</h3><p>修补AMSI将有助于绕过执行标记为恶意的<code>PowerShell</code>脚本（例如<code>PowerView</code>）时触发的AV警告。请勿在秘密操作中按原样使用，因为它们会被标记<code>flag</code>。通过更改脚本以胜过基于签名的检测，可以混淆甚至更好地完全消除AMSI绕过的需要。</p>
 <a id="more"></a>
 <p>‘Plain’ AMSI bypass:</p>
